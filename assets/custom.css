@@ -3259,7 +3259,6 @@ h1.custom-title {
 }
 .grid__item .card-wrapper .product-cart form button span {
   font-size: 12px;
-  letter-spacing: 2px;
 }
 .card:hover .media.media--hover-effect > img:first-child:only-child,
 .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
