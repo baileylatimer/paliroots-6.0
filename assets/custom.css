@@ -3258,7 +3258,8 @@ h1.custom-title {
   line-height: 20px;
 }
 .grid__item .card-wrapper .product-cart form button span {
-  font-size: 12px;
+  font-size: 12px; 
+  letter-spacing: 0px !important;
 }
 .card:hover .media.media--hover-effect > img:first-child:only-child,
 .card-wrapper:hover .media.media--hover-effect > img:first-child:only-child {
