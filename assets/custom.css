@@ -23,7 +23,6 @@
 
 p {
   font-family: NeueMontreal-Regular !important;
-  letter-spacing: 1px !important;
 }
 body,
 h1,
@@ -40,7 +39,6 @@ h6,
 .h5,
 .h6 {
   font-family: NeueMontreal-Medium;
-  letter-spacing: 2px !important;
 }
 body.open-drawer.overflow-hidden-desktop {
   overflow: hidden;
