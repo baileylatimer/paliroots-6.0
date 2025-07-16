@@ -56,6 +56,10 @@ body.open-drawer.overflow-hidden-desktop {
   box-sizing: border-box;
   margin: 0;
   text-decoration: none !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
 }
 
 *:focus-visible {
