@@ -675,7 +675,7 @@ nav.menu-drawer__navigation-new li a {
   float: left;
   background: transparent !important;
   opacity: 1;
-  letter-spacing: 2px;
+  ;
   font-family: NeueMontreal-Regular;
   text-transform: uppercase;
 }
@@ -907,7 +907,7 @@ a.media-link {
   background-image: none !important;
   background-color: transparent;
   font-family: NeueMontreal-Regular;
-  letter-spacing: 2px;
+  ;
 }
 .header-newsletter-section input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
@@ -937,7 +937,7 @@ a.media-link {
   top: 0;
   font-family: NeueMontreal-Medium;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  ;
 }
 .header-newsletter-section .success_message {
   color: green;
@@ -1148,7 +1148,7 @@ main#MainContent {
   min-width: auto;
   transition: 0.5s;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  ;
 }
 .customer form button:hover {
   background-color: #000;
@@ -2316,7 +2316,7 @@ form.clearfix fieldset legend.at-legend {
   font-size: 14px !important;
   line-height: 28px;
   text-transform: uppercase;
-  letter-spacing: 2px !important;
+   !important;
   border: 0;
   border-radius: 0;
   display: inline-flex;
@@ -2949,7 +2949,7 @@ h2.resp-accordion {
   line-height: 1.7;
   color: #000;
   /* font-family: Poppins, sans-serif !important; */
-  letter-spacing: 2px;
+  ;
 }
 .ambassador-page .section.third h2.bam__how-it-works-title {
   margin-bottom: 50px;
@@ -3509,7 +3509,7 @@ nav.menu-drawer__navigation
     border: 1px solid #000 !important;
     background: #000 !important;
     font-family: 'NeueMontreal-Medium';
-    letter-spacing: 2px !important;
+     !important;
 }
 .main-countdown-signup
   .subscribe-form-section
@@ -4710,7 +4710,7 @@ button.needsclick.kl-teaser-SKYFEu {
   min-width: auto;
   font-size: 14px;
   /* font-family: RadnikaNext-Regular !important; */
-  letter-spacing: 2px;
+  ;
   text-transform: uppercase;
   min-height: 48px;
 }
@@ -5222,7 +5222,7 @@ header .header__menu-item span {
   font-family: NeueMontreal-Medium !important;
   font-size: 12px;
   line-height: 25px;
-  letter-spacing: 2px;
+  ;
   text-transform: uppercase;
 }
 .template-index.header--transparent header .header__menu-item {
@@ -7323,7 +7323,7 @@ body .coll-subcoll__list_wrap h2.heading.h2 {
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content a {
   font-size: 12px !important;
   text-transform: uppercase;
-  letter-spacing: 2px !important;
+   !important;
   font-family: "NeueMontreal-Regular";
 }
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content a:hover {
@@ -7471,7 +7471,7 @@ li.Lookbook_ListItem.ListItem--Wide {
 .expanded-collection-banner_bottom h2.expand-collectn__title {
   font-size: 14px;
   line-height: 23px;
-  letter-spacing: 2px;
+  ;
 }
 /* div#fancybox-container-1 {
     background: rgba(0, 0, 0, .8);
@@ -7596,7 +7596,7 @@ footer.footer {
   font-size: 14px;
   line-height: 28px;
   text-transform: uppercase;
-  letter-spacing: 2px !important;
+   !important;
 }
 .newsletter-form__field-wrapper {
   width: 100%;
@@ -7664,7 +7664,7 @@ span.country___header {
   position: relative;
   padding-left: 16px;
   text-transform: uppercase;
-  letter-spacing: 2px !important;
+   !important;
   line-height: 20px;
   display: block;
 }
@@ -8688,7 +8688,7 @@ section#shopify-pc__banner {
   font-weight: unset !important;
   text-transform: capitalize !important;
   font-family: "NeueMontreal-Medium" !important;
-  letter-spacing: 2px !important;
+   !important;
   margin-bottom: 0 !important;
 }
 .shopify-pc__banner__dialog p {
@@ -8729,7 +8729,7 @@ button#shopify-pc__banner__btn-decline {
   font-size: 14px !important;
   line-height: 28px !important;
   text-transform: uppercase;
-  letter-spacing: 2px !important;
+   !important;
   height: 44px !important;
   flex-basis: max-content !important;
   padding: 7px 28px !important;
