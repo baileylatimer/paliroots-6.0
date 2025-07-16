@@ -1,0 +1,74 @@
+<div class="collection-Subcollections__main_wrap">
+  <div class="collection-Subcollections__inner_wrap page-width">
+    <div class="coll-subcoll__list_wrap">
+      <div class="collection-title_wrap">
+        <h2 class="heading h2">{{ collection.title }}</h2>
+      </div>
+       
+        <div class="coll-subcoll__menu_link_wrap">
+          <ul class="coll-subcoll__menu_link-content list-unstyled">
+          {%- for link in section.settings.collection_link_list.links -%}
+            <li {% if link.active %}style="display:none;"{% endif %}>
+              <a
+                href="{{ link.url }}"
+                class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+            {% comment %}
+            {% assign subcollections_link_menu = collection.metafields.custom.collection_sub_collections_links.value %}
+            {%- for link in subcollections_link_menu -%}
+              <li>
+                <a
+                  href="{{ link.url }}"
+                  class="link link--text list-menu__item list-menu__item--link{% if link.active %} list-menu__item--active{% endif %}"
+                >
+                  {{ link.text }}
+                </a>
+              </li>
+            {%- endfor -%}
+            {% endcomment %}
+          </ul>
+        </div>
+        
+    </div>
+  </div>
+</div>
+
+<style>
+  .subcollections_links {
+    position: sticky;
+    top: 49px;
+    z-index: 2;
+    background: #f4f4f4;
+    transition: .5s ease-in-out;
+}
+  @media screen and (max-width:989px){
+    .subcollections_links {
+        top: 43px;
+    }
+        /* .collection-Subcollections__main_wrap {
+        box-shadow: 0px 3px 3px 0px #00000040;
+    } */
+  }
+</style>
+{% schema %}
+  {
+    "name": "Subcollections links",
+    "class": "subcollections_links",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "collection_link_list",
+        "label": "Choose Menu"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Subcollections links"
+      }
+    ]
+  }
+{% endschema %}

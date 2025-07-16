@@ -1,0 +1,140 @@
+<!-- HTML -->
+<div class="scrolling-image-swipe">
+  <div class="scrolling-img__main_wrap">
+    <div class="scrolling-img__inner_wrap">
+      <div class="page-width">
+        <div class="title_wrap">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+      </div>
+
+      <div class="scroll_img_wrap marquee draggable-marquee">
+        <div class="marquee-content b-section-marquee-box">
+         
+          {% for i in (1..6) %}
+            {% for block in section.blocks %}
+              <div class="marquee-item marquee-image">
+                <div class="img__container">
+                  <img src="{{ block.settings.scrollimage | img_url: '' }}" loading="lazy">
+                </div>
+              </div>
+            {% endfor %}
+          {% endfor %}
+          
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- CSS -->
+<style>
+.scroll_img_wrap.marquee {
+  user-select: none;
+  cursor: grab;
+}
+.scroll_img_wrap.marquee:active {
+  cursor: grabbing;
+}
+
+.scroll_img_wrap.marquee:hover .marquee-content {
+  animation-play-state: running !important; /* Override pause-on-hover */
+}
+
+
+.img__container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+</style>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const marquee = document.querySelector(".scroll_img_wrap.marquee");
+  const marqueeContent = marquee.querySelector(".marquee-content");
+
+  let isDragging = false;
+  let startX = 0;
+  let scrollLeft = 0;
+
+  // Mouse events
+  marquee.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    startX = e.pageX;
+    scrollLeft = marquee.scrollLeft;
+  });
+
+  marquee.addEventListener("mouseleave", () => {
+    isDragging = false;
+  });
+
+  marquee.addEventListener("mouseup", () => {
+    isDragging = false;
+  });
+
+  marquee.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX);
+    marquee.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch events
+  marquee.addEventListener("touchstart", (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX;
+    scrollLeft = marquee.scrollLeft;
+  });
+
+  marquee.addEventListener("touchend", () => {
+    isDragging = false;
+  });
+
+  marquee.addEventListener("touchmove", (e) => {
+    if (!isDragging) return;
+    const x = e.touches[0].pageX;
+    const walk = (x - startX);
+    marquee.scrollLeft = scrollLeft - walk;
+  });
+});
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Scrolling Image Swipe",
+    "class": "scrolling-image scrolling-image-swipe",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "default": "As seen on #paliroots",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "scrollimage",
+            "label": "Choose Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling Image Swipe"
+      }
+    ]
+  }
+{% endschema %}

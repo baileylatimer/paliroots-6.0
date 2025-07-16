@@ -1,0 +1,88 @@
+<div class="page-charity-icon-with-text demo_class">
+  <div class="{{ section.settings.container_layout }}">
+    <div class="icon-with-text-wrap text-center">
+      {% if section.settings.icon != blank %}
+        <div class="icon-site">{{ section.settings.icon | img_url: '300x300' | img_tag }}</div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+        <span class="section-header__subtitle">{{ section.settings.subtitle }}</span>
+        <h2 class="section-header__title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="rte-setting">{{ section.settings.text }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="btn action_button btn--reverse">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page icon with text",
+    "settings": [
+      {
+        "type": "select",
+        "id": "container_layout",
+        "label": "Container layout",
+        "default": "wrapper",
+        "options": [
+          {
+            "value": "wrapper-full",
+            "label": "Full width"
+          },
+          {
+            "value": "wrapper-full-gutter",
+            "label": "Full width with gutter"
+          },
+          {
+            "value": "wrapper",
+            "label": "Fixed"
+          }
+        ]
+      },
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Icon with text"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subheading",
+        "default": "Icon with text"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

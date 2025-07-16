@@ -1,0 +1,17 @@
+<script defer>
+  
+ $(document).ready(function(){
+ // executes when complete page is fully loaded, including all frames, objects and images
+    $.ajax ({
+            url: "https://www.palirootsmealprogram.com/sr/getCount",
+      		cache: false,
+            success: function( result ) {
+             console.log(result);
+               $(document).find('.meal-counter-trigger').text(result);
+              $(document).find('#total-meal-donate').text(result);
+            }
+          });
+      
+});
+
+</script>

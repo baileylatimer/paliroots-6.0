@@ -1,0 +1,73 @@
+<!-- /templates/page.liquid -->
+{% section 'page-charity-video-with-text-overlay' %}
+<div id="pageCharityTabs">
+  <div class="tab-head">
+    <div class="title active" data-title="ourImpact">
+      Our Impact
+    </div>
+    <div class="title" data-title="ourProjects">
+      Our Projects
+    </div>
+    <div class="title" data-title="donate">
+     Donate
+    </div>
+  </div>
+  <div class="tab-content">
+    <div class="content open" data-content="ourImpact">
+      {% section 'page-charity-row-1' %}
+      {% section 'page-charity-timeline' %}
+      {% section 'page-charity-tabs' %}
+      {% section 'page-charity-row-2' %}
+     </div>
+    <div class="content" data-content="ourProjects">
+      {% section 'page-charity-card' %}
+    </div>
+    <div class="content" data-content="donate">
+    <link rel='preload' href='https://d3rse9xjbp8270.cloudfront.net/at.js' as='script' crossorigin='anonymous'>
+    <link rel='preload' href='https://d3rse9xjbp8270.cloudfront.net/at.min.css' as='style'>
+    <script type='text/javascript' src='https://d3rse9xjbp8270.cloudfront.net/at.js' crossorigin='anonymous'></script>    
+    <div class="ngp-form"
+    data-form-url="https://secure.everyaction.com/v1/Forms/4VKl3Uki_0ueCW7cMWJNNg2"
+    data-fastaction-endpoint="https://fastaction.ngpvan.com"
+    data-inline-errors="true"
+    data-fastaction-nologin="true"
+    data-databag-endpoint="https://profile.ngpvan.com"
+    data-databag="everybody"
+    data-mobile-autofocus="false">
+    </div>
+   </div>
+  </div>
+</div>
+
+<script src="{{ 'easyResponsiveTabs.js' | asset_url }}"></script>
+<script>
+
+    //=========== tabs - Charity page ===========//
+    $("#charityTabs").easyResponsiveTabs({
+      type: "default", //Types: default, vertical, accordion
+      tabidentify: "tab_identifier",
+      activetab_bg: "#fff", // background color for active tabs in this group
+      inactive_bg: "#f4f4f4" // background color for inactive tabs in this group
+    });
+  //=========== Main tabs - Charity page ===========//
+    $("#pageCharityTabs .tab-head .title").each(function() {
+      $(this).click(function() {
+        $("#pageCharityTabs .tab-head .title").removeClass("active");
+        $(this).addClass("active");
+
+        var id = $(this).data("title");
+        $("#pageCharityTabs .tab-content .content").removeClass("open");
+        $("#pageCharityTabs .tab-content")
+          .find('[data-content="' + id + '"]')
+          .addClass("open");
+
+        window.location.hash = id;
+      });
+    });
+
+    var newHash = window.location.hash.replace("#", "");
+    $("#pageCharityTabs .tab-head")
+      .find('[data-title="' + newHash + '"]')
+      .trigger("click");
+
+</script>

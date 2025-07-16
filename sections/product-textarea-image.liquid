@@ -1,0 +1,122 @@
+{{ 'ourstory-new.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .our-story-wrp--{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+ 
+  @media screen and (max-width: 749px) {
+    .our-story-wrp--{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+  }
+{% endstyle %}
+{% if section.settings.font_PP_Playground == true %}
+  <style>
+    .our-story-content.font_PP_Playground--true p:first-letter {
+      font-family: PP-Playground;
+      font-size: 98px;
+    }
+  </style>
+{% endif %}
+<div class="our-story-wrp our-story-wrp--{{ section.id }}">
+  <div class="page-width">
+    <div class="our-story-content {% if section.settings.font_PP_Playground %}font_PP_Playground--true{% endif %}">
+      <p>{{ section.settings.story_text | escape }}</p>
+    </div>
+    <div class="image_content_wrap">
+      <div class="image_inner_wrap">
+        {% if section.settings.image_1 != blank %}
+        <div class="img_wrap img_1">
+          <img src="{{ section.settings.image_1 | img_url: '' }}">
+        </div>
+        {% endif %}
+        {% if section.settings.image_2 != blank%}
+        <div class="img_wrap img_2">
+          <img src="{{ section.settings.image_2 | img_url: '' }}">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product-textarea-image",
+  "tag": "section",
+  "class": "our-story-text product-textarea-image",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Our Story Text"
+    },
+    {
+      "type": "checkbox",
+      "default": true,
+      "id": "font_PP_Playground",
+      "label": "Font PP-Playground",
+      "info": "Enable Font PP-Playground for first Alphabet"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image first"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image Second"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding (Desktop)",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding (Desktop)",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Top Padding (Mobile)",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Bottom Padding (Mobile)",
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "step":4,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product-textarea-image",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,67 @@
+<div id="overlay">
+  <div id="nav">
+    <div class="cntry-language-content">
+      <div class="cntry-language-content-inner">
+        <div class="custom-values-curr-language">
+          <div class="cstm-country">
+            <div class="country-details">
+              <select name="currency_code" class="country-list">
+                {%- for country in localization.available_countries -%}
+                  {% if country.name == 'Israel' %}
+                    <option
+                      class="country-option"
+                      getsymbol="{{ country.currency.iso_code }} {{ country.currency.symbol }}"
+                      value="{{ country.iso_code }}-{{ country.currency.symbol }}"
+                      {%- if country == localization.country %}
+                        selected="selected"
+                      {% endif %}
+                      data-country-name="{{ country.name }}"
+                    >
+                      {{ country.name }} (Occupied Palestine) / {{ country.currency.symbol }}
+                    </option>
+                  {% else %}
+                    <option
+                      class="country-option"
+                      getsymbol="{{ country.currency.iso_code }} {{ country.currency.symbol }}"
+                      value="{{ country.iso_code }}-{{ country.currency.symbol }}"
+                      {%- if country == localization.country %}
+                        selected="selected"
+                      {% endif %}
+                      data-country-name="{{ country.name }}"
+                    >
+                      {{ country.name }} / {{ country.currency.symbol }} 
+                      {% comment %}
+                      / {{ country.iso_code }} / {{ country.currency.iso_code }}
+                    {% endcomment %}
+                    </option>
+                  {% endif %}
+                {%- endfor -%}
+              </select>
+              <span class="changeoption"></span>
+            </div>
+          </div>
+          <div class="cstm-language">
+            <label class="language-heading"></label>
+            <div class="language-detail">
+              <select name="langua_code" class="language-details">
+                {%- for language in localization.available_languages -%}
+                  <option
+                    class="lan-option"
+                    value="{{ language.iso_code }}"
+                    {%- if language == localization.language %}
+                      selected="selected"
+                    {% endif %}
+                  >
+                    {{- language.endonym_name -}}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          </div>
+          <button class="button custom-btn">{{ confirm_btn }}</button>
+        </div>
+      </div>
+      {% render 'cstm-localization' %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+<div class="expand-collectn__main_wrap {{ section.settings.custom_class }}">
+  <div class="expand-collectn__inner_wrap">
+    <div class="expand-collectn__banner_image">
+      {% if section.settings.banner_imagedesktop != blank %}
+      <img class="banner_image image_desktop" src="{{ section.settings.banner_imagedesktop | img_url: '' }}" height="{{ section.settings.banner_imagedesktop.height }}" width="{{ section.settings.banner_imagedesktop.width }}" alt="{{ section.settings.banner_imagedesktop.alt }}">
+      {% endif %}
+      {% if section.settings.banner_imagemobile != blank %}
+      <img class="banner_image image_mobile" src="{{ section.settings.banner_imagemobile | img_url: '' }}" height="{{ section.settings.banner_imagemobile.height }}" width="{{ section.settings.banner_imagemobile.width }}" alt="{{ section.settings.banner_imagemobile.alt }}">
+      {% endif %}
+    </div>
+    <div class="expand-collectn__title_wrap page-width">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'heading' %}
+            <h2 class="expand-collectn__title Hero__heading">
+            {{ block.settings.heading }}
+            </h2>
+          {% when 'banner_logo' %}
+             <img class="banner-heading__logo" src="{{ block.settings.banner_logo | img_url: '' }}" height="{{ block.settings.banner_logo.height }}" width="{{ block.settings.banner_logo.width }}" alt="{{ block.settings.banner_logo.alt }}">
+        {% endcase %}
+      {% endfor %}
+      </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Expanded Banner Bottom",
+    "class": "expanded-collection-banner expanded-collection-banner_bottom",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_imagedesktop",
+        "label": "Banner Image Desktop"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_imagemobile",
+        "label": "Banner Image Mobile"
+      },
+      {
+        "type": "text",
+        "id": "custom_class",
+        "label": "Custom class"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "heading",
+        "default": "DARE TO EVOLVE",
+        "label": "Heading"
+      },
+      {
+        "type": "image_picker",
+        "id": "banner_logo",
+        "label": "Banner Logo"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "heading",
+        "name": "Heading",
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "heading",
+            "default": "DARE TO EVOLVE",
+            "label": "Heading"
+          }
+        ]
+      },
+      {
+        "type": "banner_logo",
+        "name": "Banner logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "banner_logo",
+            "label": "Banner Logo"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Expanded Banner Bottom"
+      }
+    ]
+  }
+{% endschema %}

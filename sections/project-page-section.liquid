@@ -1,0 +1,177 @@
+{% assign project = page.metafields.project %}
+<div class="page-project">
+  <div class="page-header-section text-center">
+    <div class="page-width">
+      {% if project.page_subtitle != blank %}
+      <div class="page-header__subtitle">{{ project.page_subtitle | replace: '|', '<span class="separate">|</span>' }}</div>
+      {% endif %}
+      <h1 class="page-header__title page-title">
+        {{ page.title }}
+      </h1>
+    </div>
+  </div>
+  
+  <div class="page-width">
+    <div class="metafields-content">
+      <div class="left-side">
+        {% assign youtube = page.metafields.project_youtube %}
+        {% assign slides = page.metafields['project_slideshow'] %}
+        {% assign slides_size = slides.size %}
+
+        <div class="page-project-main-slider">
+          {% for i in (1..slides_size) %}
+          {% capture img %}slide_{{i}}{% endcapture %}
+          <div class="main-slide-item"><img class="lazyload" src="https://cdn.shopify.com/s/files/1/1420/4316/t/60/assets/Project-main.png?v=1672731426" data-src="{{ slides[img] }}"/></div>
+          {% endfor %}
+          
+          {% if youtube.youtube_id %}
+            <div class="main-slide-item">
+              <a class="popup-youtube test-1" href="http://www.youtube.com/watch?v={{ youtube.youtube_id }}"><img class="lazyload" src ="{{ youtube.youtube_image }}">{% include 'icon-play' %}</a>
+            </div>
+          {% endif %}
+
+          {% if youtube.youtube_id_2 %}
+            <div class="main-slide-item">
+              <a class="popup-youtube" href="http://www.youtube.com/watch?v={{ youtube.youtube_id_2 }}"><img class="lazyload" src ="{{ youtube.youtube_image_2  }}">{% include 'icon-play' %}</a>
+            </div>
+          {% endif %}
+        </div>
+        {% if slides.size > 1 %}
+        <div class="page-project-thumb-slider">
+          {% for i in (1..slides_size) %}
+          {% capture img %}slide_{{i}}{% endcapture %}
+          <div class="thumb-slide-item">
+            <div class="item-wrap"><img class="lazyload" src="https://cdn.shopify.com/s/files/1/1420/4316/t/60/assets/Project-thumb.png?v=1672731508" data-src="{{ slides[img] }}"/></div>
+          </div>
+
+          {% endfor %}
+        
+          {% if youtube.youtube_id %}
+            <div class="thumb-slide-item thumb-slide-item-youtube">
+              <div class="item-wrap"><img class="lazyload" src ="{{ youtube.youtube_image }}">{% include 'icon-play' %}</div>
+            </div>
+          {% endif %}
+
+          {% if youtube.youtube_id_2 %}
+            <div class="thumb-slide-item thumb-slide-item-youtube">
+              <div class="item-wrap"><img class="lazyload" src ="{{ youtube.youtube_image_2 }}">{% include 'icon-play' %}</div>
+            </div>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+      <div class="right-side">
+        <div class="page-project-info">
+          <div class="box donated">
+            <div class="box-wrap">
+              <div class="box-text">{{ project.donated }}</div>
+            </div>
+          </div>
+          <div class="box peo-loc">
+            <div class="box-wrap">
+              <div class="box-icon">
+                {{ '1.png' | asset_url | img_tag }}
+                <div class="icon-name">People Affected</div>
+              </div>
+              <div class="box-text">
+                {{ project.people_affected }}
+              </div>
+            </div>
+            <div class="box-wrap">
+              <div class="box-icon">
+                {{ '2.png' | asset_url | img_tag }}
+                <div class="icon-name">Location</div>
+              </div>
+              <div class="box-text">
+                {{ project.location }}
+              </div>
+            </div>
+          </div>
+          <div class="box partner">
+            <div class="box-wrap">
+              <div class="box-icon">
+                {% if project.partner_logo != blank %}
+                  <img src="{{ project.partner_logo }}"/>
+                {% else %}
+                  {{ 'icon-small-logo-black.svg' | asset_url | img_tag }}
+                {% endif %}
+              </div>
+              <div class="box-text">
+                {{ project.partner }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-content">
+      <div class="page-content-wrap rte">
+        {{ page.content }}
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-width">
+    {% include 'social-share' %}
+  </div>
+</div>
+
+<script src="{{ 'slick.js' | asset_url }}"></script>
+{{ 'slick.css' | asset_url | stylesheet_tag }}
+ <script src="{{ 'magnific-popup.min.js' | asset_url }}"></script>
+  {{ 'magnific-popup.css' | asset_url | stylesheet_tag }}
+
+<script>
+    //=========== Slider - Project page ===========//
+    $(".page-project-main-slider").slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      fade: true,
+      asNavFor: ".page-project-thumb-slider",
+      responsive: [
+        {
+          breakpoint: 769,
+          settings: {
+            arrows: true,
+            dots: true
+          }
+        }
+      ]
+    });
+    $(".page-project-thumb-slider").slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      asNavFor: ".page-project-main-slider",
+      dots: false,
+      arrows: true,
+      loop: true,
+      //centerMode: true,
+      focusOnSelect: true
+    });
+
+
+    //=========== Video popup ===========//
+    $(".popup-youtube").magnificPopup({
+      type: "iframe",
+      mainClass: "mfp-fade",
+      removalDelay: 160,
+      preloader: false,
+      fixedContentPos: false
+    });
+
+  
+</script>
+{% schema %}
+  {
+    "name": "Project Page Section",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

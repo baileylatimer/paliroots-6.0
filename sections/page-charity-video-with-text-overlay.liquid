@@ -1,0 +1,57 @@
+<div class="page-video_with_text_overlay">
+  <div class="video-site">
+    <video autoplay loop muted playsinline poster="{{ section.settings.placeholder_image | img_url: 'master' }}">
+    <source src="{{ section.settings.video_mp4 }}" type="video/mp4">
+    </video>
+    {% comment %}
+    <div class="bg-image inner-content"{% if section.settings.placeholder_image != blank %} style="background-image: url({{ section.settings.placeholder_image | img_url: '2048x2048' }});"{% endif %}></div>
+    <div class="bg-video inner-content"{% if section.settings.video_mp4 != blank %} data-vide-bg="{{ section.settings.video_mp4 }}"{% endif %}></div> 
+  {% endcomment %}
+  </div>
+  <div class="overlay" style="background: {{ section.settings.overlay_color }}; opacity: {{ section.settings.overlay_opacity }};"></div>
+  </div>
+
+
+
+{% schema %}
+  {
+    "name": "Page Hero video",
+    "settings": [
+      {
+        "type": "text",
+        "id": "video_mp4",
+        "label": "Video(MP4)"
+      },
+      {
+        "type": "image_picker",
+        "id": "placeholder_image",
+        "label": "Placeholder image"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "overlay_color",
+        "label": "Overlay color",
+        "default": "#000"
+      },
+      {
+        "type": "text",
+        "id": "overlay_opacity",
+        "label": "Overlay opacity",
+        "default": "0.3",
+        "info": "eg: 0.3"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

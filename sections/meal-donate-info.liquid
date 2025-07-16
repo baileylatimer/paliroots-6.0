@@ -1,0 +1,81 @@
+<div class="meal-donate-info__main_wrap">
+  <div class="meal-donate-info__inner_wrap page-width">
+    <div class="meal-donate-info__cont_wrap">
+      {% if section.settings.title != blank %}
+      <div class="title_wrap">
+        <h2>{{ section.settings.title }}</h2>
+      </div>
+      {% endif %}
+      <div class="meal-donate-info__block-cont__wrap">
+        <div class="meal-info__cont_list">
+          {% for block in section.blocks %}
+            <div class="meal-info__item item-cont__{{ forloop.index }}">
+              <span class="meal-info__item-heading">
+                {{ block.settings.heading }}
+              </span>
+              <p class="meal-info__item-caption">
+                {{ block.settings.caption }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if section.settings.button_text != blank %}
+      <div class="meal-donate-info__btn_wrap">
+        <a href="{% if section.settings.button_url != blank %}{{ section.settings.button_url }}{% else %}javascript:void(0){% endif %}" class="meal-donate-info__btn_link">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Meal-donate-info",
+    "class": "Meal-donate-info",
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Text",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "inline_richtext",
+            "id": "heading",
+            "label": "Heading",
+          },
+          {
+            "type": "text",
+            "id": "caption",
+            "label": "Caption",
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "title",
+        "default": "Title",
+        "label": "Title"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "button_text",
+        "default": "Learn more",
+        "label": "Button"
+      },
+      {
+        "type": "url",
+        "id": "button_url",
+        "label": "Button Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Meal-donate-info"
+      }
+    ]
+  }
+{% endschema %}

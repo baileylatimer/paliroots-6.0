@@ -1,0 +1,465 @@
+{% assign country_code_us = localization.country.iso_code %}
+{% comment %}
+  {% if country_code_us != 'US' %}
+   {{ country_code_us }}
+  {% endif %}
+{% endcomment %}
+
+<style>
+  .wlcmpopup_richcont_wrap .list-items img {
+      width: 16px;
+  }
+
+  body.welcmpopup_added .paliroots-welcome-popup {
+    display: block;
+  }
+
+  body .paliroots-welcome-popup {
+    display: none;
+  }
+
+  .welcomePopup-country-wrp {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+  }
+
+  /* Popup content */
+  .welcomePopup-country-wrp .popup-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Close icon */
+  .welcomePopup-country-wrp .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #333;
+  }
+</style>
+
+<!--
+  <div class="welcomePopup-country-wrp" id="welcomePopup-country-wrp" style="display:none;">
+    <div class="popup-content">
+        <span class="close" onclick="document.getElementById('welcomePopup-country-wrp').style.display='none'">&times;</span>
+        <h2>Welcome to <span class="country-name-display"></span></h2>
+    </div>
+  </div>
+-->
+
+<div class="welcmpopup_mainwrap">
+  <div class="welcmpopup_inerwrap">
+    <div class="welcmpopup_contwrap">
+      <div class="welcmpopup_overlay" onclick="wlcmpopupclose()"></div>
+      <div class="welcmpopup_content_area">
+        <div class="close-button-pop" onclick="wlcmpopupclose()">
+          {% render 'cross-btn' %}
+        </div>
+        <div class="welcmpopup_head">
+          {% if section.settings.sitelogo != blank %}
+            <div class="logo">
+              <img
+                src="{{ section.settings.sitelogo | img_url: '' }}"
+                height=""
+                width=""
+                loading="lazy"
+                alt="Welcome-popup-logo"
+              >
+            </div>
+          {% endif %}
+          <div class="welcmpopup_title">
+            <span> {{ section.settings.title }}</span>
+          </div>
+        </div>
+
+        {% comment %}
+          {%- if country_option_tags contains localization.country -%}
+            <p>We are available in your country: {{ localization.country }}</p>
+          {%- else -%}
+            <p>Sorry, we are not available in your country: {{ localization.country }}</p>
+          {%- endif -%}
+        {% endcomment %}
+
+        {% assign country_code = localization.country.iso_code | upcase %}
+        {% assign currency_symbol = localization.country.currency.symbol %}
+        {% capture free_shipping_threshold %}
+          {% case country_code %}
+            {% when 'US' %}100 
+            {% when 'AE' %}200 
+            {% when 'FR' or 'DE' or 'IT' or 'ES' %}200 
+            {% else %}<span>200</span>
+          {% endcase %}
+        {% endcapture %}
+
+        <div class="wlcmpopup_richcont_wrap">
+          <div class="wlcmpop_richcont withinregioncontent">
+            {{ section.settings.withinregioncontent }}
+          </div>
+          {% comment %}
+            <div class="no_shipto_country_message" style="display:none;"></div>
+          {% endcomment %}
+          <div class="list-items">
+            <ul>
+              {% if section.settings.list_item_1 != blank %}
+                <li>
+                  {% if localization.country.name == 'Israel' %}
+                    <img
+                      src="https://flagcdn.com/ps.svg"
+                      alt="{{ localization.country.name }} flag"
+                      width="16"
+                      height="10"
+                      loading="lazy"
+                      class="inline mr-1 align-middle"
+                    >
+                  {% else %}
+                    {% assign country_code = localization.country.iso_code | downcase %}
+                    <img
+                      src="https://flagcdn.com/{{ country_code }}.svg"
+                      alt="{{ localization.country.name }} flag"
+                      width="16"
+                      height="10"
+                      loading="lazy"
+                      class="inline mr-1 align-middle"
+                    >
+                  {% endif %}
+
+                  <div class="c_name_msg">
+                    {{- section.settings.list_item_1 }}
+                    <span class="country-name">
+                      {% for country in localization.available_countries %}
+                        {% if country.iso_code == localization.country.iso_code %}
+                          {% if localization.country.name == 'Israel' %}
+                            {{ country.name }} (Occupied Palestine)
+                          {% else %}
+                            {{ country.name }}
+                          {% endif %}
+                        {% endif %}
+                      {% endfor %}
+                    </span>
+                  </div>
+                </li>
+              {% endif %}
+              {% if section.settings.list_item_2 != blank %}
+                <li>
+                  {% if section.settings.list_item_img_2 != blank -%}
+                    <img
+                      src="{{ section.settings.list_item_img_2 | img_url: "master" }}"
+                      height=""
+                      width=""
+                      loading="lazy"
+                      alt="img"
+                    >
+                  {%- endif -%}
+                  <p>
+                    {{ section.settings.list_item_2 -}}
+                    <span style="margin-left: 2px;">
+                      {% comment %}
+                        {{- currency_symbol -}}
+                        {{- free_shipping_threshold -}}
+                      {% endcomment %}
+                      {{ localization.market.metafields.custom.custom_ship_rate.value | money_without_trailing_zeros }}
+                    </span>
+                  </p>
+                </li>
+              {% endif %}
+
+              {% if localization.country.iso_code == 'US' %}
+                <li class="us-delivered-in">
+                  {%- render 'icon-box' -%}
+                  {{ section.settings['us-delivered-in'] }}
+                </li>
+              {% endif %}
+              {% if section.settings.list_item_3 != blank %}
+                <li>
+                  {% if section.settings.list_item_img_3 != blank -%}
+                    <img
+                      src="{{ section.settings.list_item_img_3 | img_url: "master" }}"
+                      height=""
+                      width=""
+                      loading="lazy"
+                      alt="img"
+                    >
+                  {%- endif -%}
+                  {{ section.settings.list_item_3 }}
+                </li>
+              {% endif %}
+              {% if section.settings.list_item_4 != blank %}
+                <li>
+                  {% if section.settings.list_item_img_4 != blank -%}
+                    <img
+                      src="{{ section.settings.list_item_img_4 | img_url: "master" }}"
+                      height=""
+                      width=""
+                      loading="lazy"
+                      alt="img"
+                    >
+                  {%- endif -%}
+                  {{ section.settings.list_item_4 }}
+                </li>
+              {% endif %}
+              {% if section.settings.list_item_5 != blank %}
+                <li>
+                  {% if section.settings.list_item_img_5 != blank -%}
+                    <img
+                      src="{{ section.settings.list_item_img_5 | img_url: "master" }}"
+                      height=""
+                      width=""
+                      loading="lazy"
+                      alt="img"
+                    >
+                  {%- endif -%}
+                  {{ section.settings.list_item_5 }}
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div class="lan_curr_selector_wrp">
+          {% render 'lan_curr_selector', confirm_btn: section.settings.confirm_btn %}
+        </div>
+
+        {% comment %}
+          <div class="buttons_wrap">
+            <button class="btn button shopbtn" onclick="wlcmpopupclose()">{{ section.settings.Shop_now }}</button>
+
+          </div>
+        {% endcomment %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  $(document).ready(function() {
+// Run popup logic immediately
+     $.getJSON('http://ipapi.co/json/?key=h520ijo9J3sO6N30xeInTgB9qIV9kqOIdP2aIuvAsoHVthMiij', function(data){
+       var countryName = data.country;
+      if(countryName != 'US')      
+       {
+         showPopup();
+       }
+     });
+    // {% if country_code_us != 'US' %}
+    //   showPopup();
+    // {% endif %}
+
+    // $('select.country-list').on('change', function(){
+    //     let get_country_name = $('select.country-list option:selected').attr('data-country-name');
+    //      console.log(get_country_name);
+    //     $('div#welcomePopup-country-wrp span.country-name-display').text(get_country_name);
+    //     $('div#welcomePopup-country-wrp').show();
+    // });
+  });
+    function showPopup() {
+    const popup = document.querySelector('body'); // Replace 'body' with a specific selector if needed
+    const popupShown = getCookie('popupShown');
+
+    // If cookie doesn't exist, show the popup
+    if (!popupShown) {
+        if (popup) {
+            popup.classList.add('welcmpopup_added'); // Show the popup
+            // setCookie('popupShown', 'true', 7); // Set cookie for 7 days
+        }
+    } else {
+        if (popup) {
+            popup.classList.remove('welcmpopup_added'); // Hide the popup
+        }
+    }
+}
+
+
+  // Function to set a cookie with an expiration time
+  function setCookie(name, value, hours) {
+      const date = new Date();
+      date.setTime(date.getTime() + (hours * 60 * 60 * 1000)); // Set the expiration time to 24 hours
+      document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+  }
+    
+  // Function to get a cookie value by name
+  function getCookie(name) { 
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.startsWith(name + '=')) {
+              return cookie.substring(name.length + 1);
+          }
+      }
+      return null;
+  }
+  
+  // Close Welcome Popup
+  function wlcmpopupclose() {
+      const popup = document.querySelector('body');
+      if (popup) {
+          popup.classList.remove('welcmpopup_added'); // Hide the popup
+          // Set a cookie to prevent showing the popup again for 24 hours
+          setCookie('popupShown', 'true', 24);
+      }
+  }
+  
+  // On Click Function
+  $(".custom-btn").click(function() {
+      // Get selected values and trim spaces
+      var selectedCountry = $('.country-list option:selected').val().trim();
+      var selectedLanguage = $('.language-details option:selected').val().trim();
+  
+      // Log selected values for debugging
+      // console.log('Selected Country:', selectedCountry);
+      // console.log('Selected Language:', selectedLanguage);
+  
+      // Handle language selection
+      $('select.thb-language-code.cstm-lang option').each(function() {
+          var secondLanguage = $(this).val().trim();
+          // console.log('Checking Language:', secondLanguage);
+  
+          if (selectedLanguage == secondLanguage) {
+              // console.log('Language Matched:', secondLanguage);
+              $(this).prop('selected', true);
+              // Dispatch native change event
+              var changeEvent = new Event('change', {
+                  bubbles: true
+              });
+              $(this).closest('select')[0].dispatchEvent(changeEvent);
+          }
+      });
+  
+      // Handle currency selection
+      $('select.thb-currency-code.cstm-currncy option').each(function() {
+          var optionValue = $(this).attr("attr-value").trim();
+          // console.log('Checking currency option:', optionValue);
+  
+          if (optionValue.includes(selectedCountry)) {
+              // console.log('Matched currency option:', optionValue);
+              $(this).prop('selected', true);
+              // Dispatch native change event
+              var changeEvent = new Event('change', {
+                  bubbles: true
+              });
+              $(this).closest('select')[0].dispatchEvent(changeEvent);
+              return false; // Exit loop after first match
+          }
+      });
+  
+      // $('body').removeClass('welcmpopup_added');
+    wlcmpopupclose();
+      $('form#nav_welcome_pop_form').submit();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Paliroots-welcome-popup",
+  "class": "paliroots-welcome-popup",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "sitelogo",
+      "label": "Site/Brand Logo"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Welcome to PaliRoots",
+      "label": "Title"
+    },
+    {
+      "type": "header",
+      "content": "List Item Shopping From"
+    },
+    {
+      "type": "richtext",
+      "id": "list_item_1",
+      "label": "text"
+    },
+    {
+      "type": "header",
+      "content": "List Item Shipping Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "list_item_img_2",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "list_item_2",
+      "label": "text"
+    },
+    {
+      "type": "header",
+      "content": "List Item Return/Exchange"
+    },
+    {
+      "type": "image_picker",
+      "id": "list_item_img_3",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "list_item_3",
+      "label": "text"
+    },
+    {
+      "type": "richtext",
+      "default": "<p>Delivered in 2–4 business days.</p>",
+      "id": "us-delivered-in",
+      "label": "text for US Delivered business days"
+    },
+    {
+      "type": "header",
+      "content": "List Item Tax/Vat."
+    },
+    {
+      "type": "image_picker",
+      "id": "list_item_img_4",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "list_item_4",
+      "label": "text"
+    },
+    {
+      "type": "header",
+      "content": "List Item Payment Methods"
+    },
+    {
+      "type": "image_picker",
+      "id": "list_item_img_5",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "list_item_5",
+      "label": "text"
+    },
+    {
+      "type": "inline_richtext",
+      "default": "Confirm",
+      "id": "confirm_btn",
+      "label": "Confirm Button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Paliroots-welcome-popup"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,22 @@
+<div class="thb-localization-forms drawerlocalization {{ class }}" style="display:none;">
+{% form 'localization', id: 'nav_welcome_pop_form' %}
+  <select id="cust_selector_language_sec" name="language_code" class="thb-language-code cstm-lang resize-select" data-isocode="{{ localization.language.iso_code }}">
+    {% for language in localization.available_languages %}
+      <option class="language_opts" value="{{ language.iso_code }}" {% if language.iso_code == localization.language.iso_code %}selected{% endif %}>
+        {{ language.endonym_name | capitalize }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <select name="country_code" id="cust_selector_country_sec" class="thb-currency-code cstm-currncy resize-select">
+    {% for country in localization.available_countries %}
+      <option class="country_opts" value="{{ country.iso_code }}" attr-value="{{ country.iso_code }}-{{ country.currency.symbol }}" {% if country.iso_code == localization.country.iso_code %}selected{% endif %}>
+         {{ country.iso_code }} / {{ country.currency.symbol }}
+      </option>
+    {% endfor %}
+  </select>
+
+  <button type="submit" class="text-button">Submit</button>
+{% endform %}
+
+</div>

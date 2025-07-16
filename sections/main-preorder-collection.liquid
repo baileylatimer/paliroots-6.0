@@ -1,0 +1,167 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'countdown.css' | asset_url | stylesheet_tag }}
+
+
+<div class="main-preorder-collection">
+  <div class="page-width"> 
+
+    <div class="date-time" style="display:none">{{ section.settings.date-time }}</div>
+    <div class="countdown-section">
+      <div class="container">
+        <div id="countdown">
+          <ul>
+            <li style="color:{{ section.settings.date-color }}"><span id="days"></span>days</li>
+            <li style="color:{{ section.settings.date-color }}"><span id="hours"></span>hours</li>
+            <li style="color:{{ section.settings.date-color }}"><span id="minutes"></span>minutes</li>
+            <li style="color:{{ section.settings.date-color }}"><span id="seconds"></span>seconds</li>
+          </ul>
+        </div>      
+      </div>    
+    </div>
+  
+    {% if section.settings.description != blank %}
+      <div class="description">{{ section.settings.description }}</div>
+    {% endif %}
+  
+    <div class="collection-section">
+  
+      {% assign collection_handle = section.settings.collection %}
+  
+      {% assign collection = collections[collection_handle] %}
+  
+      <ul class="product-list">
+        {% for product in collection.products %}
+          <li class="product-list-item">
+            {% render 'custom-card-product',
+                card_product: product, 
+                media_aspect_ratio: 'adapt',
+                image_shape:'default',
+                show_secondary_image: true,             
+            %}          
+          </li>      
+        {% endfor %}
+      </ul>    
+    </div>
+  </div>
+</div>
+
+
+{% style %}
+.container {
+  color: #333;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-weight: normal;
+  letter-spacing: .125rem;
+  text-transform: uppercase;
+}
+
+li {
+  display: inline-block;
+  font-size: 1.5em;
+  list-style-type: none;
+  padding: 1em;
+  text-transform: uppercase;
+}
+
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+
+.emoji {
+  display: none;
+  padding: 1rem;
+}
+
+.emoji span {
+  font-size: 4rem;
+  padding: 0 .5rem;
+}
+
+@media all and (max-width: 768px) {
+  h1 {
+    font-size: calc(1.5rem * var(--smaller));
+  }
+  
+  li {
+    font-size: calc(1.125rem * var(--smaller));
+  }
+  
+  li span {
+    font-size: calc(3.375rem * var(--smaller));
+  }
+}
+
+{% endstyle %}
+
+
+<script>
+  (function () {  
+
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+    var dateTime = $('.date-time').text();
+  
+  const countDown = new Date(dateTime).getTime(),
+      x = setInterval(function() {    
+
+        const now = new Date().getTime(),
+              distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "It's my birthday!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Preorder collection ",
+    "settings": [      
+      {
+        "type":"text",
+        "id":"date-time",
+        "label":"Countdown DateTime"        
+      },
+      {
+          "type":"color",
+          "id":"date-color",
+          "label":"Countdown color"             
+      },
+      {
+        "type":"richtext",
+        "id":"description",
+        "label":"Description"
+      },
+      {
+        "type":"collection",
+        "id":"collection",
+        "label":"Collection"
+      }
+    ]
+  }
+{% endschema %}

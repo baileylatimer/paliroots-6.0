@@ -1,0 +1,103 @@
+{%- comment -%}
+  Renders the country picker for the localization form
+
+  Accepts:
+    - localPosition: pass in the position in which the form is coming up to create specific IDs
+    {% if localization.country.iso_code != 'US' %}
+{%- endcomment -%}
+
+<div
+  class="disclosure"
+  {% if localPosition == 'FooterCountry' %}
+    style="display:none;"
+  {% endif %}
+>
+  <button
+    type="button"
+    class="disclosure__button localization-form__select localization-selector link link--text caption-large"
+    aria-expanded="false"
+    aria-controls="{{ localPosition }}List"
+    aria-describedby="{{ localPosition }}Label"
+  >
+    <span>
+      {% comment %}
+        {{- localization.country.currency.iso_code }}
+        {{ localization.country.currency.symbol }} | {{ localization.country.name -}}
+      {% endcomment %}
+      {{- localization.country.iso_code }} / {{ localization.country.currency.symbol }}
+    </span>
+    {% render 'icon-caret' %}
+  </button>
+  <div class="disclosure__list-wrapper" hidden>
+    <ul id="{{ localPosition }}List" role="list" class="disclosure__list list-unstyled">
+      {%- for country in localization.available_countries -%}
+        <li class="disclosure__item" tabindex="-1">
+          <a
+            class="link link--text disclosure__link caption-large focus-inset{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %}"
+            href="#"
+            {% if country.iso_code == localization.country.iso_code %}
+              aria-current="true"
+            {% endif %}
+            data-value="{{ country.iso_code }}"
+            data-select="{{ country.iso_code }} / {{ country.currency.symbol }}"
+          >
+            {% comment %}
+              <span class="localization-form__currency">
+                {{- country.currency.iso_code }}
+                {{ country.currency.symbol }} |</span
+              >
+              {{ country.name }}
+            {% endcomment %}
+
+            {{ country.iso_code }} / {{ country.currency.symbol }}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+<input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+{% comment %}
+  {% endif %}
+{% endcomment %}
+{% if localPosition == 'FooterCountry' %}
+  <div class="custom_country_selector">
+    <select
+      id="cust_selector_cuntry"
+      data-isocode="{{- localization.country.iso_code }} / {{ localization.country.currency.symbol }}"
+    >
+      {%- for country in localization.available_countries -%}
+        {% if country.name == 'Israel' %}
+          <option
+            class="cuntry_opts"
+            value="{{ country.currency.iso_code }}"
+            tabindex="-1"
+            data-select="{{ country.iso_code }} / {{ country.currency.symbol }}"
+            data-match="{{ country.name }}"
+            {% if country.iso_code == localization.country.iso_code %}
+              selected
+            {% endif %}
+          >
+            {{ country.name }} (Occupied Palestine) / {{ country.currency.symbol }}
+          </option>
+        {% else %}
+          <option
+            class="cuntry_opts"
+            value="{{ country.currency.iso_code }}"
+            tabindex="-1"
+            data-select="{{ country.iso_code }} / {{ country.currency.symbol }}"
+            data-match="{{ country.name }}"
+            {% if country.iso_code == localization.country.iso_code %}
+              selected
+            {% endif %}
+          >
+            {{ country.name }} / {{ country.currency.symbol }}
+            {% comment %}
+             {{ country.iso_code }} {{ country.currency.symbol }}
+            {% endcomment %}
+          </option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+{% endif %}

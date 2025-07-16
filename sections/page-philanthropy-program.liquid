@@ -1,0 +1,107 @@
+<div class="main-philanthropy-program">
+
+   <div class="page-width">
+
+     <div class="meal-counter-section">
+
+        <h2 class="on-title">               
+                {% if section.settings.meals_number != blank %}
+                <span class="on-number meal-counter-trigger"></span>
+                {% endif %}
+                {% if section.settings.meals_title != blank %}
+                <span class="on-text">{{ section.settings.meals_title  }}</span>
+                {% endif %}
+        </h2>
+
+        {% if section.settings.meals_subtitle != blank %}
+            	<p class="on-subtitle">
+                  {{ section.settings.meals_subtitle }}
+                  <span class="on-icon">
+                  	{% include 'icon-xmlid' %}
+                  </span>
+            	</p>
+       {% endif %}
+       
+     </div>
+
+    <div class="page-content">
+      
+      {% for block in section.blocks %}
+
+        {% if block.type == 'image' %}
+
+          <div class="content-image">
+              <img src="{{ block.settings.content-image | img_url:'' }}">            
+          </div>
+          
+        {% elsif block.type == 'text' %}
+          <div class="content-text">
+             {{ block.settings.content-text }}            
+          </div>
+      
+        {% endif %}
+  
+      {% endfor %}
+    
+    </div>  
+    
+  </div>
+  
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Philanthropy program",
+    "settings": [
+
+      {
+		"type": "text",
+		"id": "meals_number",
+		"label": "Numbers"
+	  },
+      {
+		"type": "text",
+		"id": "meals_title",
+		"label": "Title"
+	  },
+      {
+		"type": "text",
+		"id": "meals_subtitle",
+		"label": "Sub Title"
+	  }      
+    ],
+    "blocks":[
+
+      {
+        "type":"image",
+        "name":"Image",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "content-image",
+            "label": "Content Image"
+          }          
+        ]       
+      },
+      {
+        "type":"text",
+        "name":"Content",
+        "settings":[
+          {
+            "type": "richtext",
+            "id": "content-text",
+            "label": "Content text"
+          }          
+        ]       
+      }      
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

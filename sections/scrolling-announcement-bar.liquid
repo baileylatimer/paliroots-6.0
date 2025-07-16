@@ -1,0 +1,509 @@
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .utility-bar {
+    background: {{ section.settings.bgcolor }};
+  }
+  .utility-bar a{
+    color: {{ section.settings.txtcolor }};
+  }
+</style>
+{%- liquid
+  assign social_icons = true
+  if settings.social_facebook_link == blank and settings.social_instagram_link == blank and settings.social_youtube_link == blank and settings.social_tiktok_link == blank and settings.social_twitter_link == blank and settings.social_pinterest_link == blank and settings.social_snapchat_link == blank and settings.social_tumblr_link == blank and settings.social_vimeo_link == blank
+    assign social_icons = false
+  endif
+  if section.settings.enable_country_selector or section.settings.enable_language_selector
+    assign language_country_selector = true
+  endif
+  if section.blocks.size > 0
+    assign announcement_bar = true
+  endif
+-%}
+
+{% if social_icons %}
+  {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+{% endif %}
+
+<div
+  class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
+  {{ block.shopify_attributes }}
+>
+  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+    {%- if section.settings.show_social and social_icons -%}
+      {%- render 'social-icons' -%}
+    {%- endif -%}
+    {%- if section.blocks.size == 1 -%}
+      {% if section.settings.scrolleffect %}
+        <div class="b-section-marquee-box">
+          {% for i in (1..10) %}
+            {%- for block in section.blocks -%}
+              <h2 class="marquee-text">
+                <a
+                  href="
+                    {% if block.settings.link != blank %}{{ block.settings.link }}
+                    {% else %}javascript:void(0){% endif %}
+                  "
+                >
+                {% assign country_code_us = localization.country.iso_code  %}
+                {% if country_code_us == 'US' %}
+                    {{ block.settings.US_text }}
+                    {% else %}
+                  {{ block.settings.text }}
+              {% endif %}
+                  {% if section.settings.mealcount %}<span class="mealcount"></span>{% endif %}
+                  {% if block.settings.textafter != blank %}
+                    {{ block.settings.textafter }}
+                  {% endif %}
+                </a>
+              </h2>
+              {% if block.settings.enable_disable %}
+                {% assign country_code = localization.country.iso_code | upcase %}
+                {% assign currency_symbol = localization.country.currency.symbol %}
+                {% capture free_shipping_threshold %}
+                  {% case country_code %}
+                    {% when 'US' %}100 
+                    {% when 'AE' %}200 
+                    {% when 'FR' or 'DE' or 'IT' or 'ES' %}200 
+                    {% else %}<span>200</span>
+                  {% endcase %}
+                {% endcapture %}
+
+                <h2 class="marquee-text">
+                  <a
+                    href="
+                      {% if block.settings.link != blank %}{{ block.settings.link }}
+                      {% else %}javascript:void(0){% endif %}
+                    "
+                  >
+                    <p class="free_shipping_bar">
+                      <span>{{- block.settings.text_01 -}} </span>
+                      <span class="country_name_bar">
+                {% if localization.country.name == 'Israel' %}
+                 {{- localization.country.name -}} {{ ' (Occupied Palestine)' }}
+                  {% else %}
+                   {{- localization.country.name -}}
+                {% endif %}
+                        
+                        <span class="on_order_bar">
+                          {% comment %}
+                                    {{ block.settings.text_02 }} +{{ currency_symbol }}{{ free_shipping_threshold }}
+                          {% endcomment %}
+                          {{ localization.market.metafields.custom.custom_ship_rate.value | money_without_trailing_zeros }}
+                        </span>
+                      </span>
+                    </p>
+                  </a>
+                </h2>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <div
+          class="announcement-bar{% if section.settings.show_social %} announcement-bar--one-announcement{% endif %}"
+          role="region"
+          aria-label="{{ 'sections.header.announcement' | t }}"
+          {{ block.shopify_attributes }}
+        >
+          {%- if section.blocks.first.settings.text != blank -%}
+            {%- if section.blocks.first.settings.link != blank -%}
+              <a
+                href="{{ section.blocks.first.settings.link }}"
+                class="announcement-bar__link link link--text focus-inset animate-arrow"
+              >
+            {%- endif -%}
+            <p class="announcement-bar__message h5">
+              <span>{{ section.blocks.first.settings.text | escape }}</span>
+              {%- if section.blocks.first.settings.link != blank -%}
+                {% render 'icon-arrow' %}
+              {%- endif -%}
+            </p>
+            {%- if section.blocks.first.settings.link != blank -%}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
+        </div>
+      {% endif %}
+    {%- elsif section.blocks.size > 1 -%}
+      {% if section.settings.scrolleffect %}
+        <div class="b-section-marquee-box">
+          {% for i in (1..10) %}
+            {%- for block in section.blocks -%}
+              <h2 class="marquee-text">
+                <a
+                  href="
+                    {% if block.settings.link != blank %}{{ block.settings.link }}
+                    {% else %}javascript:void(0){% endif %}
+                  "
+                >
+                  {{ block.settings.text }}
+                  {% if section.settings.mealcount %}<span class="mealcount"></span>{% endif %}
+                  {% if block.settings.textafter != blank %}
+                    {{ block.settings.textafter }}
+                  {% endif %}
+                </a>
+              </h2>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      {% else %}
+        <slideshow-component
+          class="announcement-bar"
+          role="region"
+          aria-roledescription="{{ 'sections.announcements.carousel' | t }}"
+          aria-label="{{ 'sections.announcements.announcement_bar' | t }}"
+        >
+          <div class="announcement-bar-slider slider-buttons">
+            <button
+              type="button"
+              class="slider-button slider-button--prev"
+              name="previous"
+              aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
+              aria-controls="Slider-{{ section.id }}"
+            >
+              {% render 'icon-caret' %}
+            </button>
+            <div
+              class="grid grid--1-col slider slider--everywhere"
+              id="Slider-{{ section.id }}"
+              aria-live="polite"
+              aria-atomic="true"
+              data-autoplay="{{ section.settings.auto_rotate }}"
+              data-speed="{{ section.settings.change_slides_speed }}"
+            >
+              {%- for block in section.blocks -%}
+                <div
+                  class="slideshow__slide slider__slide grid__item grid--1-col"
+                  id="Slide-{{ section.id }}-{{ forloop.index }}"
+                  {{ block.shopify_attributes }}
+                  role="group"
+                  aria-roledescription="{{ 'sections.announcements.announcement' | t }}"
+                  aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                  tabindex="-1"
+                >
+                  <div
+                    class="announcement-bar__announcement"
+                    role="region"
+                    aria-label="{{ 'sections.header.announcement' | t }}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if block.settings.text != blank -%}
+                      {%- if block.settings.link != blank -%}
+                        <a
+                          href="{{ block.settings.link }}"
+                          class="announcement-bar__link link link--text focus-inset animate-arrow"
+                        >
+                      {%- endif -%}
+                      <p class="announcement-bar__message h5">
+                        <span>{{ block.settings.text | escape }}</span>
+                        {%- if block.settings.link != blank -%}
+                          {% render 'icon-arrow' %}
+                        {%- endif -%}
+                      </p>
+                      {%- if block.settings.link != blank -%}
+                        </a>
+                      {%- endif -%}
+                    {%- endif -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+            <button
+              type="button"
+              class="slider-button slider-button--next"
+              name="next"
+              aria-label="{{ 'sections.announcements.next_announcement' | t }}"
+              aria-controls="Slider-{{ section.id }}"
+            >
+              {% render 'icon-caret' %}
+            </button>
+          </div>
+        </slideshow-component>
+      {% endif %}
+      {%- if request.design_mode -%}
+        <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+      {%- endif -%}
+    {%- endif -%}
+    <div class="localization-wrapper">
+      {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+        <noscript class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementCountryMobileFormNoScript', class: 'localization-form' -%}
+            <div class="localization-form__select">
+              <h2 class="visually-hidden" id="AnnouncementCountryMobileLabelNoScript">
+                {{ 'localization.country_label' | t }}
+              </h2>
+              <select
+                class="localization-selector link"
+                name="country_code"
+                aria-labelledby="AnnouncementCountryMobileLabelNoScript"
+              >
+                {%- for country in localization.available_countries -%}
+                  <option
+                    value="{{ country.iso_code }}"
+                    {%- if country.iso_code == localization.country.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ country.name }} ({{ country.currency.iso_code }}
+                    {{ country.currency.symbol }})
+                  </option>
+                {%- endfor -%}
+              </select>
+              {% render 'icon-caret' %}
+            </div>
+            <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+          {%- endform -%}
+        </noscript>
+
+        <localization-form class="small-hide medium-hide no-js-hidden">
+          {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+            <div>
+              <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
+              {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {% endif %}
+
+      {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+        <noscript class="small-hide medium-hide">
+          {%- form 'localization', id: 'AnnouncementLanguageMobileFormNoScript', class: 'localization-form' -%}
+            <div class="localization-form__select">
+              <h2 class="visually-hidden" id="AnnouncementLanguageMobileLabelNoScript">
+                {{ 'localization.language_label' | t }}
+              </h2>
+              <select
+                class="localization-selector link"
+                name="locale_code"
+                aria-labelledby="AnnouncementLanguageMobileLabelNoScript"
+              >
+                {%- for language in localization.available_languages -%}
+                  <option
+                    value="{{ language.iso_code }}"
+                    lang="{{ language.iso_code }}"
+                    {%- if language.iso_code == localization.language.iso_code %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ language.endonym_name | capitalize }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              {% render 'icon-caret' %}
+            </div>
+            <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
+          {%- endform -%}
+        </noscript>
+
+        <localization-form class="small-hide medium-hide no-js-hidden">
+          {%- form 'localization', id: 'AnnouncementLanguageForm', class: 'localization-form' -%}
+            <div>
+              <h2 class="visually-hidden" id="AnnouncementLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+              {%- render 'language-localization', localPosition: 'AnnouncementLanguage' -%}
+            </div>
+          {%- endform -%}
+        </localization-form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% if section.settings.start_date != blank and section.settings.end_date != blank %}
+  <script>
+    $(document).ready(function(){
+     var from_date = "{{ section.settings.start_date }}";
+     var to_date = "{{ section.settings.end_date }}";
+     var result ="";
+          $.ajax ({
+            cache: false,
+            url: "https://www.palirootsmealprogram.com/sr/getDateFilter",
+            data: { from_date : from_date,to_date: to_date },
+            success: function(result) {
+            $(document).find('.mealcount').text(result);
+            }
+          });
+    });
+  </script>
+{% endif %}
+
+{% comment %}
+  <script>
+   $(document).ready(function() {
+      // Check if the .scrolling-announcement-bar div exists
+      if ($('.scrolling-announcement-bar').length) {
+        // Add 'scrolling_baradded' class to the body
+        $('body').addClass('scrolling_baradded');
+      }
+    });
+  </script>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Scroll-announcement-bar",
+  "max_blocks": 12,
+  "class": "announcement-bar-section scrolling-announcement-bar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bgcolor",
+      "default": "#000",
+      "label": "Background color"
+    },
+    {
+      "type": "color",
+      "id": "txtcolor",
+      "default": "#fff",
+      "label": "Text color"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__1.content",
+      "info": "t:sections.announcement-bar.settings.header__1.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.show_social.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__2.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_rotate",
+      "label": "t:sections.announcement-bar.settings.auto_rotate.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "scrolleffect",
+      "label": "Scroll effect enable",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "mealcount",
+      "label": "Enable Meal count",
+      "default": false
+    },
+    {
+            "type":"text",
+            "id":"start_date",
+            "label":"Start date (YYYY-MM-DD)"
+        },
+        {
+            "type":"text",
+            "id":"end_date",
+            "label":"End Date (YYYY-MM-DD)"
+        },
+    {
+      "type": "range",
+      "id": "change_slides_speed",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "label": "t:sections.announcement-bar.settings.change_slides_speed.label",
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__3.content",
+      "info": "t:sections.announcement-bar.settings.header__3.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.announcement-bar.settings.header__4.content",
+      "info": "t:sections.announcement-bar.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "US_text",
+          "default": "Easy Returns and Exchanges",
+          "label": "US Text Only"
+        },
+        {
+          "type": "text",
+          "id": "textafter",
+          "default": "Text after mealcount",
+          "label": "Meal count text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        },
+        {
+          "type": "header",
+          "content": "FREE ORDER SHIPPING BAR"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_disable",
+          "label": "Bar Enable/Disable",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "text_01",
+          "label": "Text 01",
+          "default": "FREE SHIPPING TO "
+        },
+        {
+          "type": "text",
+          "id": "text_02",
+          "label": "Text 02",
+          "default": "ON ORDERS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scroll-announcement-bar",
+      "blocks": [
+        {
+          "type": "announcement"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

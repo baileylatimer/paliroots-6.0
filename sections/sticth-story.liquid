@@ -1,0 +1,95 @@
+<section class="story-double-headings" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    
+    <div class="heading-wrapper heading-1 {{ section.settings.heading_1_alignment }}">
+      <p class="f-81">{{ section.settings.heading_1 | escape }}</p>
+    </div>
+
+    <div class="story-icon">
+      <!-- Replace this SVG with your desired icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="29" viewBox="0 0 28 29" fill="none">
+      <path d="M28 14.6955L0.00976688 14.6955" stroke="black" stroke-width="0.554262"/>
+      <path d="M14.002 0.703125L14.002 28.6934" stroke="black" stroke-width="0.554262"/>
+    </svg>
+    </div>
+
+    <div class="heading-wrapper heading-2 {{ section.settings.heading_2_alignment }}">
+      <p class="f-81">{{ section.settings.heading_2 | escape }}</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  
+</style>
+
+{% schema %}
+{
+  "name": "Stitch Story",
+  "tag": "section",
+  "class": "story-double-heading-sec",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Top Heading",
+      "default": "Every stitch has a story."
+    },
+    {
+      "type": "select",
+      "id": "heading_1_alignment",
+      "label": "Top Heading Alignment",
+      "default": "left",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Bottom Heading",
+      "default": "Every piece has roots."
+    },
+    {
+      "type": "select",
+      "id": "heading_2_alignment",
+      "label": "Bottom Heading Alignment",
+      "default": "right",
+      "options": [
+        { "label": "Left", "value": "left" },
+        { "label": "Center", "value": "center" },
+        { "label": "Right", "value": "right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top Padding",
+      "default": 60,
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "default": 60,
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stitch Story",
+      "category": "Text"
+    }
+  ]
+}
+{% endschema %}

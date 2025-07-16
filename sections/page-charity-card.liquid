@@ -1,0 +1,71 @@
+<div class="page-charity-card">
+  <div class="page-width">
+    {% for block in section.blocks %}
+    {% assign projectPage = pages[block.settings.page] %}
+    {% assign charityCard = projectPage.metafields.charity_card %}
+    <div class="card-item">
+      <a href="{{ projectPage.url }}" class="left-side">
+        {% if charityCard.cover_photo != blank %}
+        
+        <img class="lazyload" src="https://cdn.shopify.com/s/files/1/1420/4316/t/60/assets/Project-tab-main.png?v=1672731081" data-src="{{ charityCard.cover_photo }}">
+        {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </a>
+      <div class="right-side">
+        <div class="content-inner{% if charityCard.logo == blank %} full-width{% endif %}">
+          <div class="content-top">
+            <div class="info">{{ charityCard.info }}</div>
+            <div class="date">{{ charityCard.date }}</div>
+          </div>
+          <h2 class="content-title">
+            <a href="{{ projectPage.url }}">{{ projectPage.title }}</a>
+          </h2>
+          <div class="content-excerpt rte">
+            {{ charityCard.excerpt }}
+          </div>
+          <div class="on-projrct-number-content">
+            {% if charityCard.project_number != blank %}
+            	<span class="on-number">{{ charityCard.project_number }}</span>
+            {% endif %}
+          	<a href="{{ projectPage.url }}" class="learn-more-btn">LEARN MORE</a>
+          </div>
+        </div>
+        {% if charityCard.logo != blank %}
+        <div class="logo">
+          {{ charityCard.logo | img_tag }}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page card - Our Projects",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "id": "page",
+            "type": "page",
+            "label": "Project"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

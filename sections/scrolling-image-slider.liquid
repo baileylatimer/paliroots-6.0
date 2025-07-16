@@ -1,0 +1,119 @@
+<!-- HTML -->
+<div class="swiper-scrolling-image-slider">
+  <div class="swiper-scrolling-img__main_wrap">
+    <div class="swiper-scrolling-img__inner_wrap">
+      <div class="page-width">
+        <div class="title_wrap">
+          <h2>{{ section.settings.title }}</h2>
+        </div>
+      </div>
+
+      <div class="scroll_img_wrap swiper-container swiper-container-free-mode">
+        <div class="swiper-marquee-content swiper-wrapper">
+          
+            {% for block in section.blocks %}
+              <div class="swiper-marquee-item swiper-marquee-image swiper-slide">
+                <div class="img__container">
+                  <img src="{{ block.settings.scrollimage | img_url: '' }}" loading="lazy">
+                </div>
+              </div>
+            {% endfor %}
+      
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<style>
+/* .swiper-marquee-content.swiper-wrapper {
+    gap: 17px;
+}
+ */
+.swiper-container-free-mode > .swiper-wrapper{
+  transition-timing-function : linear;
+}
+
+.swiper-slide {
+  overflow: hidden;
+  background-position: center center;
+  background-size: cover;
+}
+</style>
+<script>
+var swiperOptions = {
+  loop: true,
+  freeMode: true,
+  spaceBetween: 17,
+  autoplay: {
+    delay: 0,
+    pauseOnMouseEnter:true,
+    disableOnInteraction:false,
+  },
+  loopAddBlankSlides:false,
+  cssMode:true,
+  slidesPerView: 5,
+  speed: 6000,
+  grabCursor: true,
+  loopAdditionalSlides: 2,
+  breakpoints: {
+    749: {
+      slidesPerView: 1.4,
+    },
+    768: {
+      slidesPerView: 3,
+    },
+    1024: {
+      slidesPerView: 4,
+    },
+    1200: {
+      slidesPerView: 5,
+    },
+  },
+};
+
+var swiper = new Swiper(".swiper-container", swiperOptions);
+
+$('.swiper-container').hover(function(){
+  swiper.autoplay.stop();
+}, function(){
+  swiper.autoplay.start();
+});
+</script>
+
+
+
+{% schema %}
+  {
+    "name": "Scrolling Image slider",
+    "class": "scrolling-image scrolling-image-slider",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "default": "As seen on #paliroots",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "scrollimage",
+            "label": "Choose Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling Image slider"
+      }
+    ]
+  }
+{% endschema %}

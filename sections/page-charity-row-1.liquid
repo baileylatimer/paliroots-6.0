@@ -1,0 +1,242 @@
+<div class="{{ section.settings.container_layout }} charity_roww_1">
+    <div class="feature-row">
+      {% capture image_layout %}
+      <div class="feature-row__item feature-row__image">
+        {% if section.settings.image != blank %}
+        <img src="{{ section.settings.image | img_url: '' }}"
+                class="lazyload feature-row__image"
+                alt="{{ section.settings.image.alt | escape }}"
+                data-sizes="auto"
+                data-src="{{ section.settings.image | img_url: '900x' }}"
+                data-srcset=" {{ section.settings.image | img_url: '300x' }} 300w,
+                              {{ section.settings.image | img_url: '400x' }} 400w,
+                              {{ section.settings.image | img_url: '500x' }} 500w,
+                              {{ section.settings.image | img_url: '600x' }} 600w,
+                              {{ section.settings.image | img_url: '700x' }} 700w,
+                              {{ section.settings.image | img_url: '800x' }} 800w,
+                              {{ section.settings.image | img_url: '800x' }} 800w,
+                              {{ section.settings.image | img_url: '900x' }} 900w,
+                              {{ section.settings.image | img_url: '1200x' }} 1200w,
+                              {{ section.settings.image | img_url: '1200x' }} 1400w,
+                              {{ section.settings.image | img_url: '1200x' }} 1700w,
+                              {{ section.settings.image | img_url: '1200x' }} 1900w,
+                              {{ section.settings.image | img_url: '1200x' }} 2048w" />
+        {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      {% endcapture %}
+
+      <div class="feature-row feature-row__txt--{{ section.settings.layout }}">
+        {% if section.settings.layout == 'left' %}
+        {{ image_layout }}
+        {% endif %}
+
+        <div class="{{ section.settings.wave_color }} {{ section.settings.wave_align }} feature-row__item feature-row__text feature-row__text--{{ section.settings.layout }} feature-row__text--{{section.settings.textbox_layout}}">
+          <div class="feature-row__item-wrapper text-{{ section.settings.text_align }}">
+          {% if section.settings.title != blank %}
+          <span class="section-header__subtitle">{{ section.settings.subtitle }}</span>
+          <h2 class="section-header__title">{{ section.settings.title | escape }}</h2>
+          {% endif %}
+          {% if section.settings.text != blank %}
+          <div class="rte-setting {% if section.settings.quote %}quote{% endif %}">{{ section.settings.text }}</div>
+          {% endif %}
+
+          {% for block in section.blocks %}
+          <div class="feature-row__block">
+            {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '100x' }}"
+                class="lazyload"
+                alt="{{ block.settings.image.alt | escape }}"
+                data-sizes="auto"
+                data-src="{{ block.settings.image | img_url: '300x' }}"
+                data-srcset=" {{ block.settings.image | img_url: '300x' }} 300w,
+                              {{ block.settings.image | img_url: '300x' }} 400w,
+                              {{ block.settings.image | img_url: '300x' }} 500w,
+                              {{ block.settings.image | img_url: '300x' }} 600w" />
+
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+            <div class="feature-row__block-content">
+              <h4 class="feature-row__block-title">{{ block.settings.title | escape }}</h4>
+              {% if block.settings.text != blank %}
+              <div class="feature-row__block-text">{{ block.settings.text }}</div>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+
+          {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a href="{{ section.settings.button_link }}" class="btn {% if section.settings.button_reverse %}btn--reverse{% endif %}">
+            {{ section.settings.button_label }}
+          </a>
+          {% endif %}
+          </div>
+        </div>
+
+        {% if section.settings.layout == 'right' %}
+        {{ image_layout }}
+        {% endif %}
+      </div>
+    </div>
+<style>
+  {% if section.settings.section-bg != ""%}
+  #shopify-section-{{ section.id }} .feature-row .feature-row__text .feature-row__item-wrapper{
+    background-color: {{ section.settings.section-bg }};
+  }
+  {% endif %}
+
+</style>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page row",
+	  "class": "home-row-section",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "header",
+        "content": "Container Layout"
+      },
+      {
+        "type": "checkbox",
+        "id": "quote",
+        "default": false,
+        "label": "Quote?"
+      },
+      {
+        "type": "select",
+        "id": "container_layout",
+        "label": "Container layout",
+        "default": "wrapper",
+        "options": [
+          {
+            "value": "wrapper-full",
+            "label": "Full width"
+          },
+          {
+            "value": "wrapper-full-gutter",
+            "label": "Full width with gutter"
+          },
+          {
+            "value": "wrapper",
+            "label": "Fixed"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "section-bg",
+        "default": "#fff",
+        "label": "Section Background"
+      },
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Image on left"
+          },
+          {
+            "value": "right",
+            "label": "Image on right"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "text_align",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Image with text"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subheading",
+        "default": "Image with text"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>"
+      },
+      {
+        "type": "text",
+        "id": "button_label",
+        "label": "Button label"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button link"
+      },
+      {
+        "type": "checkbox",
+        "id": "button_reverse",
+        "label": "Button Reverse Style",
+        "default": false
+      }
+	  ],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Text Block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

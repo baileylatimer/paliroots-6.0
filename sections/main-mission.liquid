@@ -1,0 +1,180 @@
+<div class="main-mission">
+
+  <div class="hero-section">
+
+    {% if section.settings.video != blank %}
+      <div class="hero-video desktop-video">
+        {{ section.settings.video }}     
+      </div>
+
+      <div class="hero-video mobile-video">
+        {% if section.settings.video-mobile != blank %} 
+          {{ section.settings.video-mobile }} 
+        {% else %}
+          {{ section.settings.video }}
+        {% endif %}
+      </div>
+    
+    {% elsif section.settings.shopify-video != null  %}
+       <div class="hero-shopify-video">
+        {{
+            section.settings.shopify-video
+            | video_tag:
+              autoplay: true,
+              loop: true,
+              controls: false,
+              muted: true
+          }}
+       </div>
+    {% elsif section.settings.hero-image %}
+       <div class="hero-image desktop-banner">
+        <img src="{{ section.settings.hero-image | img_url:'' }}">     
+       </div>
+
+        <div class="hero-image mobile-banner">
+          {% if section.settings.mobile-hero-image != null %}
+            <img src="{{ section.settings.mobile-hero-image | img_url:'' }}"> 
+          {% else %}
+            <img src="{{ section.settings.hero-image | img_url:'' }}"> 
+          {% endif %}
+       </div>
+    {% endif %}
+
+    <div class="hero-title">{{ section.settings.title }}</div>
+  </div>
+
+  <div class="page-width">
+
+    <div class="page-content">
+      
+      {% for block in section.blocks %}
+
+        {% if block.type == 'image' %}
+
+          <div class="content-image">
+              <img src="{{ block.settings.content-image | img_url:'' }}">            
+          </div>
+          
+        {% elsif block.type == 'text' %}
+          <div class="content-text">
+             {{ block.settings.content-text }}            
+          </div>
+
+        {% elsif block.type == 'logo' %}
+          <div class="content-logo">
+            <img src="{{ block.settings.content-logo | img_url:'' }}">             
+          </div>
+        {% endif %}
+  
+      {% endfor %}
+    
+    </div>  
+    
+  </div>
+  
+</div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
+<script>
+  $(document).ready(function(){
+
+    var iframe = document.querySelector('iframe');
+    var player = new Vimeo.Player(iframe);    
+    player.play();    
+  });
+  
+</script>
+<!-- <script>
+  var iframe = document.querySelector('iframe');
+  var player = new Vimeo.Player(iframe);
+
+  var h = $('.page-video_block').offset().top - 400;
+  $(window).scroll(function() {
+    var wScroll = $(window).scrollTop();
+    if (wScroll > h) {
+      player.play();
+    }
+  });
+</script> -->
+
+{% schema %}
+  {
+    "name": "Our Mission",
+    "settings": [     
+        {
+          "type": "html",
+          "id": "video",
+          "label": "Hero video embed code desktop",
+          "info": "Accepts YouTube or Vimeo"
+        },
+        {
+          "type": "html",
+          "id": "video-mobile",
+          "label": "Hero video embed code mobile",
+          "info": "Accepts YouTube or Vimeo"
+        },
+        {
+          "type": "video",
+          "id": "shopify-video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "hero-image",
+          "label": "Hero image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile-hero-image",
+          "label": "Mobile hero image"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+        }  
+    ],
+    "blocks":[
+      {
+        "type":"image",
+        "name":"Image",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "content-image",
+            "label": "Content Image"
+          }          
+        ]       
+      },
+      {
+        "type":"logo",
+        "name":"Logo",
+        "settings":[
+          {
+            "type": "image_picker",
+            "id": "content-logo",
+            "label": "Content logo"
+          }          
+        ]       
+      },
+      {
+        "type":"text",
+        "name":"Content",
+        "settings":[
+          {
+            "type": "richtext",
+            "id": "content-text",
+            "label": "Content text"
+          }          
+        ]       
+      }  
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

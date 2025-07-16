@@ -1,0 +1,280 @@
+<div id="{{section.id}}" class="shopify-section">
+<div class="ambassador-page">
+     {% for block in section.blocks %}
+      {% case block.type %}
+       {% when 'banner' %}
+    <div class="section first"> 
+ <div class="banner">
+   
+ {% if block.settings.banner !=blank %} 
+<img class="img-responsive desktop" src="{{block.settings.banner |img_url :'master'}}" alt="Banner1" />
+  {% endif %}
+   {% if block.settings.mobile_banner !=blank %} 
+<img class="img-responsive mobile" src="{{block.settings.mobile_banner |img_url :'master'}}" alt="Mobile-Banner1" />   
+  {% endif %}
+      </div>  
+   <div class="bam__hero-content">
+     <div class="page-width">
+   {% if block.settings.heading !=blank %} 
+     <h3>{{block.settings.heading}}</h3>
+   {% endif %}
+    {% if block.settings.sub-heading !=blank %}
+     <h1> {{block.settings.sub-heading}}</h1>
+  {% endif %}
+     <div class="bam__hero-btns"  id="tabs-123">
+  
+   <a target="_blank" href="{{block.settings.btn-two-link}}" class="button">{{ block.settings.btn-two-text }}</a>
+       
+   <a target="_blank" href="{{block.settings.btn-three-link}}" class="button">{{ block.settings.btn-three-text }}</a>
+       
+       </div></div>
+
+    </div>  
+  </div> 
+{% when 'faq' %} 
+<div class="section six"> 
+<div class="page-width">
+<h2 class="faq__title">{{block.settings.heading}}</h2> 
+<div class="faq__accordion">
+<div class="accordion-item">
+<button class="accordion">{{block.settings.faq1}}<span class="min">-</span><span class="plus">+</span></button>
+<div class="panel">
+{{block.settings.richtext1}}
+ </div>
+  </div>
+        <div class="accordion-item">
+          <button class="accordion">{{block.settings.faq2}} <span class="min">-</span><span class="plus">+</span></button>
+          <div class="panel">
+            {{block.settings.richtext2}}
+          </div>
+           </div>
+            <div class="accordion-item">
+          <button class="accordion">{{block.settings.faq3}}<span class="min">-</span><span class="plus">+</span></button>
+          <div class="panel">
+             {{block.settings.richtext3}}
+          </div>
+         </div>
+        <div class="accordion-item">
+          <button class="accordion">{{block.settings.faq4}}<span class="min">-</span><span class="plus">+</span></button>
+          <div class="panel">
+             {{block.settings.richtext4}}
+          </div>
+         </div>
+        </div> 
+  {% if block.settings.link!= blank %}
+      <div class="faq__view-all-wrap">
+     <a href="{{ block.settings.link }}" class="button">{{ block.settings.view }}</a> 
+    </div>
+  {% endif %}
+    </div>
+  </div>
+ 
+{% when 'content' %}
+
+  <div class="content-text">
+    <div class="page-width">
+      {{ block.settings.content-text }}   
+    </div>
+  </div>
+
+{% when 'image' %}
+
+   <div class="content-image">
+      <div class="page-width">
+        <img src="{{ block.settings.content-image | img_url:'' }}">    
+      </div>
+   </div>
+  
+{% endcase %}
+{% endfor %}
+</div>
+</div>    
+
+  
+
+  <script>
+var acc = document.getElementsByClassName("accordion");
+var panel = document.getElementsByClassName('panel');
+
+for (var i = 0; i < acc.length; i++) {
+    acc[i].onclick = function() {
+        var setClasses = !this.classList.contains('active');
+        setClass(acc, 'active', 'remove');
+        setClass(panel, 'show', 'remove');
+
+        if (setClasses) {
+            this.classList.toggle("active");
+            this.nextElementSibling.classList.toggle("show");
+        }
+    }
+}
+
+function setClass(els, className, fnName) {
+    for (var i = 0; i < els.length; i++) {
+        els[i].classList[fnName](className);
+    }
+}
+  acc[0].click();
+</script>
+
+
+{% schema %}
+  {
+    "name": "Affiliate Program",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      }
+      
+    ],
+    "blocks":[
+      {
+        "name" : "Hero Banner",
+        "type" : "banner",
+        "settings" : [      
+          {
+              "type":"image_picker",
+              "id":"banner",
+              "label":"Desktop banner"
+          },          
+          {
+              "type":"text",
+              "id":"heading",
+              "label":"Heading"
+          },
+          {
+              "type":"text",
+              "id":"sub-heading",
+              "label":"Sub Heading"
+          },          
+          {
+              "type":"text",
+              "id":"btn-one-text",
+              "label":"Button1 label"
+          },
+          {
+              "id": "btn-one-link",
+              "type": "url",
+              "label": "Button1 link"
+          },
+          {
+              "type":"text",
+              "id":"btn-two-text",
+              "label":"Button2 label"
+          },
+          {
+               "id": "btn-two-link",
+               "type": "url",
+               "label": "Button2 link"
+          },
+          {
+              "type":"text",
+              "id":"btn-three-text",
+              "label":"Button3 label"
+          },
+          {
+               "id": "btn-three-link",
+               "type": "url",
+               "label": "Button3 link"
+          },
+          {
+              "type":"image_picker",
+              "id":"mobile_banner",
+              "label":"Mobile Banner"
+          }
+        ]
+      },     
+      {
+        "type": "faq",
+        "name": "FAQ",
+        "settings": [
+          {
+            "type":"text",
+            "id":"heading",
+            "label":"Heading"
+          },
+          {
+            "type":"text",
+            "id":"faq1",
+            "label":"Qusetion-1"
+          },
+          {
+            "type":"richtext",
+            "id":"richtext1",
+            "label":"Answer-1"
+          },
+          {
+            "type":"text",
+            "id":"faq2",
+            "label":"Qusetion-2"
+          },
+          {
+            "type":"richtext",
+            "id":"richtext2",
+            "label":"Answer-2"
+          },
+          {
+            "type":"text",
+            "id":"faq3",
+            "label":"Qusetion-3"
+          },
+          {
+            "type":"richtext",
+            "id":"richtext3",
+            "label":"Answer-3"
+          },
+          {
+            "type":"text",
+            "id":"faq4",
+            "label":"Qusetion-4"
+          },
+          {
+            "type":"richtext",
+            "id":"richtext4",
+            "label":"Answer-4"
+          },
+          {
+            "type":"text",
+            "id":"view",
+            "label":"Button"
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link URL"
+          }
+        ]
+      },
+      {
+        "name" : "Content",
+        "type" : "content",
+        "settings" : [      
+          {
+            "type":"richtext",
+            "id":"content-text",
+            "label":"Content"
+          }          
+        ]
+      },
+      {
+        "name" : "Image",
+        "type" : "image",
+        "settings" : [      
+          {
+            "type":"image_picker",
+            "id":"content-image",
+            "label":"Image"
+          }          
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<div class="expand-galler-list__main_wrap">
+  <div class="expand-galler-list__inner_wrap page-width">
+      <div class="Gallery_Grid" data-featherlight-gallery="" data-featherlight-filter="a">
+        <ul class="Gallery_List">
+              {% for block in section.blocks %}
+                <li class="Lookbook_ListItem {% if block.settings.show_wide %}ListItem--Wide{% endif %}">
+                  <a href="{{ block.settings.image | img_url: '' }}" class="lightbox_gallery" data-fancybox="gallery">
+                    <img class="listItem-image" src="{{ block.settings.image | img_url: '' }}" height="{{ block.settings.image.height }}"
+                      width="{{ block.settings.image.width }}"
+                      alt="{{ block.settings.image.alt }}"
+                      loading="lazy"
+                      >
+                  </a>
+                </li>              
+                {% endfor %}
+        </ul>
+      </div>
+  </div>
+</div>
+
+<script>
+  $('[data-fancybox="gallery"]').fancybox({
+  buttons: [
+    // "slideShow",
+    // "thumbs",
+    // "zoom",
+    // "fullScreen",
+    // "share",
+    "close"
+  ],
+  loop: false,
+  protect: true
+});
+
+</script>
+{% schema %}
+  {
+    "name": "Expanded-gallery-list",
+    "class": "expanded-gallery-list",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "checkbox",
+            "id": "show_wide",
+            "label": "Show image wide"
+          }
+        ]
+      }
+    ],
+   "presets": [
+     {
+       "name": "Expanded-gallery-list"
+     }
+   ]
+  }
+{% endschema %}

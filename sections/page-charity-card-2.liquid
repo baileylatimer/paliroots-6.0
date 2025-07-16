@@ -1,0 +1,90 @@
+<div class="page-charity-card-2">
+  <div class="page-width">
+    {% if section.settings.title != blank and section.settings.text != blank %}
+    <div class="page-header">
+      {% if section.settings.title != blank %}
+        <h2 class="page-header-title text-center">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.text != blank %}
+        <div class="page-header-text text-center">{{ section.settings.text }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  
+  <div class="page-width">
+    <div class="cards-wrap">
+      {% for block in section.blocks %}
+      <div class="card-item">
+        <div class="card-item-wrap">
+          <a href="{{ block.settings.link }}" class="image-site" target="_blank">
+            {% if block.settings.image != blank %}
+            <img class="lazyload" src="https://cdn.shopify.com/s/files/1/1420/4316/t/60/assets/our-partners.png?v=1672732031" data-src="{{ block.settings.image | img_url: '600x600' }}"
+            {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </a>
+          <div class="text-site">
+            <h4 class="title"><a href="{{ block.settings.link }}" target="_blank">{{ block.settings.title }}</a></h4>
+            <div class="excerpt">{{ block.settings.excerpt }}</div>
+            <a href="{{ block.settings.link }}" class="learn-more-btn" target="_blank">{{ "general.learn_more" | t }}</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page card - Our Partners",
+    "settings": [
+      {
+        "id": "title",
+        "type": "text",
+        "label": "Title"
+      },
+      {
+        "id": "text",
+        "type": "richtext",
+        "label": "Text"
+      }
+	],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Card",
+        "settings": [
+          {
+            "id": "image",
+            "type": "image_picker",
+            "label": "Image"
+          },
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "excerpt",
+            "type": "textarea",
+            "label": "Excerpt"
+          },
+          {
+            "id": "link",
+            "type": "url",
+            "label": "Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

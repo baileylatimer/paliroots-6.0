@@ -1,0 +1,64 @@
+{% assign out_of_stock_count = 0 %}
+{% assign any_low_inventory_variant = false %}
+{% assign total_variants = product.variants.size %}
+{% assign all_sold_out = true %}
+{% assign defaultvariant_qty = product.variants.first.inventory_quantity %}
+{% for variant in product.variants %}
+  {% if variant.inventory_quantity <= 0 %}
+    {% assign out_of_stock_count = out_of_stock_count | plus: 1 %}
+  {% else %}
+    {% assign all_sold_out = false %}
+    {% if variant.inventory_quantity < 20 %}
+      {% assign any_low_inventory_variant = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% comment %}
+  {% if total_variants <= 1 %}
+  {{ defaultvariant_qty }}
+  {% endif %}
+{% endcomment %}
+
+{% capture dynamic_tag_name %}
+  {% if product.tags contains 'preorder' %}
+    <span class="badge preorder-badge">
+      {{ 'Pre-Order' }}
+    </span>
+  {% elsif total_variants > 0 and all_sold_out == true or total_variants == 0 and product.inventory_quantity <= 0 %}
+    <span class="badge badge-sold_out">
+      {{ 'products.product.sold_out' | t }}
+    </span>
+  {% elsif product.tags contains 'limited-edition' %}
+    <span class="badge limited-edition-badge">
+      {{ 'Limited Drop' }}
+    </span>
+  {% elsif defaultvariant_qty < 20 and total_variants <= 1 %}
+     {% unless product.tags contains 'Gift Card' %}
+    <span class="badge low-stock-badge">
+      {{ 'Low Stock' }}
+    </span>
+    {% endunless %} 
+  {% elsif out_of_stock_count > 3 and any_low_inventory_variant == true %}
+     {% unless product.tags contains 'Gift Card' %}
+    <span class="badge low-stock-badge">
+      {{ 'Low Stock' }}
+    </span>
+       {% endunless %} 
+  {% elsif product.compare_at_price > product.price and product.available %}
+    <span class="badge badge--bottom-left">
+      {{ 'products.product.on_sale' | t }}
+    </span>
+  {% elsif product.tags contains 'back-in-stock' %}
+    <span class="badge back-in-stock-badge">
+      {{ 'Just Restocked' }}
+    </span>
+  {% elsif product.tags contains 'new-arrival' %}
+    <span class="badge new-badge new-arrival-tag">
+      {{ 'New' }}
+    </span>
+  {% endif %}
+{% endcapture %}
+
+<div class="card__badge {{ settings.badge_position }} custom-product-tag-badges">
+  {{ dynamic_tag_name }}
+</div>

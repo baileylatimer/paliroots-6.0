@@ -1,0 +1,225 @@
+<section id="section-{{ section.id }}" class="on-newdesing-section">
+  
+  <!-- ================================ BANNER START ================================ -->
+  {% if section.settings.banner_enabled %}
+  <div class="on-banner-content">
+    <div class="on-banner" style="{% if section.settings.banner_image != blank %}background-image: url({{ section.settings.banner_image | img_url: '' }});{% else %}background-image:url( {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }});{% endif %}">
+      {% if section.settings.banner_overlay_enabled %}
+      	<div class="on-overlay" style="background-color:rgba({{ section.settings.banner_overlay_color | color_to_rgb | replace: 'rgb(', '' | replace: ')', '' }}, {{ section.settings.banner_overlay_opacity | prepend: '0.' }})"></div>
+      {% endif %}
+      <div class="on-container">
+        <div class="on-banner-inner" style="height: {{ section.settings.banner_height }}px;">
+          <h1 style="color:{{ section.settings.heading_color }};">
+            {% if section.settings.heading != blank %}
+            {{ section.settings.heading }}
+            {% else %}
+            {{ page.title }}
+            {% endif %}
+          </h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if section.settings.banner_mobile_image != blank %}
+  <style type="text/css">
+    @media only screen and (max-width: 500px){
+      #section-{{ section.id }} .on-banner-content:not(.on-banner-content-not-image) .on-banner {
+        background-image: url({{ section.settings.banner_mobile_image | img_url: '' }})!important;
+      }
+    }
+  </style>
+  {% endif %}
+  {% else %}
+  <div class="on-banner-content on-banner-content-not-image">
+    <div class="on-banner">
+      <div class="on-container">
+        <div class="on-banner-inner">
+          <h1 class="on-heading" style="color:{{ section.settings.heading_color }};">
+            {{ page.title }}
+          </h1>
+          {% if section.settings.banner_text != blank %}
+          <p class="on-text"  style="color:{{ section.settings.heading_color }};">
+            {{ section.settings.banner_text }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- ================================ BANNER END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ BLOCK START ================================ -->
+  {% if section.blocks.size > 0 %}
+    <div class="on-block-content">
+      <div class="on-container">
+        <div class="on-block-inner">
+		  {% for block in section.blocks %}
+            {% if block.settings.block_enabled %}
+          		<div id="block-{{ block.id }}" class="on-item on-item-{{ forloop.index }}">
+                  <div class="on-box">
+                    {% if block.settings.block_btn_url != blank %}
+                    <a href="{{ block.settings.block_btn_url }}">
+                      {% endif %}
+                      {% if block.settings.block_image != blank %}
+                      <img class="on-block-img" src="{{ block.settings.block_image | img_url: '' }}"/>
+                      {% endif %}
+                     {% comment %} {% if block.settings.block_title != blank %}
+                      <h2 class="on-block-title">{{ block.settings.block_title }}</h2>
+                      {% endif %}{% endcomment %}
+                      {% if block.settings.block_btn_url != blank %}
+                    </a>
+                    {% endif %}
+                  </div>
+                  {% if block.settings.block_content != blank %}
+                  <p class="on-text">{{ block.settings.block_content }}</p>
+                  {% endif %}
+                  {% if block.settings.block_btn != blank %}
+                  <a class="on-href" {% if block.settings.block_btn_url != blank %}href="{{ block.settings.block_btn_url }}"{% endif %}>
+                    {{ block.settings.block_btn }}
+                  </a>
+                  {% endif %}
+                  <style>
+                    {% if block.settings.block_color != blank  %}
+                      #block-{{ block.id }} .on-block-title {
+                        background-color: {{ block.settings.block_color }};
+                      }
+                    {% endif %}
+                  </style>
+          		</div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <!-- ================================ BLOCK END ================================ -->
+  
+</section>
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "New Page Settings",
+    "settings": [
+	  {
+		"type": "checkbox",
+		"id": "banner_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "image_picker",
+		"id": "banner_image",
+		"label": "Banner Image"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "banner_mobile_image",
+		"label": "Mobile Image"
+	  },
+	  {
+		"type": "range",
+		"id": "banner_height",
+		"label": "Banner Height",
+		"step": 10,
+		"min": 300,
+		"max": 900,
+		"unit": "px",
+		"default": 460
+	  },
+	  {
+		"type": "checkbox",
+		"id": "banner_overlay_enabled",
+		"label": "Overlay",
+		"default": false
+	  },
+	  {
+		"type": "color",
+		"id": "banner_overlay_color",
+		"label": "Overlay Color",
+		"default": "#08091E"
+	  },
+	  {
+		"type": "range",
+		"id": "banner_overlay_opacity",
+		"label": "Overlay Opacity",
+		"step": 1,
+		"min": 1,
+		"max": 9,
+		"unit": "%",
+		"default": 1
+	  },
+	  {
+		"type": "textarea",
+		"id": "banner_text",
+		"label": "Content"
+	  },
+	  {
+		"type": "color",
+		"id": "heading_color",
+		"label": "Text Color",
+		"default": "#ffffff"
+	  }
+	],
+	"blocks": [
+	  {
+		"type": "block",
+		"name": "block",
+		"settings": [
+		  {
+			"type": "checkbox",
+			"id": "block_enabled",
+			"label": "Enabeld",
+			"default": true
+		  },
+		  {
+			"type": "image_picker",
+			"id": "block_image",
+			"label": "Image"
+		  },
+		  {
+			"type": "color",
+			"id": "block_color",
+			"label": "Color"
+		  },
+		  {
+			"type": "text",
+			"id": "block_title",
+			"label": "Title"
+		  },
+		  {
+			"type": "textarea",
+			"id": "block_content",
+			"label": "Content"
+		  },
+		  {
+			"type": "text",
+			"id": "block_btn",
+			"label": "Button Label"
+		  },
+		  {
+			"type": "url",
+			"id": "block_btn_url",
+			"label": "Button Href"
+		  }
+		]
+	  }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,78 @@
+<div class="page-charity-tabs">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+    <div class="text-center">
+      <span class="section-header__subtitle">{{ section.settings.subtitle }}</span>
+      <h2 class="section-header__title">{{ section.settings.title }}</h2>
+    </div>
+    {% endif %}
+    <div class="page-charity-tabs-wrap">
+      <div id="charityTabs">          
+        <ul class="resp-tabs-list tab_identifier">
+          {% for block in section.blocks %}
+          <li>{{ block.settings.title }}</li>
+          {% endfor %}
+        </ul> 
+
+        <div class="resp-tabs-container tab_identifier"> 
+          {% for block in section.blocks %}
+          <div>{{ block.settings.content }}</div>
+          {% endfor %}
+        </div>
+      </div>
+      {% if section.settings.small_text != blank %}
+      <small class="small-text">{{ section.settings.small_text }}</small>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Page tabs",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subheading",
+        "default": "Subheading"
+      },
+      {
+        "type": "text",
+        "id": "small_text",
+        "label": "Small text"
+      }
+	],
+    "blocks": [
+      {
+        "type": "tab",
+        "name": "Tab",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Tab title"
+          },
+          {
+            "id": "content",
+            "type": "richtext",
+            "label": "Tab content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

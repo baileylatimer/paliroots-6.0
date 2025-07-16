@@ -1,0 +1,90 @@
+<section class="page-timeline-section page-block__item page-block__item-{{ section.id }}">
+  <div class="page-width">
+    <div class="text-center">
+      <h2 class="text-center">{{ section.settings.title }}</h2>
+      <div class="text-{{section.settings.layout}}" style="font-size: {{ section.settings.size | append: 'px' }};">{{ section.settings.text }}</div>
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="btn action_button">
+        {{ section.settings.button_label }}
+      </a>
+      {% endif %}
+    </div>
+    
+    <div class="timeline-wrap">
+      {% for block in section.blocks %}
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="title-site">
+            <h3>{{ block.settings.title }}</h3>
+            {% if block.settings.icon != blank %}
+            <div class="icon">{{ block.settings.icon | img_url: '160x160' | img_tag }}</div>
+            {% endif %}
+          </div>
+          <div class="text-site">
+            {{ block.settings.text }}
+          </div>
+        </div>
+        <div class="timeline-point"></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <style>
+    {% if section.settings.section-bg != ""%}
+    .page-block__item-{{ section.id }} {
+      background-color: {{ section.settings.section-bg }};
+    }
+    {% endif %}
+  </style>
+</section>
+
+
+{% schema %}
+  {
+    "name": "Page timeline",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Section title"
+      },
+      {
+        "type": "color",
+        "id": "section-bg",
+        "default": "#fff",
+        "label": "Section Background"
+      }
+	],
+    "blocks": [
+      {
+        "type": "timeline",
+        "name": "Timeline",
+        "settings": [
+          {
+            "id": "title",
+            "type": "text",
+            "label": "Title"
+          },
+          {
+            "id": "icon",
+            "type": "image_picker",
+            "label": "Icon"
+          },
+          {
+            "id": "text",
+            "type": "richtext",
+            "label": "Text"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,378 @@
+<div
+  class=" main-countdown-signup signup-2"
+  style="background-image:url('{{ section.settings.background-image | img_url:'' }}')"
+>
+  <div class="date-time" style="display:none">{{ section.settings['date-time'] }}</div>
+
+  <div class="logo-section">
+    <img src="{{ section.settings.logo | img_url:'' }}" width="" height="" loading="lazy">
+  </div>
+
+  <div class="countdown-section">
+    <div class="container">
+      <div id="countdown">
+        <ul>
+          <li style="color:{{ section.settings.date-color }}"><span id="days"></span>days</li>
+          <li style="color:{{ section.settings.date-color }}"><span id="hours"></span>hours</li>
+          <li style="color:{{ section.settings.date-color }}"><span id="minutes"></span>minutes</li>
+          <li style="color:{{ section.settings.date-color }}"><span id="seconds"></span>seconds</li>
+        </ul>
+      </div>
+      <div id="content" class="emoji">
+        <span>🥳</span>
+        <span>🎉</span>
+        <span>🎂</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <ul class="content-list">
+      {% assign cblocks = section.blocks | where: 'type', 'text' %}
+
+      {% for block in cblocks %}
+        <li class="content-list-item" style="color:{{ block.settings.text-color }}">
+          {{ block.settings['content-text'] }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="subscribe-form-section" id="subscribe-form">
+    <div class="form-heading">{{ section.settings['form-heading'] }}</div>
+    <div class="form-description">{{ section.settings['form-description'] }}</div>
+    <form
+      action="{{section.settings.klaviyo_form_action}}"
+      method="post"
+      id="email_signup"
+      name="mc-embedded-subscribe-form"
+      target="_blank"
+      class="klaviyo_email_signup"
+    >
+      <input type="hidden" name="g" value="{{ section.settings.list_id }}">
+      <input type="hidden" name="a" value="{{ section.settings.list_id_a }}">
+
+      <input
+        type="email"
+        value="{% if customer %}{{ customer.email }}{% endif %}"
+        placeholder="email@example.com"
+        name="email"
+        id="k_id_email"
+        class="input-group-field email-field"
+        aria-label="email@example.com"
+        autocorrect="off"
+        autocapitalize="off"
+        style="color:{{ section.settings.email-title-color }};border-color:{{ section.settings.email-box-color }}"
+      >
+      <span class="input-group-btn">
+        <button
+          type="submit"
+          class="btn klaviyo_submit_button"
+          name="subscribe"
+          id="subscribe"
+          style="color:{{ section.settings.kbtn-color }};background-color:{{ section.settings.kbtn-back-color }};border-color:{{ section.settings.kbtn-border-color }}"
+        >
+          {{ section.settings['form-btn-text'] }}
+        </button>
+      </span>
+      <span class="response-text" style="display:none;"></span>
+    </form>
+    {% if section.settings.enable_shopnow %}
+      <div class="link-btn">
+        <a href="{{ section.settings.btn-url }}">{{ section.settings['btn-label'] }}</a>
+      </div>
+    {% endif %}
+
+    <div class="form-disclaimer" style="color:{{ section.settings.disclaimer-color }}">
+      {{ section.settings['form-disclaimer'] }}
+    </div>
+    <div class="form-links" style="color:{{ section.settings.disclaimer-color }}">
+      <div class="link-heading">{{ section.settings['link-heading'] }}</div>
+      <a class="link_1" href="{{ section.settings.link_url_1 }}">{{ section.settings.link_text_1 }}</a>
+      <span class="link-separator">{{ section.settings['link-separator'] }}</span>
+      <a class="link_2" href="{{ section.settings.link_url_2 }}">{{ section.settings.link_text_2 }}</a>
+    </div>
+
+    <div class="klaviyo_messages">
+      <div class="success_message" style="display:none;"></div>
+      <div class="error_message" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .container {
+    color: #333;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  h1 {
+    font-weight: normal;
+    letter-spacing: .125rem;
+    text-transform: uppercase;
+  }
+
+  .main-countdown-signup li {
+    display: inline-block;
+    font-size: 1.5em;
+    list-style-type: none;
+    padding: 1em;
+    text-transform: uppercase;
+  }
+
+  .main-countdown-signup li span {
+    display: block;
+    font-size: 4.5rem;
+  }
+
+  .emoji {
+    display: none;
+    padding: 1rem;
+  }
+
+  .emoji span {
+    font-size: 4rem;
+    padding: 0 .5rem;
+  }
+
+  @media all and (max-width: 768px) {
+    h1 {
+      font-size: calc(1.5rem * var(--smaller));
+    }
+
+    .main-countdown-signup li {
+      font-size: calc(1.125rem * var(--smaller));
+    }
+
+   .main-countdown-signup li span {
+      font-size: calc(3.375rem * var(--smaller));
+    }
+  }
+{% endstyle %}
+
+<script>
+  (function () {
+
+    const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+    var dateTime = $('.date-time').text();
+
+  const countDown = new Date(dateTime).getTime(),
+      x = setInterval(function() {
+
+        const now = new Date().getTime(),
+              distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          document.getElementById("headline").innerText = "It's my birthday!";
+          document.getElementById("countdown").style.display = "none";
+          document.getElementById("content").style.display = "block";
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+</script>
+
+<script>
+  $(document).ready(function(){
+
+    $('#subscribe').click(function(){
+      $('html, body').animate({
+           scrollTop: $("#subscribe-form").offset().top - 130
+      }, 1000);
+    });
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Countdown Signup",
+  "settings": [
+    {
+      "type":"image_picker",
+      "id":"logo",
+      "label":"Logo"
+    },
+    {
+      "type":"text",
+      "id":"date-time",
+      "label":"Countdown DateTime"
+    },
+    {
+          "type":"color",
+          "id":"date-color",
+          "label":"Countdown color"
+    },
+    {
+      "type":"image_picker",
+      "id":"background-image",
+      "label":"Background image"
+    },
+    {
+      "type":"text",
+      "id":"form-heading",
+      "label":"Subsribe from heading"
+    },
+    {
+      "type":"richtext",
+      "id":"form-description",
+      "label":"Subsribe from description"
+    },
+    {
+      "type": "text",
+      "id": "klaviyo_form_action",
+      "label": "Klaviyo form action URL"
+    },
+    {
+        "type":"text",
+        "id":"list_id",
+        "label":"List Id",
+        "default":"NFvws3"
+    },
+    {
+        "type":"text",
+        "id":"list_id_a",
+        "label":"List Id A",
+        "default":"PBf6sH"
+    },
+    {
+        "type":"text",
+        "id":"form-btn-text",
+        "label":"Klaviyo form button label"
+    },
+    {
+          "type":"color",
+          "id":"kbtn-color",
+          "label":"Klaviyo form button color"
+    },
+    {
+          "type":"color",
+          "id":"kbtn-back-color",
+          "label":"Klaviyo form button background color"
+    },
+    {
+          "type":"color",
+          "id":"kbtn-border-color",
+          "label":"Klaviyo form button border color"
+    },
+    {
+      "type": "checkbox",
+      "default": false,
+      "id": "enable_shopnow",
+      "label": "Enable Shop Now"
+    },
+    {
+        "type":"text",
+        "id":"btn-label",
+        "label":"Button label"
+    },
+    {
+        "type":"url",
+        "id":"btn-url",
+        "label":"Button link"
+    },
+    {
+      "type":"richtext",
+      "id":"form-disclaimer",
+      "label":"Subsribe from disclaimer"
+    },
+    {
+        "type":"color",
+        "id":"disclaimer-color",
+        "label":"Disclaimer color"
+    },
+    {
+        "type":"text",
+        "id":"link-heading",
+        "label":"Link heading"
+    },
+    {
+        "type":"text",
+        "id":"link-separator",
+        "label":"Link separator"
+    },
+    {
+        "type":"text",
+        "id":"link_text_1",
+        "label":"Link label 1"
+    },
+    {
+        "type":"url",
+        "id":"link_url_1",
+        "label":"Link url 1"
+    },
+    {
+        "type":"text",
+        "id":"link_text_2",
+        "label":"Link label 2"
+    },
+    {
+        "type":"url",
+        "id":"link_url_2",
+        "label":"Link url 2"
+    },
+    {
+        "type":"color",
+        "id":"email-box-color",
+        "label":"Email box color"
+    },
+    {
+        "type":"color",
+        "id":"email-title-color",
+        "label":"Email title color"
+    }
+  ],
+  "blocks":[
+    {
+      "type":"text",
+      "name":"Content",
+      "settings":[
+        {
+          "type":"richtext",
+          "id":"content-text",
+          "label":"Content"
+        },
+        {
+          "type":"color",
+          "id":"text-color",
+          "label":"Text color"
+        }
+      ]
+    },
+    {
+      "type":"email",
+      "name":"Email",
+      "settings":[
+        {
+          "type":"text",
+          "id":"email-text",
+          "label":"Label"
+        },
+        {
+          "type":"text",
+          "id":"email",
+          "label":"Email"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

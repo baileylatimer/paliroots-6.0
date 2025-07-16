@@ -1,0 +1,54 @@
+<div class="scrolling-img__main_wrap">
+  <div class="scrolling-img__inner_wrap">
+    <div class="page-width">
+    <div class="title_wrap">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    </div>
+    <div class="scroll_img_wrap marquee">
+      <div class="marquee-content b-section-marquee-box">
+        {% for i in (1..6) %}
+          {% for block in section.blocks %}
+            <div class="marquee-item marquee-image">
+              <div class="img__container">
+                <img src="{{ block.settings.scrollimage | img_url: '' }}" loading="lazy">
+              </div>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Scrolling Image",
+    "class": "scrolling-image",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "default": "As seen on #paliroots",
+        "id": "title",
+        "label": "Title"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "scrollimage",
+            "label": "Choose Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Scrolling Image"
+      }
+    ]
+  }
+{% endschema %}

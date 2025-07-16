@@ -1,0 +1,283 @@
+/* .our-story-content p, .f-81 {
+  font-size: 81px;  
+  line-height: 76px;
+} */
+.our-story-content p, .f-81 {
+    font-size: 58px;
+    line-height: 54px;
+}
+  .description-our p {
+    font-size: 28px;
+    line-height: 120%;
+    font-family: NeueMontreal-Medium !important;
+    margin-bottom: 20px;
+    letter-spacing: normal !important;
+}
+  .our-story-image-text {
+    padding: 24px 0;
+}
+
+ p.our-story-names {
+    font-family: White-Oleander !important;
+    font-size: 80px;
+    line-height: 100%;
+    margin-top: 120px;
+}
+.our-story-image {
+    text-align: right;
+}
+.our-story-image img {
+    width: 100%;
+    max-width: 750px;
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+.story-icon {
+    text-align: center;
+    margin: 70px 0;
+}
+  .story-double-headings .left {
+    text-align: left;
+  }
+  .story-double-headings .center {
+    text-align: center;
+  }
+  .story-double-headings .right {
+    text-align: right;
+  }
+.ourstory-collection .collection__title.title-wrapper {
+    margin-bottom: 10px !important;
+}
+.ourstory-collection h2.title {
+    margin-bottom: 5px !important;
+}
+/* .ourstory-collection h2.title {
+    margin-bottom: 10px !important;
+    font-size: 30px;
+}
+
+.ourstory-collection .collection__description p {
+    font-size: 16px;
+    line-height: normal;
+}
+.ourstory-collection .card__heading, .ourstory-collection .product-card-wrapper .card__content .card-information .price__container .price-item.price-item--regular, .ourstory-collection .price__container {
+    font-size: 16px !important;
+} */
+.product-textarea-image .our-story-content p {
+    font-size: 48px;
+    font-family: 'NeueMontreal-Medium' !important;
+    line-height: 58px;
+}
+.product-textarea-image .image_content_wrap {
+    margin-top: 15px;
+}
+ .product-textarea-image .image_inner_wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+  .product-textarea-image .image_inner_wrap .img_wrap img {
+    width: 100%;
+    aspect-ratio: 1/.7;
+    object-fit: cover;
+    display: block;
+}
+ .nablus-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nablus-section .nablus-container.image_position--second {
+    flex-direction: row-reverse;
+  }
+
+  .nablus-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .nablus-content {
+    width: 30%;
+  }
+  .nablus-image.main_image_wrap {
+    width: 70%;
+}
+  .product-image-text-content h2 {
+    font-size: 48px;
+    font-style: normal;
+    line-height: 50px; /* 100.875% */
+}
+
+.nablus-description {
+    margin: 16px 0;
+}
+
+.nablus-description p {
+    font-size: 14px;
+    line-height: normal;
+}
+ .nablus-image img {
+    width: 100%;
+    aspect-ratio: 1/.5;
+    object-fit: cover;
+    display: block;
+}
+  .nablus-features {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+  }
+ul.nablus-features .feature-icon {
+    margin: 0 10px;
+    display: flex;
+    align-items: center;
+}
+  ul.nablus-features .feature-text {
+    font-size: 14px;
+    font-family: 'NeueMontreal-Regular' !important;
+    line-height: normal;
+}
+ul.nablus-features .feature-icon img {
+    height: 33px;
+    object-fit: contain;
+}
+@media screen and (max-width:749px){
+ .our-story-content p, .f-81 {
+    font-size: 22px;
+    line-height: 26px;
+}
+  .description-our p {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+   .our-story-image-text {
+    padding: 0px 0 20px;
+}
+p.our-story-names {
+    font-size: 40px;
+    line-height: normal;
+    margin-top: 40px;
+}
+  section.story-double-headings {
+    padding: 10px 0 !important;
+}
+  .story-icon {
+    margin: 25px 0;
+}
+  .story-icon svg {
+    width: 20px;
+}
+
+.story-icon svg path {
+    stroke-width: 2px;
+}
+    .our-story-content.font_PP_Playground--true p:first-letter, .product-textarea-image .our-story-content p:first-letter {
+    font-size: 34px !important;
+      line-height: 24px !important;
+}
+/* .ourstory-collection h2.title {
+    font-size: 20px !important;
+}
+
+  .ourstory-collection .card__heading, .ourstory-collection .product-card-wrapper .card__content .card-information .price__container .price-item.price-item--regular, .ourstory-collection .price__container {
+    font-size: 12px !important;
+} */
+    .ourstory-collection .collection__description p {
+    font-size: 12px;
+    line-height: normal;
+}
+    .nablus-content {
+    width: 100%;
+}
+  .nablus-image.main_image_wrap {
+    width: 100%;
+}
+ .nablus-section .nablus-container {
+    flex-direction: column!important;
+    gap: 15px;
+}
+  .product-textarea-image .our-story-content p, .product-image-text-content h2 {
+    font-size: 24px;
+    line-height: 28px;
+}
+  .product-textarea-image .image_inner_wrap .img_wrap img {
+    aspect-ratio: 1/.8;
+}
+  .nablus-description {
+    margin: 10px 0;
+}
+  .nablus-description p, ul.nablus-features .feature-text {
+    font-size: 12px;
+}
+}
+@media screen and (min-width:990px){
+    .our-story-image {
+    margin-top: -150px;
+}
+  .our-story-image-text .our-story-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .our-story-image-text.image-left .our-story-image {
+    order: 1;
+  }
+  .our-story-image-text.image-left .our-story-text-content {
+    order: 2;
+  }
+  .our-story-image-text.image-right .our-story-image {
+    order: 2;
+  }
+  .our-story-image-text.image-right .our-story-text-content {
+    order: 1;
+  }
+  .our-story-image-text .our-story-image,
+  .our-story-image-text .our-story-text-content {
+    flex: 1 1 50%;
+  }
+ 
+}
+
+@media screen and (min-width:750px) and (max-width:989px){
+  .our-story-content p, .f-81 {
+    font-size: 50px;
+    line-height: 100%;
+}
+    .our-story-content.font_PP_Playground--true p:first-letter, .product-textarea-image .our-story-content p:first-letter {
+    font-size: 74px;
+}
+  .description-our p {
+    font-size: 24px;
+}
+  p.our-story-names {
+    font-size: 64px;
+    line-height: normal;
+    margin-top: 70px;
+}
+  .story-icon {
+    margin: 80px 0;
+}
+  .product-textarea-image .our-story-content p, .product-image-text-content h2 {
+    font-size: 36px;
+    font-family: NeueMontreal-Medium!important;
+    line-height: 40px;
+}
+  .nablus-content {
+    width: 100%;
+}
+  .nablus-image.main_image_wrap {
+    width: 100%;
+}
+  .nablus-section .nablus-container {
+    flex-direction: column !important;
+}
+}

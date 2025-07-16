@@ -1,0 +1,118 @@
+{%if section.settings.enable_black_friday %}
+<div class="black_friday_meal_bar">
+    <div class="black_friday_meal_counter" style="background-color:{{ section.settings.background-color }}">
+       <div class="page-width">
+         <div class="black_friday_meal_counter-inner">
+            <div class="announcement-bar__black_friday" style="color:{{ section.settings.text-color }}">
+              {% comment %}  
+              {{ section.settings.black_friday_content }}
+                  <div id="black-friday-meal-counter" class="bf-meal-counter"></div>
+                  <div class="meals-bar"> MEALS DONATED</div><span class="black-friday-goal">/ 5,000 GOAL</span>
+              {% endcomment %}
+              <div id="black-friday-meal-counter" class="bf-meal-counter"></div>
+              <div class="meals-bar"> 
+                {{ section.settings.meals_bar }}
+              </div>
+              <span class="black-friday-goal">{{ section.settings.black_friday_goal }}</span>
+            </div>
+              {% if section.settings.black_friday_link != blank and section.settings.black_friday_link_text != blank %}
+                <a href="{{ section.settings.black_friday_link }}" class="announcement-bar__message blackfriday-shop">
+                   {{ section.settings.black_friday_link_text | escape }}
+                </a>  
+              {% endif%}
+              {% if section.settings.start_date != blank and section.settings.end_date != blank %}  
+                <script>    
+                  $(document).ready(function(){
+                   var from_date = "{{ section.settings.start_date }}";
+                   var to_date = "{{ section.settings.end_date }}";
+                   var result ="";
+                        $.ajax ({
+                          cache: false,
+                          url: "https://www.palirootsmealprogram.com/sr/getDateFilter",
+                          data: { from_date : from_date,to_date: to_date },
+                          success: function(result) {          
+                          $(document).find('#black-friday-meal-counter').text(result);
+                          }
+                        });
+                  });  
+              </script> 
+            {%endif%}
+            <script>
+              $('body').addClass('black_friday_meal_counter_open');
+            </script>
+         </div>
+       </div>
+    </div>
+</div>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Meal Counter Bar",
+    "class": "Meal-Counter-Bar",
+    "settings": [
+       {
+            "type":"checkbox",
+            "id":"enable_black_friday",
+            "label":"Enable/Disable Meal Counter Bar"
+        },
+        {
+            "type": "color",
+            "id": "text-color",
+            "default": "#FFF",
+            "label": "Text Color"
+        },
+        {
+            "type": "color",
+            "id": "background-color",
+            "default": "#000",
+            "label": "Background Color"
+        },
+        {
+            "type":"text",
+            "id":"start_date",
+            "label":"Start date (YYYY-MM-DD)"
+        },
+        {
+            "type":"text",
+            "id":"end_date",
+            "label":"End Date (YYYY-MM-DD)"
+        },
+		{
+            "type": "text",
+            "id": "meals_bar",
+            "default": "MEALS DONATED",
+            "label": "MEALS DONATED Text"
+        },
+		{
+            "type": "text",
+            "id": "black_friday_goal",
+            "default": "5,000 GOAL",
+            "label": "Black friday goal text"
+        },
+		{
+            "type": "text",
+            "id": "black_friday_link_text",
+            "label": "Link Text"
+        },
+		{
+            "type": "url",
+            "id": "black_friday_link",
+            "label": "Link"
+        }	
+      
+    ],
+    "presets": [
+      {
+        "name": "Meal Counter Bar"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

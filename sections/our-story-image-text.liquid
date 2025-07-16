@@ -1,0 +1,78 @@
+<section class="our-story-image-text {{ section.settings.layout }}">
+  <div class="page-widths">
+    <div class="our-story-flex">
+      {% if section.settings.image %}
+          <div class="our-story-image">
+           
+            <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.image.alt | escape }}">
+         
+        </div>
+      {% endif %}
+      <div class="our-story-text-content">
+         <div class="page-width">
+        
+        {% if section.settings.text != blank %}
+          <div class="description-our">
+          {{ section.settings.text }}
+          </div>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <p class="our-story-names">{{ section.settings.heading | escape }}</p>
+        {% endif %}
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  
+</style>
+
+{% schema %}
+{
+  "name": "Our Story ImageText",
+  "tag": "section",
+  "class": "our-story-imagetext",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Journey"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Image Position",
+      "options": [
+        {
+          "value": "image-left",
+          "label": "Image on Left"
+        },
+        {
+          "value": "image-right",
+          "label": "Image on Right"
+        }
+      ],
+      "default": "image-left"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story ImageText",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

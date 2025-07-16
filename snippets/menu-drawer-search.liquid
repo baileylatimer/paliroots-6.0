@@ -1,0 +1,69 @@
+<div class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}" tabindex="-1">
+  {%- if settings.predictive_search_enabled -%}
+    <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+  {%- else -%}
+    <search-form class="search-modal__form">
+  {%- endif -%}
+      <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+        <div class="field">
+          <input class="search__input field__input"
+            id="{{ input_id }}"
+            type="search"
+            name="q"
+            value="{{ search.terms | escape }}"
+            placeholder="{{ 'What are you looking for?' }}"
+            {%- if settings.predictive_search_enabled -%}
+              role="combobox"
+              aria-expanded="false"
+              aria-owns="predictive-search-results"
+              aria-controls="predictive-search-results"
+              aria-haspopup="listbox"
+              aria-autocomplete="list"
+              autocorrect="off"
+              autocomplete="off"
+              autocapitalize="off"
+              spellcheck="false"
+            {%- endif -%}
+          >
+          <label class="mobile-search-label field__label" for="{{ input_id }}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M14.4733 13.5267L11.9999 11.0734C12.96 9.87633 13.4249 8.35692 13.2991 6.82759C13.1733 5.29826 12.4664 3.87525 11.3236 2.85115C10.1808 1.82706 8.68914 1.27973 7.15522 1.32171C5.62129 1.36368 4.16175 1.99177 3.0767 3.07682C1.99164 4.16187 1.36356 5.62142 1.32158 7.15534C1.27961 8.68926 1.82694 10.181 2.85103 11.3237C3.87512 12.4665 5.29814 13.1735 6.82747 13.2993C8.3568 13.4251 9.87621 12.9601 11.0733 12.0001L13.5266 14.4534C13.5886 14.5159 13.6623 14.5655 13.7436 14.5993C13.8248 14.6332 13.9119 14.6506 13.9999 14.6506C14.0879 14.6506 14.1751 14.6332 14.2563 14.5993C14.3376 14.5655 14.4113 14.5159 14.4733 14.4534C14.5934 14.3291 14.6606 14.163 14.6606 13.9901C14.6606 13.8172 14.5934 13.651 14.4733 13.5267ZM7.33327 12.0001C6.41029 12.0001 5.50804 11.7264 4.74061 11.2136C3.97318 10.7008 3.37504 9.97197 3.02183 9.11925C2.66862 8.26653 2.57621 7.32821 2.75627 6.42297C2.93634 5.51773 3.38079 4.6862 4.03344 4.03356C4.68608 3.38091 5.5176 2.93646 6.42285 2.75639C7.32809 2.57633 8.2664 2.66874 9.11913 3.02195C9.97185 3.37516 10.7007 3.9733 11.2135 4.74073C11.7262 5.50816 11.9999 6.41041 11.9999 7.33339C11.9999 8.57107 11.5083 9.75805 10.6331 10.6332C9.75793 11.5084 8.57095 12.0001 7.33327 12.0001Z" fill="#909090"/>
+            </svg> {{ 'What are you looking for?'  }}</label>
+          <input type="hidden" name="options[prefix]" value="last">
+          <button type="reset" class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}" aria-label="{{ 'general.search.reset' | t }}">
+            <svg class="icon icon-close" aria-hidden="true" focusable="false">
+              <use xlink:href="#icon-reset">
+            </svg>
+          </button>
+          <!-- <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+            <svg class="icon icon-search" aria-hidden="true" focusable="false">
+              <use href="#icon-search">
+            </svg>
+          </button> -->
+        </div>
+
+        {%- if settings.predictive_search_enabled -%}
+          <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+            <div class="predictive-search__loading-state">
+              <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
+            </div>
+          </div>
+
+          <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+        {%- endif -%}
+      </form>
+    {%- if settings.predictive_search_enabled -%}
+      </predictive-search>
+    {%- else -%}
+      </search-form>
+    {%- endif -%}
+    {% comment %}                
+      <button type="button" class="search-modal__close-button modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+        <svg class="icon icon-close" aria-hidden="true" focusable="false">
+          <use href="#icon-close">
+        </svg>
+      </button>
+    {% endcomment %}        
+</div>

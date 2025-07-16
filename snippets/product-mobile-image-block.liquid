@@ -1,0 +1,130 @@
+<div class="product-images-block">
+  <div class="main-image-container desktop">
+    <div class="product-main-photo-block">
+      <div class="owl-product-mob-slider product-mobile-img">
+        {% for image in product.images %}
+          <div class="product-single__photos main-image-slide" id="product-{{forloop.index0}}">
+            {% assign has_video = 0 %}
+            {% if image.alt contains 'youtube' %}
+              <a id="js-featured-image" href="{{ my_video }}" class="slider-video">
+                <iframe
+                  id="ytplayer"
+                  class="zoom-video"
+                  type="text/html"
+                  width="100%"
+                  height="500"
+                  src="{{image.alt}}?autoplay=1&origin=http://example.com"
+                  frameborder="0"
+                ></iframe>
+              </a>
+            {% elsif image.alt contains 'video' %}
+              {% assign has_video = 1 %}
+              {% assign my_video = image.alt | remove: 'video|' %}
+              {% assign my_video_link = my_video | split: '|' | last %}
+              {% assign alt_text = my_video | split: '|' | first %}
+
+              <a id="js-featured-image" href="{{ my_video }}" class="slider-video">
+                <video
+                  width="100%"
+                  autoplay=""
+                  muted=""
+                  loop=""
+                  playsinline=""
+                  class="html_video"
+                  id="viddd_{{ image.id }}"
+                  data-img_src="{{ image.src | img_url: 'master' }}"
+                  data-img_tumb_src="{{ image.src | img_url: '77x77' }}"
+                >
+                  <source src="{{ my_video_link }}" type="video/mp4">
+                </video>
+              </a>
+
+            {% else %}
+                <a
+                  id="js-featured-image"
+                  href="{% if image_zoom == 'lightbox' %}{{ image.src | img_url: 'master' }} {% else %}javascript:void(0){% endif %}"
+                  class="image-link main_img_{{ image.id }} my_img_hidden_main"
+                >
+                  <img
+                    class="product-single__thumbnail-image"
+                    id="ProductPhotoImg"
+                    src="{{ image | img_url: ''}}"
+                    data-zoom-image="{{ image.src | img_url: 'original' }}"
+                    alt="{{ image.alt | escape }}"
+                  >
+                </a>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+  {% if image_zoom == 'lightbox' %}
+  $('.product-mobile-img').magnificPopup({
+      delegate: 'a',
+    type: 'image',
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    mainClass: 'mfp-no-margins mfp-with-zoom js-featured-image',
+    callbacks: {
+      elementParse: function(item) {
+        console.log(item.el[0].className);
+      if(item.el[0].className == 'slider-video') {
+          console.log(item.el[0].className);
+          item.type = 'iframe';
+        } else {
+           item.type = 'image',
+           item.tLoading = 'Loading image #%curr%...',
+           item.mainClass = 'mfp-img-mobile',
+           item.image = {
+             tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+           }
+        }
+      }
+      },
+      gallery: {
+              enabled: true,
+              navigateByImgClick: true,
+              preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+      }
+
+  });
+  {% endif %}
+
+
+  $('.owl-product-mob-slider').owlCarousel({
+      loop:false,
+      margin:4,
+      nav:true,
+      autoplay:false,
+      // slideTransition: 'linear',
+      dots: true,
+      // touchDrag: false, 
+      // mouseDrag: false,  
+      navText: ['<svg class="icon icon-caret" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 64 64"><path d="M24.788 14.407L8.035 31.932l16.753 17.525 1.94-2.03-13.375-13.994h42.163v-3.002l-42.164-.001 13.376-13.993-1.94-2.03z"></path></svg>','<svg class="icon icon-caret" aria-hidden="true" focusable="false" role="presentation" viewBox="0 0 64 64"><path d="M24.788 14.407L8.035 31.932l16.753 17.525 1.94-2.03-13.375-13.994h42.163v-3.002l-42.164-.001 13.376-13.993-1.94-2.03z"></path></svg>'],
+      responsive:{
+          0:{
+              items:1
+          },
+          600:{
+              items:1
+          },
+          1000:{
+              items:1
+          }
+      }
+  });
+  });
+</script>
+<style>
+   /* .owl-product-mob-slider {
+      touch-action: pan-y;
+      -ms-touch-action: pan-y;
+      user-select: none;
+  } */
+</style>

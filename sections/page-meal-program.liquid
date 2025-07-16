@@ -1,0 +1,1201 @@
+<section id="section-{{ section.id }}" class="on-program-section">
+  
+  <!-- ================================ BANNER START ================================ -->
+  {% if section.settings.banner_enabled %}
+  <div class="on-banner-content">
+    <div class="on-banner" style="{% if section.settings.banner_image != blank %}background-image: url({{ section.settings.banner_image | img_url: '' }});{% else %}background-image:url( {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }});{% endif %}">
+      {% if section.settings.banner_overlay_enabled %}
+      	<div class="on-overlay" style="background-color:rgba({{ section.settings.banner_overlay_color | color_to_rgb | replace: 'rgb(', '' | replace: ')', '' }}, {{ section.settings.banner_overlay_opacity | prepend: '0.' }})"></div>
+      {% endif %}
+    <div class="on-overlay" style="background-color:rgba(0, 0, 0, 0.1);"></div>
+      <div class="on-container">
+        <div class="on-banner-inner" style="height: {{ section.settings.banner_height }}px;">
+          {% comment %}<h1 style="color:{{ section.settings.heading_color }};">
+            {% if section.settings.heading != blank %}
+            {{ section.settings.heading }}
+            {% else %}
+            {{ page.title }}
+            {% endif %}
+          </h1>{% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if section.settings.banner_mobile_image != blank %}
+  <style type="text/css">
+    @media only screen and (max-width: 500px){
+      #section-{{ section.id }} .on-banner-content:not(.on-banner-content-not-image) .on-banner {
+        background-image: url({{ section.settings.banner_mobile_image | img_url: '' }})!important;
+      }
+    }
+  </style>
+  {% endif %}
+  {% else %}
+  <div class="on-banner-content on-banner-content-not-image">
+    <div class="on-banner">
+      <div class="on-container">
+        <div class="on-banner-inner">
+          <h1 class="on-heading" style="color:{{ section.settings.heading_color }};">
+            {{ page.title }}
+          </h1>
+          {% if section.settings.banner_text != blank %}
+          <p class="on-text"  style="color:{{ section.settings.heading_color }};">
+            {{ section.settings.banner_text }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- ================================ BANNER END ================================ -->
+  
+  <!-- ================================ MEALS START ================================ -->
+  <!-- ================================ TAB PROGRAM DETAILS ================================ -->
+<div class="donate-tab">
+<div class="page-width">  
+<ul class="tabs">
+  
+    <li><a href="#tab-1"  class="tab-button details-tab">{{ section.settings.tab-1 }}</a></li>
+    <li><a href="#tab-2" class="tab-button donate-tab" id="donate123">{{ section.settings.tab-2 }}</a></li>
+  </ul>
+  
+</div>
+<div id="tab-1">
+  {% if section.settings.meals_enabled %}
+    <div class="on-meals-content">
+      <div class="on-container">
+        <div class="on-meals">
+          <div class="on-meals-inner" style="background: {% if section.settings.meals_bg_image != blank %}url({{ section.settings.meals_bg_image | img_url: '' }}) left top no-repeat,{% endif %}{% if section.settings.meals_bg_image_right != blank %}url({{ section.settings.meals_bg_image_right | img_url: '' }}) right top no-repeat,{% endif %}{% if section.settings.meals_bg_color != blank %}{{ section.settings.meals_bg_color }};{% endif %}">
+              {% comment %}
+              {% if section.settings.meals_number != blank %}
+              {% assign number = section.settings.meals_number | split: '' %}
+              <ul class="on-number-ul">
+                {% for n in number %}
+                <li class="on-number-li">
+                  {{ n }}
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+              {% endcomment %}
+            
+              <h2 class="on-title">
+               
+                {% if section.settings.meals_number != blank %}
+                <span class="on-number meal-counter-trigger"></span>
+                {% endif %}
+                {% if section.settings.meals_title != blank %}
+                <span class="on-text">{{ section.settings.meals_title  }}</span>
+                {% endif %}
+              </h2>
+            {% comment %}<p class="color-red">{{ section.settings.extra_text }}</p>            
+            {% if section.settings.promise_image != blank %}
+            <figure>
+              <img class="on-icon" src="{{ section.settings.promise_image | img_url: '' }}"/>
+            </figure>
+            {% endif %}
+            {% if section.settings.promise_title != blank %}
+            <h2 class="on-title2">{{ section.settings.promise_title }}</h2>
+            {% endif %}
+            {% if section.settings.promise_subtitle != blank %}
+            <h5 class="on-subtitle2">{{ section.settings.promise_subtitle }}</h5>
+            {% endif %}
+            {% endcomment %}
+            
+            {% if section.settings.meals_subtitle != blank %}
+            	<p class="on-subtitle">
+                  {{ section.settings.meals_subtitle }}
+                  <span class="on-icon">
+                  	{% include 'icon-xmlid' %}
+                  </span>
+            	</p>
+            {% endif %}
+            <a href="#" class="button want-donate">{{section.settings.donate-button}}</a>     
+            
+            
+          </div>
+        </div>
+      </div>
+      {% comment %}
+      <style type="text/css">
+        {% if section.settings.meals_number_color_odd != blank %}
+        .on-meals-content .on-meals-inner .on-number-li:nth-child(odd) {
+          background-color: {{ section.settings.meals_number_color_odd }};
+        }
+        {% endif %}
+        {% if section.settings.meals_number_color_even!= blank %}
+        .on-meals-content .on-meals-inner .on-number-li:nth-child(even) {
+          background-color: {{ section.settings.meals_number_color_even }};
+        }
+        {% endif %}
+      </style>
+      {% endcomment %}
+    </div>
+  {% endif %}
+  <!-- ================================ MEALS END ================================ -->
+  
+  <!-- ================================ IMAGE WITH TEXT START ================================ -->
+
+  {% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+  {% if block.type == 'image_with_text' and forloop.index == 1 %}
+    <div class="on-imgtext-content on-imgtext-call-{{ forloop.index }}" id="{{ block.id }}">
+      <div class="on-container">
+        <div class="on-imgtext-inner {% if block.settings.on_imgtext_position == 'right' %}on-reverse{% endif %}">
+          <div class="on-item on-item-left">
+            {% if block.settings.on_imgtext_image != blank %}
+            	<img class="lazyload" src="{{ block.settings.on_imgtext_image | img_url: '' }}" data-src="{{ block.settings.on_imgtext_image | img_url: '' }}"/>
+            {% endif %}
+          </div>
+          <div class="on-item on-item-right">
+            {% if block.settings.on_imgtext_subtitle != blank %}
+            	<h6 class="on-subtitle">{{ block.settings.on_imgtext_subtitle }}</h6>
+            {% endif %}
+            {% if block.settings.on_imgtext_title != blank %}
+            	<h2 class="on-title">{{ block.settings.on_imgtext_title }}</h2>
+            {% endif %}
+            {% if block.settings.on_imgtext_text != blank %}
+            	<div class="on-text">
+                  {{ block.settings.on_imgtext_text }}
+            	</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  <!-- ================================ IMAGE WITH TEXT END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ HOW IT WORKS START ================================ -->
+  {% if section.settings.works_enabled %}
+  <div class="on-works-content">
+    <div class="on-container">
+      <div class="on-works">
+        <div class="on-works-inner">
+          {% if section.settings.works_title != blank %}
+          	<h2 class="on-title">{{ section.settings.works_title  }}</h2>
+          {% endif %}
+          {% if section.settings.works_text != blank %}
+          	<p class="on-text">{{ section.settings.works_text  }}</p>
+          {% endif %}
+          <div class="on-box-inner">
+            {% for i in (1..5) %}
+            {% assign icon = 'works_icon_' | append: i %}
+            {% assign title = 'works_title_' | append: i %}
+            {% if section.settings[icon] != blank %}
+            <div class="on-box-item on-box-item-{{ i }}">
+              <img class="on-icon" src="{{ section.settings[icon] | img_url: '' }}"/>
+              {% if section.settings[title] != blank %}
+              	<h2 class="on-icon-title">{{ section.settings[title] }}</h2>
+              {% endif %}
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+          {% comment %}{% if section.settings.works_text2 != blank %}
+          <p class="on-text2">
+            {{ section.settings.works_text2 }}
+            <span class="on-icon2">
+              {% include 'icon-fresh' %}
+            </span>
+          </p>
+          {% endif %}{% endcomment %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- ================================ HOW IT WORKS END ================================ -->
+  
+  
+  
+  
+  
+  <!-- ================================ MEALS START ================================ -->
+  {% if section.settings.promise_enabled %}
+  <div class="on-promise-content" id="onPromiseVideo">
+    <div class="on-container">
+      <div class="on-promise">
+        <div class="on-promise-inner">
+          <div class="page-video_block">
+
+			<iframe id="onviemo-vido" src="https://player.vimeo.com/video/{{ section.settings.video_link.id }}?&amp;controls=0&amp;loop=1"  frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" allow="autoplay"></iframe>
+
+              <script src="https://player.vimeo.com/api/player.js"></script>
+            <script>
+              var iframe = document.querySelector('iframe');
+              var player = new Vimeo.Player(iframe);
+
+              /*if($(window).width() > 600){
+                $('#onviemo-vido').css('max-height', $(window).height() - $('.site-header').height()); 
+              }*/
+
+              var h = $('.page-video_block').offset().top - 400;
+              var VideoHeght = $('.page-video_block').offset().top + $('.page-video_block').height() + 500;
+
+              $(window).scroll(function() {
+                var wScroll = $(window).scrollTop();
+                if (wScroll > h && wScroll < VideoHeght ) {
+                  player.play();
+
+                } else {
+                  player.pause();
+                }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- ================================ MEALS END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ FRESH START ================================ -->
+  {% if section.settings.fresh_enabled %}
+  <div class="on-fresh-content">
+    <div class="on-container">
+      {% if section.settings.fresh_title != blank %}
+      	<h2 class="on-title">{{ section.settings.fresh_title }}</h2>
+      {% endif %}
+      {% if section.settings.fresh_subtitle != blank %}
+      	<h3 class="on-subtitle">{{ section.settings.fresh_subtitle }}</h3>
+      {% endif %}
+      <div class="on-fresh-inner">
+      	{% for i in (1..5) %}
+        {% assign icon = 'fresh_icon_' | append: i %}
+        {% assign name = 'fresh_name_' | append: i %}
+        {% if section.settings[icon] != blank %}
+        <div class="on-item on-item-{{ i }}">
+          <img class="on-icon lazyload" data-src="{{ section.settings[icon] | img_url: '' }}"/>
+          {% if section.settings[name] != blank %}
+          	<p class="on-icon-name">{{ section.settings[name] }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <!-- ================================ FRESH END ================================ -->
+  
+  <!-- ================================ IMAGE WITH TEXT START ================================ -->
+  {% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+  {% if block.type == 'image_with_text' and forloop.index == 2 %}
+    <div class="on-imgtext-content on-imgtext-call-{{ forloop.index }}" id="{{ block.id }}">
+      <div class="on-container">
+        <div class="on-imgtext-inner {% if block.settings.on_imgtext_position == 'right' %}on-reverse{% endif %}">
+          <div class="on-item on-item-left">
+            {% if block.settings.on_imgtext_image != blank %}
+            	<img class="lazyload" src="{{ block.settings.on_imgtext_image | img_url: '' }}" data-src="{{ block.settings.on_imgtext_image | img_url: '' }}"/>
+            {% endif %}
+          </div>
+          <div class="on-item on-item-right">
+            {% if block.settings.on_imgtext_subtitle != blank %}
+            	<h6 class="on-subtitle">{{ block.settings.on_imgtext_subtitle }}</h6>
+            {% endif %}
+            {% if block.settings.on_imgtext_title != blank %}
+            	<h2 class="on-title">{{ block.settings.on_imgtext_title }}</h2>
+            {% endif %}
+            {% if block.settings.on_imgtext_text != blank %}
+            	<div class="on-text">
+                  {{ block.settings.on_imgtext_text }}
+            	</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  <!-- ================================ IMAGE WITH TEXT END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ IMAGE OVERLAY START ================================ -->
+  {% comment %}{% if section.settings.imgoverlay_enabled %}
+  <div class="on-imgoverlay-content" {% if section.settings.imgoverlay_bg_image != blank %}style="background-image: url({{ section.settings.imgoverlay_bg_image | img_url: '' }});"{% endif %}>
+    {% if section.settings.imgoverlay_overlay_enabled %}
+      	<div class="on-overlay" style="background-color:rgba({{ section.settings.imgoverlay_overlay_color | color_to_rgb | replace: 'rgb(', '' | replace: ')', '' }}, {{ section.settings.imgoverlay_overlay_opacity | prepend: '0.' }})"></div>
+      {% endif %}
+    <div class="on-container">
+      {% if section.settings.imgoverlay_icon != blank %}
+      	<img class="on-icon" src="{{ section.settings.imgoverlay_icon | img_url: '' }}"/>
+      {% endif %}
+      {% if section.settings.imgoverlay_heading != blank %}
+      	<h2 class="on-heading">{{ section.settings.imgoverlay_heading }}</h2>
+      {% endif %}
+      <div class="imgoverlay-inner">
+        {% assign region_blocks = section.blocks | where: 'type','regions' %}
+        {% assign kindergarten_blocks = section.blocks | where: 'type','kindergartens' %}
+        
+        {% for rblock in region_blocks %}
+                
+        <div class="region-title"><span>{{rblock.settings.region-title}}</span></div>
+        
+        	<ul class="kindergarten-list">
+        
+        		{% for kblock in kindergarten_blocks %}
+              
+              		{% if rblock.settings.region-title == kblock.settings.kindergarten-region%}
+              
+              			<li class="kindergarten-list-item">
+                          
+                          <div class="count-main">
+                            
+                          	<div class="count-main-left">
+                              
+                              	<span class="on-icon-number numscroller" data-min='1' data-max='{{kblock.settings.kindergarten-children-count}}' data-delay='1' data-increment='1'>0</span>
+
+<!--                               	<p class="children-count">{{kblock.settings.kindergarten-children-count}}</p> -->
+                              	<p class="children-text">{{section.settings.kindergarten-children-text}}</p>
+                              
+                            </div>
+                            
+                            <div class="count-main-right">
+                              
+                                <span class="on-icon-number numscroller" data-min='1' data-max='{{kblock.settings.kindergarten-teachers-count}}' data-delay='1' data-increment='1'>0</span>
+
+                              
+<!--                               	<p class="teachers-count">{{kblock.settings.kindergarten-teachers-count}}</p> -->
+                              	<p class="teachers-text">{{section.settings.kindergarten-teachers-text}}</p>
+                              
+                            </div>
+              
+                          </div>
+                          
+                          <h3 class="kindergarten-name">{{kblock.settings.kindergarten-name}}</h3>
+                          
+                          <h3 class="kindergarten-location">{{kblock.settings.kindergarten-location}}</h3>
+              
+              			</li>
+        
+        			{% endif %}  
+        
+        		{% endfor %}
+              
+        	</ul>
+                        
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endif %}{% endcomment %}
+  <!-- ================================ IMAGE OVERLAY END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ OUR PARTNER START ================================ -->
+  
+  
+  
+  {% if section.settings.partner_enabled %}
+  <div class="on-container text-center top_title_text">
+    {% if section.settings.partner_title != blank %}
+    <h2 class="on-title">{{ section.settings.partner_title }}</h2>
+    {% endif %}
+    {% if section.settings.partner_subtitle != blank %}
+    <h3 class="on-subtitle">{{ section.settings.partner_subtitle }}</h3>
+    {% endif %}
+  </div>
+  {% endif %}
+  <div class="meal_flex_cont">
+  <div class="on-partner-content">
+    <div class="on-container">
+      <div class="on-partner-inner">
+        <div class="on-item on-item-left">
+          {% if section.settings.partner_image != blank %}
+          <img class="on-img lazyload" data-src="{{ section.settings.partner_image | img_url: '' }}"/>
+          {% endif %}
+        </div>
+        <div class="on-item on-item-right">
+          {% if section.settings.partner_content != blank %}
+          <p class="on-text">{{ section.settings.partner_content }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ================================ OUR PARTNER END ================================ -->
+  
+  
+  
+  
+  <!-- ================================ OUR PROMISE START ================================ -->
+  {% if section.settings.prom_enabled %}
+  <div class="on-prom-content">
+    <div class="on-container">
+      {% if section.settings.prom_icon != blank %}
+      	<img class="on-icon lazyload" data-src="{{ section.settings.prom_icon | img_url: '' }}"/>
+      {% endif %}
+      {% if section.settings.prom_title != blank %}
+      	<h2 class="on-title">{{ section.settings.prom_title }}</h2>
+      {% endif %}
+      {% if section.settings.prom_text != blank %}
+      	<p class="on-text">
+          {{ section.settings.prom_text }}
+      	</p>
+      {% endif %}
+      {% if section.settings.prom_title2 != blank %}
+      	<h2 class="on-title2">{{ section.settings.prom_title2 }}</h2>
+      {% endif %}
+   
+    </div>
+  </div>
+  {% endif %}
+  </div>
+  
+  {% comment %}<div class="on-container bottom_btn text-center">
+    {% if section.settings.prom_btn != blank %}
+    <a {% if section.settings.prom_btn_url != blank %}href="{{ section.settings.prom_btn_url }}"{% endif %} class="btn btn--reverse">
+      {{ section.settings.prom_btn }}
+    </a>
+    {% endif %}      
+  </div>{% endcomment %}
+    </div>
+  <!-- ================================ OUR PROMISE END ================================ -->
+    <!-- ================================ TAB PROGRAM END ================================ -->
+  
+  <!-- ================================ TAB DONATE START ================================ -->
+  
+ 
+</div>
+  <!-- ================================ TAB DONATE END ================================ -->
+</section>
+ <div id="tab-2">
+<link rel='preload' href='https://d3rse9xjbp8270.cloudfront.net/at.js' as='script' crossorigin='anonymous'>
+<link rel='preload' href='https://d3rse9xjbp8270.cloudfront.net/at.min.css' as='style'>
+<script type='text/javascript' src='https://d3rse9xjbp8270.cloudfront.net/at.js' crossorigin='anonymous'></script>
+<div class="ngp-form"
+data-form-url="https://secure.everyaction.com/v1/Forms/4VKl3Uki_0ueCW7cMWJNNg2"
+data-fastaction-endpoint="https://fastaction.ngpvan.com"
+data-inline-errors="true"
+data-fastaction-nologin="true"
+data-databag-endpoint="https://profile.ngpvan.com"
+data-databag="everybody"
+data-mobile-autofocus="false">
+</div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('ul.tabs').each(function(){
+      var active, content, links = $(this).find('a');
+      active = links.first().addClass('active');
+      content = $(active.attr('href'));
+      links.not(':first').each(function () {
+        $($(this).attr('href')).hide();
+      });
+      $(this).find('a').click(function(e){
+        active.removeClass('active');
+        content.hide();
+        active = $(this);
+        content = $($(this).attr('href'));
+        active.addClass('active');
+        content.show();
+        return false;
+      });
+    });
+  });
+</script>
+<script> 
+ $(document).ready(function() {
+$(".want-donate").click(function() {
+  $("#donate123").trigger("click");
+        $("html, body").animate({ 
+            scrollTop: 500 
+        }, "slow");
+        return false;
+ })
+
+
+   $('#donate123').click(function () {
+    window.location.hash = 'donate';     
+    return false;
+});
+    $('.details-tab').click(function () {
+    history.replaceState(null, null, ' ');
+    
+    return false;
+});
+}); 
+  
+  
+</script>
+<script>
+$(document).ready(function() {
+if(window.location.href.indexOf("#donate") > -1)  {
+//     setTimeout(function() {
+        $("#donate123").trigger("click");
+//      },1000);
+}
+});  
+</script>
+
+{% schema %}
+  {
+    "name": "New Page Settings",
+    "settings": [
+	  {
+		"type": "checkbox",
+		"id": "banner_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "image_picker",
+		"id": "banner_image",
+		"label": "Banner Image"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "banner_mobile_image",
+		"label": "Mobile Image"
+	  },
+	  {
+		"type": "range",
+		"id": "banner_height",
+		"label": "Banner Height",
+		"step": 10,
+		"min": 300,
+		"max": 900,
+		"unit": "px",
+		"default": 460
+	  },
+	  {
+		"type": "checkbox",
+		"id": "banner_overlay_enabled",
+		"label": "Overlay",
+		"default": false
+	  },
+	  {
+		"type": "color",
+		"id": "banner_overlay_color",
+		"label": "Overlay Color",
+		"default": "#08091E"
+	  },
+	  {
+		"type": "range",
+		"id": "banner_overlay_opacity",
+		"label": "Overlay Opacity",
+		"step": 1,
+		"min": 1,
+		"max": 9,
+		"unit": "%",
+		"default": 1
+	  },
+	  {
+		"type": "textarea",
+		"id": "banner_text",
+		"label": "Content"
+	  },
+	  {
+		"type": "color",
+		"id": "heading_color",
+		"label": "Text Color",
+		"default": "#ffffff"
+	  },
+	  {
+		"type": "header",
+		"content": "Meals"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "meals_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "color",
+		"id": "meals_bg_color",
+		"label": "Background Color"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "meals_bg_image",
+		"label": "Background Image Left"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "meals_bg_image_right",
+		"label": "Background Image Right"
+	  },
+	  {
+		"type": "text",
+		"id": "meals_subtitle",
+		"label": "Sub Title"
+	  },
+
+{
+"type":"text",
+"id":"donate-button",
+"label":"Donate Button Title"
+},
+{
+"type":"url",
+"id":"donate-button-link",
+"label":"Donate Button Link"
+},
+{
+"type":"text",
+"id":"tab-1",
+"label":"Program Details"
+},
+{
+"type":"url",
+"id":"tab-1-link",
+"label":"Program Detail Link"
+},
+{
+"type":"text",
+"id":"tab-2",
+"label":"Donate Tab"
+},
+{
+"type":"url",
+"id":"tab-2-link",
+"label":"Donate tab Link"
+},
+
+	  {
+		"type": "text",
+		"id": "meals_number",
+		"label": "Numbers"
+	  },
+	  {
+		"type": "text",
+		"id": "meals_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "text",
+		"id": "extra_text",
+		"label": "More Info"
+	  },
+	  {
+		"type": "header",
+		"content": "Our Promise"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "promise_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "image_picker",
+		"id": "promise_image",
+		"label": "Image"
+	  },
+	  {
+		"type": "text",
+		"id": "promise_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "text",
+		"id": "promise_subtitle",
+		"label": "Sub Title"
+	  },
+      {
+        "type": "video_url",
+        "id": "video_link",
+        "label": "Video URL",
+        "accept": [
+          "youtube",
+          "vimeo"
+        ],
+        "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Cover Image"
+      },
+	  {
+		"type": "header",
+		"content": "How It Works"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "works_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "text",
+		"id": "works_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "textarea",
+		"id": "works_text",
+		"label": "Text"
+	  },
+	   {
+		"type": "textarea",
+		"id": "works_text2",
+		"label": "Text"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "works_icon_1",
+		"label": "Icon 1"
+	  },
+	  {
+		"type": "text",
+		"id": "works_title_1",
+		"label": "Title 1"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "works_icon_2",
+		"label": "Icon 2"
+	  },
+	  {
+		"type": "text",
+		"id": "works_title_2",
+		"label": "Title 2"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "works_icon_3",
+		"label": "Icon 3"
+	  },
+	  {
+		"type": "text",
+		"id": "works_title_3",
+		"label": "Title 3"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "works_icon_4",
+		"label": "Icon 4"
+	  },
+	  {
+		"type": "text",
+		"id": "works_title_4",
+		"label": "Title 4"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "works_icon_5",
+		"label": "Icon 5"
+	  },
+	  {
+		"type": "text",
+		"id": "works_title_5",
+		"label": "Title 5"
+	  },
+	  {
+		"type": "header",
+		"content": "Fresh"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "fresh_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_subtitle",
+		"label": "Sub Title"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "fresh_icon_1",
+		"label": "Icon 1"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_name_1",
+		"label": "Title 1"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "fresh_icon_2",
+		"label": "Icon 2"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_name_2",
+		"label": "Title 2"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "fresh_icon_3",
+		"label": "Icon 3"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_name_3",
+		"label": "Title 3"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "fresh_icon_4",
+		"label": "Icon 4"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_name_4",
+		"label": "Title 4"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "fresh_icon_5",
+		"label": "Icon 5"
+	  },
+	  {
+		"type": "text",
+		"id": "fresh_name_5",
+		"label": "Title 5"
+	  },
+	  {
+		"type": "header",
+		"content": "Image Overlay"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "imgoverlay_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "image_picker",
+		"id": "imgoverlay_bg_image",
+		"label": "Background Image"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "imgoverlay_overlay_enabled",
+		"label": "Overlay",
+		"default": false
+	  },
+	  {
+		"type": "color",
+		"id": "imgoverlay_overlay_color",
+		"label": "Overlay Color",
+		"default": "#08091E"
+	  },
+	  {
+		"type": "range",
+		"id": "imgoverlay_overlay_opacity",
+		"label": "Overlay Opacity",
+		"step": 1,
+		"min": 1,
+		"max": 9,
+		"unit": "%",
+		"default": 1
+	  },
+	  {
+		"type": "image_picker",
+		"id": "imgoverlay_icon",
+		"label": "Icon"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_heading",
+		"label": "Heading"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_number_1",
+		"label": "Number 1"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_name_1",
+		"label": "Name 1"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_title_1",
+		"label": "Title 1"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_subtitle_1",
+		"label": "Sub Title 1"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_number_2",
+		"label": "Number 2"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_name_2",
+		"label": "Name 2"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_title_2",
+		"label": "Title 2"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_subtitle_2",
+		"label": "Sub Title 2"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_number_3",
+		"label": "Number 3"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_name_3",
+		"label": "Name 3"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_title_3",
+		"label": "Title 3"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_subtitle_3",
+		"label": "Sub Title 3"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_number_4",
+		"label": "Number 4"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_name_4",
+		"label": "Name 4"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_title_4",
+		"label": "Title 4"
+	  },
+	  {
+		"type": "text",
+		"id": "imgoverlay_subtitle_4",
+		"label": "Sub Title 4"
+	  },
+	  {
+		"type": "header",
+		"content": "Our Partner"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "partner_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "text",
+		"id": "partner_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "text",
+		"id": "partner_subtitle",
+		"label": "Sub Title"
+	  },
+	  {
+		"type": "image_picker",
+		"id": "partner_image",
+		"label": "Image"
+	  },
+	  {
+		"type": "textarea",
+		"id": "partner_content",
+		"label": "Content"
+	  },
+	  {
+		"type": "header",
+		"content": "Our Promise"
+	  },
+	  {
+		"type": "checkbox",
+		"id": "prom_enabled",
+		"label": "Enabled",
+		"default": false
+	  },
+	  {
+		"type": "image_picker",
+		"id": "prom_icon",
+		"label": "Icon"
+	  },
+	  {
+		"type": "text",
+		"id": "prom_title",
+		"label": "Title"
+	  },
+	  {
+		"type": "textarea",
+		"id": "prom_text",
+		"label": "Text"
+	  },
+	  {
+		"type": "text",
+		"id": "prom_title2",
+		"label": "Title 2"
+	  },
+	  {
+		"type": "text",
+		"id": "prom_btn",
+		"label": "Button Label"
+	  },
+	  {
+		"type": "url",
+		"id": "prom_btn_url",
+		"label": "Button Href"
+	  },
+	  {
+        "type":"text",
+        "id":"kindergarten-children-text",
+        "label":"Children text"
+      },
+      {
+        "type":"text",
+        "id":"kindergarten-teachers-text",
+        "label":"Teachers text"
+      }
+	],
+    "blocks": [
+	  {
+		"type": "image_with_text",
+		"name": "Image With Text",
+		"settings": [
+		  {
+			"type": "image_picker",
+			"id": "on_imgtext_image",
+			"label": "Image"
+		  },
+		  {
+			"type": "text",
+			"id": "on_imgtext_subtitle",
+			"label": "Sub Title"
+		  },
+		  {
+			"type": "text",
+			"id": "on_imgtext_title",
+			"label": "Title"
+		  },
+		  {
+			"type": "textarea",
+			"id": "on_imgtext_text",
+			"label": "Text"
+		  },
+		  {
+			"type": "select",
+			"id": "on_imgtext_position",
+			"label": "Image Position",
+			"options": [
+			  {
+				"value": "left",
+				"label": "Left"
+			  },
+			  {
+				"value": "right",
+				"label": "Right"
+			  }
+			],
+			"default": "left"
+		  }
+		]
+	  },
+	  {
+		"type":"regions",
+		"name":"Region",
+		"settings":[
+
+			{
+				"type":"text",
+				"id":"region-title",
+				"label":"Region"
+			}
+
+		]
+
+	  },
+	  {
+		"type":"kindergartens",
+		"name":"Kindergarten",
+		"settings":[
+
+			{
+				"type":"text",
+				"id":"kindergarten-children-count",
+				"label":"Children count"
+			},
+			{
+				"type":"text",
+				"id":"kindergarten-teachers-count",
+				"label":"Teachers count"
+			},
+			{
+				"type":"text",
+				"id":"kindergarten-name",
+				"label":"Kindergarten name"
+			},
+			{
+				"type":"text",
+				"id":"kindergarten-location",
+				"label":"Kindergarten location"
+			},
+			{
+				"type":"text",
+				"id":"kindergarten-region",
+				"label":"Kindergarten region"
+			}
+
+		]
+
+	  }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
