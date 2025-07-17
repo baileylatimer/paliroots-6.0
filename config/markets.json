@@ -8,20 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "parent": "header-group.json",
-  "context": {
-    "market": "canada"
-  },
-  "sections": {
-    "scrolling_announcement_bar_6zaBJR": {
-      "settings": {},
-      "blocks": {
-        "announcement_gMGJT8": {
-          "settings": {
-            "text": "Duty & Taxes at Checkout"
-          }
-        }
-      }
+  "markets": {
+    "canada": {
+      "parent": "@default"
     }
   }
 }
