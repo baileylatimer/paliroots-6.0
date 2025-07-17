@@ -603,24 +603,5 @@
     </script>
     {% include 'subscribe-it-helper' %}
     <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
-    <script>
-      <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const scrollContainer = document.querySelector('.coll-subcoll__menu_link-content');
-    const scrollTip = document.querySelector('.coll-subcoll__list_wrap .scroll-tip');
-
-    if (scrollContainer && scrollTip) {
-      scrollContainer.addEventListener('scroll', () => {
-        if (scrollContainer.scrollLeft > 10) {
-          scrollTip.classList.add('hidden');
-        } else {
-          scrollTip.classList.remove('hidden');
-        }
-      });
-    }
-  });
-</script>
-
-    </script>
   </body>
 </html>

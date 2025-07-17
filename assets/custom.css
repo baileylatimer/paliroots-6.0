@@ -7272,53 +7272,33 @@ footer localization-form select {
   border-bottom: 1px solid #d9d9d9;
   padding: 4px 0;
 }
-.coll-subcoll__list_wrap {
-  position: relative;
-  background-color: #f4f4f4;
-  padding-bottom: 24px;
-}
-
-/* Scrollable list */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content {
   display: flex;
   align-items: center;
   gap: 25px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
-
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scrollbar-color: #000 transparent; /* For Firefox support */
   scrollbar-width: thin;
 }
 
-/* WebKit scrollbar styling (limited on iOS) */
+/* WebKit browsers (Safari/iOS, Chrome) */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 6px;
+  height: 1px;
 }
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
+
+.coll-subcoll__list_wrap
+  ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
   background: transparent;
 }
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-}
 
-/* Scroll tip message */
-.coll-subcoll__list_wrap .scroll-tip {
-  text-align: center;
-  font-size: 13px;
-  color: #999;
-  margin-top: 6px;
-  transition: opacity 0.3s ease;
+.coll-subcoll__list_wrap
+  ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
+  background-color: #000; /* Replace with brand color */
+  border-radius: 0;
 }
-
-.coll-subcoll__list_wrap .scroll-tip.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
 
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
