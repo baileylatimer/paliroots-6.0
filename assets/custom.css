@@ -8400,7 +8400,8 @@ nav.menu-drawer__navigation-new {
   margin-top: 10px;
 }
 div#menu-drawer {
-  max-width: 402px;
+  /* max-width: 402px; */
+   max-width: 100%;
   background-color: transparent;
   animation: backdropBlur 0.15s linear 0.1s 1 both;
   /* backdrop-filter: blur(15px);
