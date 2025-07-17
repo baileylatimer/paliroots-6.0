@@ -193,8 +193,7 @@
                   <a href="{% if block.settings.collection_link != blank %}{{ block.settings.collection_link }}{% else %}javascript:void(0){% endif %}" class="collection_link">
                       <div class="mobo-collection__banner_cont_wrap">
                         <div class="collection-image__wrap">
-                          <img src="{{ block.settings.collection_image | img_url: '' }}" height="{{ block.settings.collection_image.height }}"
-                            width="{{ block.settings.collection_image.width }}" alt="{{ block.settings.collection_image.alt }}"
+                          <img src="{{ block.settings.collection_image | img_url: '' }}"  alt="{{ block.settings.collection_image.alt }}"
                             >
                         </div>
                         <h2>{{ block.settings.collection_title }}</h2>
