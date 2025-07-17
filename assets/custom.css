@@ -7312,18 +7312,7 @@ footer localization-form select {
   z-index: 2;
   position: relative;
 }
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content {
-  /* ... existing styles ... */
-  scroll-behavior: smooth; /* Keep this */
-  scroll-snap-type: x mandatory; /* Or x proximity */
-}
 
-/* Apply this to the direct children you want to snap to */
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content > li { /* Assuming <li> are your direct items */
-  scroll-snap-align: start; /* Or center, or end */
-  /* Add some padding if needed to control the snap position precisely */
-  padding: 0 10px; /* Example */
-}
 /* If you use scroll-snap, you'll need to define snap points on the child elements */
 /* For example, if your list items are <li> elements: */
 /*
