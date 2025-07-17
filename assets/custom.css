@@ -7280,26 +7280,25 @@ footer localization-form select {
   width: 100%;
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
-  scrollbar-color: #000 transparent; /* For Firefox support */
-  scrollbar-width: thin;
 }
-
-/* WebKit browsers (Safari/iOS, Chrome) */
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 1px;
-}
-
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
-  background: transparent;
+  background-color: #transparent;
+  border-radius: 0;
+}
+
+.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
+  height: 1.5px;
+  background-color: #transparent;
+  border-radius: 0;
 }
 
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  background-color: #000; /* Replace with brand color */
+  background-color: #000;
+  height: 1.5px;
   border-radius: 0;
 }
-
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
 }
