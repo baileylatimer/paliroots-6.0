@@ -32,7 +32,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/filistin-jersey",
+            "button_link_1": "shopify://collections/the-sea-knows-our-name",
             "button_style_secondary_1": false,
             "button_label_color_1": "#000000",
             "button_background_color_1": "#ffffff",
@@ -232,7 +232,7 @@
           "type": "image",
           "settings": {
             "list-title": "Archive Sale",
-            "list-image": "shopify://shop_images/2_f321ea71-f764-4569-ad36-415585253063.jpg",
+            "list-image": "shopify://shop_images/4_e3615eea-9dd4-4d30-8087-84b62325fa18.jpg",
             "list-link": "shopify://collections/the-archive-sale"
           }
         },
@@ -248,7 +248,7 @@
           "type": "image",
           "settings": {
             "list-title": "Accessories",
-            "list-image": "shopify://shop_images/4_e3615eea-9dd4-4d30-8087-84b62325fa18.jpg",
+            "list-image": "shopify://shop_images/2_f321ea71-f764-4569-ad36-415585253063.jpg",
             "list-link": "shopify://collections/accessories"
           }
         }
