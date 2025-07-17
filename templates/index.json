@@ -223,25 +223,17 @@
         "image_rGiawx": {
           "type": "image",
           "settings": {
-            "list-title": "Apparel",
+            "list-title": "New Arrivals",
             "list-image": "shopify://shop_images/GOLDJERSEY3.jpg",
-            "list-link": "shopify://collections/apparel"
+            "list-link": "shopify://collections/new-arrival"
           }
         },
         "image_Txm4Et": {
           "type": "image",
           "settings": {
-            "list-title": "Accessories",
+            "list-title": "Archive Sale",
             "list-image": "shopify://shop_images/accessories.png",
-            "list-link": "shopify://collections/accessories"
-          }
-        },
-        "image_PFKAQH": {
-          "type": "image",
-          "settings": {
-            "list-title": "Random",
-            "list-image": "shopify://shop_images/random.png",
-            "list-link": "shopify://collections/random"
+            "list-link": "shopify://collections/the-archive-sale"
           }
         },
         "image_9fccmR": {
@@ -251,13 +243,21 @@
             "list-image": "shopify://shop_images/5_afd16180-fe36-43bc-897a-dc9eb65e769e.png",
             "list-link": "shopify://collections/apparel"
           }
+        },
+        "image_PFKAQH": {
+          "type": "image",
+          "settings": {
+            "list-title": "Objects",
+            "list-image": "shopify://shop_images/random.png",
+            "list-link": "shopify://collections/objects"
+          }
         }
       },
       "block_order": [
         "image_rGiawx",
         "image_Txm4Et",
-        "image_PFKAQH",
-        "image_9fccmR"
+        "image_9fccmR",
+        "image_PFKAQH"
       ],
       "settings": {
         "heading": ""
