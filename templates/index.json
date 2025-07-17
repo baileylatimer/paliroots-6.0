@@ -247,9 +247,9 @@
         "image_PFKAQH": {
           "type": "image",
           "settings": {
-            "list-title": "Objects",
+            "list-title": "Accessories",
             "list-image": "shopify://shop_images/random.png",
-            "list-link": "shopify://collections/objects"
+            "list-link": "shopify://collections/accessories"
           }
         }
       },
