@@ -232,7 +232,7 @@
           "type": "image",
           "settings": {
             "list-title": "Archive Sale",
-            "list-image": "shopify://shop_images/accessories.png",
+            "list-image": "shopify://shop_images/front-banner-accessories.jpg",
             "list-link": "shopify://collections/the-archive-sale"
           }
         },
@@ -240,7 +240,7 @@
           "type": "image",
           "settings": {
             "list-title": "Kufiya",
-            "list-image": "shopify://shop_images/5_afd16180-fe36-43bc-897a-dc9eb65e769e.png",
+            "list-image": "shopify://shop_images/front-banner-kufiya.jpg",
             "list-link": "shopify://collections/apparel"
           }
         },
@@ -248,7 +248,7 @@
           "type": "image",
           "settings": {
             "list-title": "Accessories",
-            "list-image": "shopify://shop_images/random.png",
+            "list-image": "shopify://shop_images/front-banner-archive-sale.jpg",
             "list-link": "shopify://collections/accessories"
           }
         }
