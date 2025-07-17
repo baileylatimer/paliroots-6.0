@@ -1,1 +1,214 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"text":"Due to high demand, your order will ship on the week of the 22nd.","link":"shopify:\/\/collections\/all"}}},"block_order":["announcement-bar-0"],"disabled":true,"custom_css":[],"settings":{"color_scheme":"background-1","show_line_separator":true,"show_social":false,"auto_rotate":false,"change_slides_speed":5,"enable_country_selector":true,"enable_language_selector":true}},"meal_counter_announcement_bar_VEnUNF":{"type":"meal-counter-announcement-bar","disabled":true,"settings":{"enable_black_friday":true,"text-color":"#ffffff","background-color":"#000000","start_date":"2022-11-16","end_date":"2022-12-01","meals_bar":"MEALS DONATED","black_friday_goal":"\/ 5,000 GOAL","black_friday_link_text":"","black_friday_link":"shopify:\/\/collections\/all"}},"scrolling_announcement_bar_6zaBJR":{"type":"scrolling-announcement-bar","blocks":{"announcement_gMGJT8":{"type":"announcement","settings":{"text":"Duty & Taxes Included","US_text":"Easy Returns and Exchanges","textafter":"","link":"","enable_disable":true,"text_01":"FREE SHIPPING TO","text_02":"ON ORDERS"}},"announcement_h4Q9iL":{"type":"announcement","disabled":true,"settings":{"text":"2X IMPACT |","US_text":"Easy Returns and Exchanges","textafter":": 3,000 Meal Goal 🇵🇸","link":"","enable_disable":false,"text_01":"FREE SHIPPING TO","text_02":"ON ORDERS"}}},"block_order":["announcement_gMGJT8","announcement_h4Q9iL"],"settings":{"bgcolor":"#1d503a","txtcolor":"#f2f5f3","show_line_separator":true,"show_social":false,"auto_rotate":true,"scrolleffect":true,"mealcount":false,"start_date":"2024-11-29","end_date":"2024-12-03","change_slides_speed":5,"enable_country_selector":false,"enable_language_selector":false}},"country_regionselect_bar_M4VX7B":{"type":"country-regionselect-bar","disabled":true,"settings":{"color_scheme":"accent-1","show_line_separator":false,"enable_country_selector":true,"enable_language_selector":false}},"scrolling_bar_m7md9C":{"type":"scrolling-bar","blocks":{"announcement_bUKbYT":{"type":"announcement","settings":{"text":"Free shipping","link":""}},"announcement_fCKEYW":{"type":"announcement","settings":{"text":"Ethically sourced","link":""}},"announcement_gzE9WT":{"type":"announcement","settings":{"text":"For the culture","link":""}}},"block_order":["announcement_bUKbYT","announcement_fCKEYW","announcement_gzE9WT"],"disabled":true,"settings":{"bgcolor":"#1d503a","txtcolor":"#faf5ee","show_line_separator":true,"show_social":false,"scrolleffect":true,"palirootmap-icon":false}},"header":{"type":"header","blocks":{"collection_banner_irrgMG":{"type":"collection_banner","settings":{"collection_title":"Shop Winter ‘24 Collection","collection_image":"shopify:\/\/shop_images\/Frame_673.png","collection_link":"shopify:\/\/collections\/pali-flag-collection"}}},"block_order":["collection_banner_irrgMG"],"settings":{"color_scheme2":"background-1","show_line_separator2":true,"show_social":false,"auto_rotate":false,"change_slides_speed":5,"enable_country_selector2":true,"enable_language_selector2":false,"show_header_search":true,"show_as_icon":false,"menu-drawer__newsletter-section":false,"show_menu_drawer_social_links":false,"menu_drawer_logo_image":"shopify:\/\/shop_images\/image_7_Traced.svg","menu_drawer_login":"<a href=\"\/account\/login\" title=\"\/account\/login\">Log in<\/a>","menu_drawer_create_account":"<a href=\"\/account\/register\" title=\"\/account\/register\">Create account<\/a>","logo_position":"middle-center","menu":"new-desktop-menu","menu_type_desktop":"dropdown","sticky_header_type":"always","show_line_separator":true,"color_scheme":"background-1","menu_color_scheme":"background-1","enable_country_selector":false,"enable_language_selector":false,"mobile_logo_position":"center","margin_bottom":0,"padding_top":0,"padding_bottom":0,"terms":"Terms & Conditions","term_link":"shopify:\/\/pages\/terms-and-conditions","policy":"Privacy Policy","policy_link":"shopify:\/\/pages\/privacy-policy","klaviyo_form_action":"\/\/manage.kmail-lists.com\/subscriptions\/subscribe","list_id":"NFvws3","list_id_a":"PBf6sH"}}},"order":["announcement-bar","meal_counter_announcement_bar_VEnUNF","scrolling_announcement_bar_6zaBJR","country_regionselect_bar_M4VX7B","scrolling_bar_m7md9C","header"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement-bar-0": {
+          "type": "announcement",
+          "settings": {
+            "text": "Due to high demand, your order will ship on the week of the 22nd.",
+            "link": "shopify://collections/all"
+          }
+        }
+      },
+      "block_order": [
+        "announcement-bar-0"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "background-1",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": true,
+        "enable_language_selector": true
+      }
+    },
+    "meal_counter_announcement_bar_VEnUNF": {
+      "type": "meal-counter-announcement-bar",
+      "disabled": true,
+      "settings": {
+        "enable_black_friday": true,
+        "text-color": "#ffffff",
+        "background-color": "#000000",
+        "start_date": "2022-11-16",
+        "end_date": "2022-12-01",
+        "meals_bar": "MEALS DONATED",
+        "black_friday_goal": "/ 5,000 GOAL",
+        "black_friday_link_text": "",
+        "black_friday_link": "shopify://collections/all"
+      }
+    },
+    "scrolling_announcement_bar_6zaBJR": {
+      "type": "scrolling-announcement-bar",
+      "blocks": {
+        "announcement_gMGJT8": {
+          "type": "announcement",
+          "settings": {
+            "text": "Duty & Taxes Included",
+            "US_text": "Easy Returns and Exchanges",
+            "textafter": "",
+            "link": "",
+            "enable_disable": true,
+            "text_01": "FREE SHIPPING TO",
+            "text_02": "ON ORDERS"
+          }
+        },
+        "announcement_h4Q9iL": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "2X IMPACT |",
+            "US_text": "Easy Returns and Exchanges",
+            "textafter": ": 3,000 Meal Goal 🇵🇸",
+            "link": "",
+            "enable_disable": false,
+            "text_01": "FREE SHIPPING TO",
+            "text_02": "ON ORDERS"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_gMGJT8",
+        "announcement_h4Q9iL"
+      ],
+      "settings": {
+        "bgcolor": "#1d503a",
+        "txtcolor": "#f2f5f3",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": true,
+        "scrolleffect": true,
+        "mealcount": false,
+        "start_date": "2024-11-29",
+        "end_date": "2024-12-03",
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "country_regionselect_bar_M4VX7B": {
+      "type": "country-regionselect-bar",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "accent-1",
+        "show_line_separator": false,
+        "enable_country_selector": true,
+        "enable_language_selector": false
+      }
+    },
+    "scrolling_bar_m7md9C": {
+      "type": "scrolling-bar",
+      "blocks": {
+        "announcement_bUKbYT": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping",
+            "link": ""
+          }
+        },
+        "announcement_fCKEYW": {
+          "type": "announcement",
+          "settings": {
+            "text": "Ethically sourced",
+            "link": ""
+          }
+        },
+        "announcement_gzE9WT": {
+          "type": "announcement",
+          "settings": {
+            "text": "For the culture",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_bUKbYT",
+        "announcement_fCKEYW",
+        "announcement_gzE9WT"
+      ],
+      "disabled": true,
+      "settings": {
+        "bgcolor": "#1d503a",
+        "txtcolor": "#faf5ee",
+        "show_line_separator": true,
+        "show_social": false,
+        "scrolleffect": true,
+        "palirootmap-icon": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "collection_banner_irrgMG": {
+          "type": "collection_banner",
+          "settings": {
+            "collection_title": "Shop Winter ‘24 Collection",
+            "collection_image": "shopify://shop_images/Frame_673_1.png",
+            "collection_link": "shopify://collections/pali-flag-collection"
+          }
+        }
+      },
+      "block_order": [
+        "collection_banner_irrgMG"
+      ],
+      "settings": {
+        "color_scheme2": "background-1",
+        "show_line_separator2": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector2": true,
+        "enable_language_selector2": false,
+        "show_header_search": true,
+        "show_as_icon": false,
+        "menu-drawer__newsletter-section": false,
+        "show_menu_drawer_social_links": false,
+        "menu_drawer_logo_image": "shopify://shop_images/image_7_Traced.svg",
+        "menu_drawer_login": "<a href=\"/account/login\" title=\"/account/login\">Log in</a>",
+        "menu_drawer_create_account": "<a href=\"/account/register\" title=\"/account/register\">Create account</a>",
+        "logo_position": "middle-center",
+        "menu": "new-desktop-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "always",
+        "show_line_separator": true,
+        "color_scheme": "background-1",
+        "menu_color_scheme": "background-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "terms": "Terms & Conditions",
+        "term_link": "shopify://pages/terms-and-conditions",
+        "policy": "Privacy Policy",
+        "policy_link": "shopify://pages/privacy-policy",
+        "klaviyo_form_action": "//manage.kmail-lists.com/subscriptions/subscribe",
+        "list_id": "NFvws3",
+        "list_id_a": "PBf6sH"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "meal_counter_announcement_bar_VEnUNF",
+    "scrolling_announcement_bar_6zaBJR",
+    "country_regionselect_bar_M4VX7B",
+    "scrolling_bar_m7md9C",
+    "header"
+  ]
+}
