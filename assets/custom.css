@@ -7280,6 +7280,7 @@ footer localization-form select {
   width: 100%;
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
+  margin-bottom: -1px;
 }
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
@@ -7340,9 +7341,9 @@ body .coll-subcoll__list_wrap h2.heading.h2 {
 .collection-Subcollections__inner_wrap.page-width {
   padding: 0 16px !important;
 }
-.coll-subcoll__menu_link_wrap {
+/* .coll-subcoll__menu_link_wrap {
   overflow: hidden;
-}
+} */
 div#returnGoAssistant div#returnGoPopup {
   background: #f4f4f4 !important;
 }
