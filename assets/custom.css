@@ -7286,7 +7286,7 @@ footer localization-form select {
 
 /* WebKit browsers (Safari/iOS, Chrome) */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 2px;
+  height: 1px;
 }
 
 .coll-subcoll__list_wrap
