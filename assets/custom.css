@@ -8940,6 +8940,12 @@ button#shopify-pc__prefs__header-save:hover {
 .smart-cart--enabled.overflow-hidden {
   overflow: visible;
 }
+body.app--cart-vissible cart-drawer {
+    display: none;
+}
+body.app--cart-vissible.overflow-hidden {
+    overflow: visible;
+}
 /* enable rebuy cart cart drawer end */
 
 
@@ -8951,10 +8957,4 @@ button#shopify-pc__prefs__header-save:hover {
 }
 .main-countdown-signup  .form-disclaimer {
     margin-top: 15px;
-}
-body.app--cart-vissible cart-drawer {
-    display: none;
-}
-body.app--cart-vissible.overflow-hidden {
-    overflow: visible;
 }
