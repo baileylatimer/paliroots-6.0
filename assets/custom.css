@@ -7276,28 +7276,29 @@ footer localization-form select {
   display: flex;
   align-items: center;
   gap: 25px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
-  scrollbar-color: #000 transparent; /* For Firefox support */
+
+  /* Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
   scrollbar-width: thin;
 }
 
-/* WebKit browsers (Safari/iOS, Chrome) */
+/* WebKit Scrollbar - for iOS Safari */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 1px;
+  height: 6px; /* Increase height from 1px to 6px */
 }
 
-.coll-subcoll__list_wrap
-  ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
+.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.coll-subcoll__list_wrap
-  ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  background-color: #000; /* Replace with brand color */
-  border-radius: 0;
+.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Slight transparency works better visually */
+  border-radius: 3px;
 }
 
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
