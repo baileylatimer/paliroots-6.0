@@ -3257,7 +3257,7 @@ h1.custom-title {
   height: 27px;
   line-height: 20px;
 }
-.grid__item .card-wrapper .product-cart form button span, span.badge, div#rebuy-widget-205384 button.rebuy-button {
+.grid__item .card-wrapper .product-cart form button span, span.badge, div#rebuy-widget-205384 button.rebuy-button, .widget-type-product.rebuy-widget .rebuy-product-block .rebuy-product-info .rebuy-product-title.clickable, .widget-type-product .rebuy-recommended-products .rebuy-product-block .rebuy-product-info .rebuy-product-title.clickable {
   font-weight: var(--font-heading-weight);
   letter-spacing: calc(var(--font-heading-scale) * .06rem) !important;
   color: rgb(var(--color-foreground));
