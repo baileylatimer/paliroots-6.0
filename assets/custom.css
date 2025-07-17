@@ -7272,6 +7272,13 @@ footer localization-form select {
   border-bottom: 1px solid #d9d9d9;
   padding: 4px 0;
 }
+.coll-subcoll__list_wrap {
+  position: relative;
+  background-color: #f4f4f4; /* Scrollbar ke liye contrast background */
+  padding-bottom: 24px;
+}
+
+/* Existing scroll container */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content {
   display: flex;
   align-items: center;
@@ -7282,33 +7289,44 @@ footer localization-form select {
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
 
-  /* Firefox */
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Firefox */
   scrollbar-width: thin;
 }
 
-/* WebKit Scrollbar - for iOS Safari */
+/* WebKit (iOS Safari/Chrome) scrollbar styling */
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 6px; /* Increase height from 1px to 6px */
+  height: 6px;
 }
-
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
   background: transparent;
 }
-
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.5); /* Slight transparency works better visually */
-  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
 }
 
-@supports (-webkit-touch-callout: none) {
-  .coll-subcoll__menu_link-content::-webkit-scrollbar {
-    height: 6px;
-  }
-  .coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+/* Scroll hint gradient for iOS */
+.coll-subcoll__list_wrap::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #f4f4f4);
+  pointer-events: none;
+  z-index: 2;
 }
+
+/* Scroll instruction text */
+.scroll-tip {
+  text-align: center;
+  font-size: 13px;
+  color: #999;
+  margin-top: 6px;
+}
+
+
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
 }
