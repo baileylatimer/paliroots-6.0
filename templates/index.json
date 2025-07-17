@@ -224,7 +224,7 @@
           "type": "image",
           "settings": {
             "list-title": "New Arrivals",
-            "list-image": "shopify://shop_images/GOLDJERSEY3.jpg",
+            "list-image": "shopify://shop_images/new-in-banner-apparel.jpg",
             "list-link": "shopify://collections/new-arrival"
           }
         },
