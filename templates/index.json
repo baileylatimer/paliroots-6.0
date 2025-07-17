@@ -224,7 +224,7 @@
           "type": "image",
           "settings": {
             "list-title": "New Arrivals",
-            "list-image": "shopify://shop_images/new-in-banner-apparel_54a692dd-dcbc-4113-ab7a-ad676d32f16d.jpg",
+            "list-image": "shopify://shop_images/1_7ec0e153-80b1-4eac-9341-8ab6d196aa91.jpg",
             "list-link": "shopify://collections/new-arrival"
           }
         },
@@ -232,7 +232,7 @@
           "type": "image",
           "settings": {
             "list-title": "Archive Sale",
-            "list-image": "shopify://shop_images/front-banner-accessories.jpg",
+            "list-image": "shopify://shop_images/2_f321ea71-f764-4569-ad36-415585253063.jpg",
             "list-link": "shopify://collections/the-archive-sale"
           }
         },
@@ -248,7 +248,7 @@
           "type": "image",
           "settings": {
             "list-title": "Accessories",
-            "list-image": "shopify://shop_images/front-banner-archive-sale.jpg",
+            "list-image": "shopify://shop_images/4_e3615eea-9dd4-4d30-8087-84b62325fa18.jpg",
             "list-link": "shopify://collections/accessories"
           }
         }
@@ -276,7 +276,7 @@
         "text_k7Nt3h": {
           "type": "text",
           "settings": {
-            "heading": "<strong>$3.4 million raised</strong>",
+            "heading": "<strong>$5.4 million raised</strong>",
             "caption": "for vital community projects"
           }
         }
