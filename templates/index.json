@@ -9,6 +9,63 @@
  */
 {
   "sections": {
+    "video_banner_hAtFG8": {
+      "type": "video-banner",
+      "blocks": {
+        "heading_zc4J3R": {
+          "type": "heading",
+          "settings": {
+            "heading": "November '24 Drop",
+            "heading_size": "h1",
+            "heading-color": "#ffffff"
+          }
+        },
+        "text_TcDL86": {
+          "type": "text",
+          "settings": {
+            "text": "Introducing our Limited Edition jersey, a tribute to a legacy reborn, crafted from soft and durable knitted fabric. Now available for the first time in kids' sizes.",
+            "text_style": "subtitle",
+            "content-color": "#ffffff"
+          }
+        },
+        "buttons_hKhwjB": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify://collections/filistin-jersey",
+            "button_style_secondary_1": false,
+            "button_label_color_1": "#000000",
+            "button_background_color_1": "#ffffff",
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false,
+            "button_label_color_2": "#ffffff",
+            "button_background_color_2": "#000000"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zc4J3R",
+        "text_TcDL86",
+        "buttons_hKhwjB"
+      ],
+      "settings": {
+        "video": "shopify://files/videos/MONTAGE.mp4",
+        "mobile_video": "shopify://files/videos/PalestineWinCap.mp4",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "shrink_height": false,
+        "desktop_content_position": "bottom-left",
+        "mobile_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-3b6a5e3b-4fa5-400d-b7d4-9804e366880b",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -49,6 +106,7 @@
         "e1e9e874-82af-4b74-ba6a-c24905afa59b",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/7_8d67db5b-21dc-4737-8662-4a2638d41563.png",
         "mobile_image": "shopify://shop_images/5_9f19a745-ac8b-41c7-a91f-311ed63e78c8.png",
@@ -736,66 +794,10 @@
       "settings": {
         "heading": ""
       }
-    },
-    "video_banner_hAtFG8": {
-      "type": "video-banner",
-      "blocks": {
-        "heading_zc4J3R": {
-          "type": "heading",
-          "settings": {
-            "heading": "November '24 Drop",
-            "heading_size": "h1",
-            "heading-color": "#ffffff"
-          }
-        },
-        "text_TcDL86": {
-          "type": "text",
-          "settings": {
-            "text": "Introducing our Limited Edition jersey, a tribute to a legacy reborn, crafted from soft and durable knitted fabric. Now available for the first time in kids' sizes.",
-            "text_style": "subtitle",
-            "content-color": "#ffffff"
-          }
-        },
-        "buttons_hKhwjB": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/filistin-jersey",
-            "button_style_secondary_1": false,
-            "button_label_color_1": "#000000",
-            "button_background_color_1": "#ffffff",
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false,
-            "button_label_color_2": "#ffffff",
-            "button_background_color_2": "#000000"
-          }
-        }
-      },
-      "block_order": [
-        "heading_zc4J3R",
-        "text_TcDL86",
-        "buttons_hKhwjB"
-      ],
-      "settings": {
-        "video": "shopify://files/videos/MONTAGE.mp4",
-        "mobile_video": "shopify://files/videos/PalestineWinCap.mp4",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "shrink_height": false,
-        "desktop_content_position": "bottom-left",
-        "mobile_content_position": "middle-center",
-        "show_text_box": true,
-        "desktop_content_alignment": "left",
-        "color_scheme": "scheme-3b6a5e3b-4fa5-400d-b7d4-9804e366880b",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
     }
   },
   "order": [
+    "video_banner_hAtFG8",
     "image_banner",
     "scrolling_bar_qFhNEF",
     "custom_feature_collection_QAeDJg",
@@ -811,7 +813,6 @@
     "image_banner_KaLpg3",
     "13b09020-85ee-4906-ac66-01aec279cfd8",
     "1c6e6685-744d-4c21-b219-ee0d42518282",
-    "ef80c47d-b314-4e7a-bdb0-a38da07b7b0a",
-    "video_banner_hAtFG8"
+    "ef80c47d-b314-4e7a-bdb0-a38da07b7b0a"
   ]
 }
