@@ -1,1 +1,119 @@
-{"sections":{"main":{"type":"main-mission","blocks":{"56116355-6149-4698-8b5e-2807e264e2ff":{"type":"text","settings":{"content-text":"<p>Founded in 2016, the PaliRoots purpose is to bring awareness to the world about the Palestinian culture by crafting unique clothing concepts. With the brand, we explore, celebrate, and share Palestinian culture in a modern and positive way. We take pride in our dedication towards high-quality, out of the box products, putting months of research and development towards a meaningful creation. All of our apparel is made from unique materials, soft cottons, and hand-sewn with special attention to artisanal detail. In addition, independent inspection agencies further ensure the quality of our products before they are ever even shipped, giving you the peace of mind that you will be satisfied with your product upon delivery. Last, and most importantly, we focus on giving back to communities in Palestine through our meals program and charity projects. The work we do through both channels is what motivates us to grow our brand, and reach as many people as possible.<\/p>"}}},"block_order":["56116355-6149-4698-8b5e-2807e264e2ff"],"disabled":true,"settings":{"video":"<iframe src=\"https:\/\/player.vimeo.com\/video\/339689665?&amp;controls=0&amp;loop=1&amp;muted=1\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen=\"\" mozallowfullscreen=\"\" allowfullscreen=\"\"><\/iframe>","video-mobile":"","hero-image":"shopify:\/\/shop_images\/paliroots7birthday.jpg","mobile-hero-image":"shopify:\/\/shop_images\/7years.jpg","title":""}},"our_story_text_L7eH9K":{"type":"our-story-text","name":"Our Story Text","settings":{"story_text":"We built this from scratch. No investors. No shortcuts. Just two siblings, a vision, and a warehouse floor. We packed the first orders by hand. Slept next to the inventory. Now it’s global. But it wasn’t always. This is for the ones who’ve been watching.","font_PP_Playground":true,"padding_top":56,"padding_bottom":80,"mobile_padding_top":24,"mobile_padding_bottom":16}},"our_story_image_text_NgMf39":{"type":"our-story-image-text","name":"Our Story ImageText","settings":{"image":"shopify:\/\/shop_images\/polaroid.png","text":"<p>We were born in Jerusalem and raised in the States—always finding new ways to feel close to home.<\/p><p>For us, that connection came through food, through dance, through family stories passed down in pieces.<\/p><p>PaliRoots began as a way to bring that feeling home.\u2028<\/p><p>A bridge between here and there.\u2028\u2028Design and storytelling as a form of resistance—and celebration.\u2028<\/p><p>Because being Palestinian means carrying stories that were buried.\u2028<\/p><p>Ours is to bring them back to life.<\/p>","heading":"Aminah & Hussein","layout":"image-right"}},"sticth_story_4eHpmp":{"type":"sticth-story","name":"Stitch Story","settings":{"heading_1":"Every stitch has a story.","heading_1_alignment":"left","heading_2":"Every piece has roots.","heading_2_alignment":"right","padding_top":10,"padding_bottom":0}},"ourstory_collection_jkejxd":{"type":"ourstory-collection","name":"OurStory collection","settings":{"title":"If you’re new here, start here.","heading_size":"h1","description":"<p>These are the essentials—the pieces that built PaliRoots. The ones Aminah and Hussein wear the most.<\/p><p>Each one carries a story, a symbol, a reason to look twice.<\/p>","show_description":false,"description_style":"body","collection":"apparel","products_to_show":4,"columns_desktop":4,"full_width":false,"show_view_all":false,"view_all_style":"solid","view_all_position":"top","enable_desktop_slider":false,"color_scheme":"","image_ratio":"portrait","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"enable_quick_add":false,"columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}},"our_story_text_tzL7jG":{"type":"our-story-text","name":"Our Story Text","settings":{"story_text":"We started with Palestine. That stays at the core. But the vision’s grown. PaliRoots is a platform—for culture, expression, and stories that don’t beg to be told. We’re building legacy. Through fashion, through impact, through presence. And if you’re just here for the fit? You’re still in the right place.","font_PP_Playground":false,"padding_top":4,"padding_bottom":60,"mobile_padding_top":8,"mobile_padding_bottom":40}}},"order":["main","our_story_text_L7eH9K","our_story_image_text_NgMf39","sticth_story_4eHpmp","ourstory_collection_jkejxd","our_story_text_tzL7jG"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-mission",
+      "blocks": {
+        "56116355-6149-4698-8b5e-2807e264e2ff": {
+          "type": "text",
+          "settings": {
+            "content-text": "<p>Founded in 2016, the PaliRoots purpose is to bring awareness to the world about the Palestinian culture by crafting unique clothing concepts. With the brand, we explore, celebrate, and share Palestinian culture in a modern and positive way. We take pride in our dedication towards high-quality, out of the box products, putting months of research and development towards a meaningful creation. All of our apparel is made from unique materials, soft cottons, and hand-sewn with special attention to artisanal detail. In addition, independent inspection agencies further ensure the quality of our products before they are ever even shipped, giving you the peace of mind that you will be satisfied with your product upon delivery. Last, and most importantly, we focus on giving back to communities in Palestine through our meals program and charity projects. The work we do through both channels is what motivates us to grow our brand, and reach as many people as possible.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "56116355-6149-4698-8b5e-2807e264e2ff"
+      ],
+      "disabled": true,
+      "settings": {
+        "video": "<iframe src=\"https://player.vimeo.com/video/339689665?&amp;controls=0&amp;loop=1&amp;muted=1\" width=\"640\" height=\"360\" frameborder=\"0\" webkitallowfullscreen=\"\" mozallowfullscreen=\"\" allowfullscreen=\"\"></iframe>",
+        "video-mobile": "",
+        "hero-image": "shopify://shop_images/paliroots7birthday.jpg",
+        "mobile-hero-image": "shopify://shop_images/7years.jpg",
+        "title": ""
+      }
+    },
+    "our_story_text_L7eH9K": {
+      "type": "our-story-text",
+      "name": "Our Story Text",
+      "settings": {
+        "story_text": "We built this from scratch. No investors. No shortcuts. Just two siblings, a vision, and a warehouse floor. We packed the first orders by hand. Slept next to the inventory. Now it’s global. But it wasn’t always. This is for the ones who’ve been watching.",
+        "font_PP_Playground": true,
+        "padding_top": 56,
+        "padding_bottom": 80,
+        "mobile_padding_top": 24,
+        "mobile_padding_bottom": 16
+      }
+    },
+    "our_story_image_text_NgMf39": {
+      "type": "our-story-image-text",
+      "name": "Our Story ImageText",
+      "settings": {
+        "image": "shopify://shop_images/Untitled-1Artboard-1-copy.png",
+        "text": "<p>We were born in Jerusalem and raised in the States—always finding new ways to feel close to home.</p><p>For us, that connection came through food, through dance, through family stories passed down in pieces.</p><p>PaliRoots began as a way to bring that feeling home. </p><p>A bridge between here and there.  Design and storytelling as a form of resistance—and celebration. </p><p>Because being Palestinian means carrying stories that were buried. </p><p>Ours is to bring them back to life.</p>",
+        "heading": "Aminah & Hussein",
+        "layout": "image-right"
+      }
+    },
+    "sticth_story_4eHpmp": {
+      "type": "sticth-story",
+      "name": "Stitch Story",
+      "settings": {
+        "heading_1": "Every stitch has a story.",
+        "heading_1_alignment": "left",
+        "heading_2": "Every piece has roots.",
+        "heading_2_alignment": "right",
+        "padding_top": 10,
+        "padding_bottom": 0
+      }
+    },
+    "ourstory_collection_jkejxd": {
+      "type": "ourstory-collection",
+      "name": "OurStory collection",
+      "settings": {
+        "title": "If you’re new here, start here.",
+        "heading_size": "h1",
+        "description": "<p>These are the essentials—the pieces that built PaliRoots. The ones Aminah and Hussein wear the most.</p><p>Each one carries a story, a symbol, a reason to look twice.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "apparel",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "view_all_position": "top",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "our_story_text_tzL7jG": {
+      "type": "our-story-text",
+      "name": "Our Story Text",
+      "settings": {
+        "story_text": "We started with Palestine. That stays at the core. But the vision’s grown. PaliRoots is a platform—for culture, expression, and stories that don’t beg to be told. We’re building legacy. Through fashion, through impact, through presence. And if you’re just here for the fit? You’re still in the right place.",
+        "font_PP_Playground": false,
+        "padding_top": 4,
+        "padding_bottom": 60,
+        "mobile_padding_top": 8,
+        "mobile_padding_bottom": 40
+      }
+    }
+  },
+  "order": [
+    "main",
+    "our_story_text_L7eH9K",
+    "our_story_image_text_NgMf39",
+    "sticth_story_4eHpmp",
+    "ourstory_collection_jkejxd",
+    "our_story_text_tzL7jG"
+  ]
+}
