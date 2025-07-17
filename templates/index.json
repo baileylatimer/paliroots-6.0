@@ -53,7 +53,7 @@
         "video": "shopify://files/videos/MONTAGE.mp4",
         "mobile_video": "shopify://files/videos/MONTAGE.mp4",
         "image_overlay_opacity": 0,
-        "image_height": "medium",
+        "image_height": "adapt",
         "shrink_height": false,
         "desktop_content_position": "bottom-left",
         "mobile_content_position": "middle-center",
