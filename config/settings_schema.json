@@ -1561,6 +1561,12 @@
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
+        "type": "checkbox",
+        "id": "enable_app_cart",
+        "default": false,
+        "label": "Enable App cart"
+      },
+      {
         "type": "select",
         "id": "cart_type",
         "options": [
