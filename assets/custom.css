@@ -7281,10 +7281,16 @@ footer localization-form select {
   -webkit-overflow-scrolling: touch;
   padding-right: 24px;
   margin-bottom: -1px;
+  /* Add for smooth scrolling */
+  scroll-behavior: smooth;
+  /* Optional: For snapping behavior */
+  /* scroll-snap-type: x mandatory; */
 }
+
+/* You can keep your existing scrollbar styling for appearance */
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
-  background-color: #transparent;
+  background-color: transparent;
   border-radius: 0;
   z-index: 2;
   position: relative;
@@ -7292,7 +7298,7 @@ footer localization-form select {
 
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
   height: 1.5px;
-  background-color: #transparent;
+  background-color: transparent;
   border-radius: 0;
   z-index: 2;
   position: relative;
@@ -7306,6 +7312,14 @@ footer localization-form select {
   z-index: 2;
   position: relative;
 }
+
+/* If you use scroll-snap, you'll need to define snap points on the child elements */
+/* For example, if your list items are <li> elements: */
+/*
+.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content > li {
+  scroll-snap-align: start;
+}
+*/
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
 }
