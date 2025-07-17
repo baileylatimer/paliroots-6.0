@@ -8952,3 +8952,6 @@ button#shopify-pc__prefs__header-save:hover {
 .main-countdown-signup  .form-disclaimer {
     margin-top: 15px;
 }
+body.app--cart-vissible.overflow-hidden {
+    overflow: visible;
+}
