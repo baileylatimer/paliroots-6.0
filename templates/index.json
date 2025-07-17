@@ -62,8 +62,8 @@
         "color_scheme": "scheme-3b6a5e3b-4fa5-400d-b7d4-9804e366880b",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
+        "stack_images_on_mobile": false,
+        "show_text_below": false
       }
     },
     "image_banner": {
