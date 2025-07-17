@@ -7301,6 +7301,14 @@ footer localization-form select {
   border-radius: 3px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .coll-subcoll__menu_link-content::-webkit-scrollbar {
+    height: 6px;
+  }
+  .coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
 }
