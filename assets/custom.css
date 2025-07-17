@@ -7285,12 +7285,16 @@ footer localization-form select {
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
   background-color: #transparent;
   border-radius: 0;
+  z-index: 2;
+  position: relative;
 }
 
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
   height: 1.5px;
   background-color: #transparent;
   border-radius: 0;
+  z-index: 2;
+  position: relative;
 }
 
 .coll-subcoll__list_wrap
@@ -7298,6 +7302,8 @@ footer localization-form select {
   background-color: #000;
   height: 1.5px;
   border-radius: 0;
+  z-index: 2;
+  position: relative;
 }
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content li {
   min-width: fit-content;
