@@ -7278,56 +7278,27 @@ footer localization-form select {
   gap: 25px;
   overflow: auto;
   width: 100%;
-  -webkit-overflow-scrolling: touch; /* Ensures native-like scrolling performance on iOS */
+  -webkit-overflow-scrolling: touch;
   padding-right: 24px;
   margin-bottom: -1px;
-
-  /* --- Smooth Scrolling --- */
-  scroll-behavior: smooth; /* Makes user-initiated scrolls (e.g., mouse wheel, trackpad) smooth */
-
-  /* --- iPhone Safari White Bar Fix (Dynamic Viewport Height) --- */
-  /* IMPORTANT: Apply '100dvh' to the element that is *currently* using '100vh'
-     and causing the white gap on Safari. This might be a parent container,
-     or if this element itself is supposed to fill the screen, use it here.
-     Choose either 'height' or 'min-height' based on your layout needs. */
-  /* For example, if this list is meant to fill the screen height: */
-  /* height: 100dvh; */
-  /* OR */
-  /* min-height: 100dvh; */
-
-  /* --- Optional: Scroll Snapping (For a guided, crisp scrolling experience) --- */
-  /* Uncomment these lines if you want the scroll to snap to specific items */
-  /* scroll-snap-type: x mandatory; */ /* Snaps horizontally, must land on a snap point */
-  /* OR */
-  /* scroll-snap-type: x proximity; */ /* Snaps if close enough to a snap point */
+  /* Add for smooth scrolling */
+  scroll-behavior: smooth;
+  /* Optional: For snapping behavior */
+  /* scroll-snap-type: x mandatory; */
 }
 
-/* --- Scroll Snapping Target (Apply to direct children if using scroll-snap-type) --- */
-/* This targets any direct child element within your .coll-subcoll__menu_link-content list.
-   Adjust 'li' if your direct children are different (e.g., 'a', 'div'). */
-/*
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content > li {
-  scroll-snap-align: start;
-  /* Options: 'start', 'center', 'end'. 'start' aligns the item's beginning to the scroll container's beginning. */
-}
-*/
-
----
-
-/* --- Custom Scrollbar Styling (For WebKit browsers like Chrome, Edge, Safari) --- */
-/* Safari on iOS/macOS often has limited support for these styles, especially for very thin scrollbars. */
-
+/* You can keep your existing scrollbar styling for appearance */
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-track {
-  background-color: transparent; /* Makes the scrollbar track transparent */
+  background-color: transparent;
   border-radius: 0;
   z-index: 2;
   position: relative;
 }
 
 .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 1.5px; /* Sets the height (thickness) of the horizontal scrollbar */
-  background-color: transparent; /* Makes the entire scrollbar area transparent */
+  height: 1.5px;
+  background-color: transparent;
   border-radius: 0;
   z-index: 2;
   position: relative;
@@ -7335,24 +7306,13 @@ footer localization-form select {
 
 .coll-subcoll__list_wrap
   ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  background-color: #000; /* Sets the color of the scrollbar "thumb" (the draggable part) to black */
-  height: 1.5px; /* Matches the scrollbar height for the thumb */
+  background-color: #000;
+  height: 1.5px;
   border-radius: 0;
   z-index: 2;
   position: relative;
 }
 
-/* --- Optional: Safari Scrollbar Visibility Improvement (Experiment) --- */
-/* If the scrollbar thumb still appears white on Safari, try making it slightly thicker.
-   Uncomment and test these lines. */
-/*
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar {
-  height: 3px;
-}
-.coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content::-webkit-scrollbar-thumb {
-  height: 3px;
-}
-*/
 /* If you use scroll-snap, you'll need to define snap points on the child elements */
 /* For example, if your list items are <li> elements: */
 /*
