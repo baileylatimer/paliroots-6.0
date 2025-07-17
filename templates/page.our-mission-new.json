@@ -74,7 +74,7 @@
         "description": "<p>These are the essentials—the pieces that built PaliRoots. The ones Aminah and Hussein wear the most.</p><p>Each one carries a story, a symbol, a reason to look twice.</p>",
         "show_description": false,
         "description_style": "body",
-        "collection": "apparel",
+        "collection": "our-picks",
         "products_to_show": 4,
         "columns_desktop": 4,
         "full_width": false,
