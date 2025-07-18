@@ -12,5 +12,16 @@
   "context": {
     "market": "us"
   },
-  "sections": {}
+  "sections": {
+    "video_banner_hAtFG8": {
+      "settings": {},
+      "blocks": {
+        "text_TcDL86": {
+          "settings": {
+            "text": "Shot in Tantura, Palestine, this collection follows a fisherman's journey home, guided by the sea. A tribute to return and a home never forgotten."
+          }
+        }
+      }
+    }
+  }
 }
