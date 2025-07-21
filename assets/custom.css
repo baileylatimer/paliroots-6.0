@@ -5667,7 +5667,7 @@ span.size-tab-title.active-size {
 }
 @media (min-width: 990px) {
   .search-modal.modal__content {
-    top: -25px;
+    top: 0px;
   }
   .scrolled-past-header .search-modal.modal__content {
     top: 0 !important;
