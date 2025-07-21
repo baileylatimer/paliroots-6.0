@@ -7505,6 +7505,9 @@ li.Lookbook_ListItem.ListItem--Wide {
   img.image_mobile {
     display: none !important;
   }
+  .coll-subcoll__list_wrap ul.coll-subcoll__menu_link-content {
+    padding-right: 36px;
+}
 }
 @media screen and (max-width: 749px) {
   img.image_desktop {
