@@ -338,6 +338,12 @@
       "page-charity-card": {
         "type": "page-charity-card",
         "blocks": {
+          "card_LKX9Ni": {
+            "type": "card",
+            "settings": {
+              "page": "stand-with-gaza-every-meal-counts"
+            }
+          },
           "cb56ab61-61d5-4346-8007-e2f7ec5d6144": {
             "type": "card",
             "settings": {
@@ -490,6 +496,7 @@
           }
         },
         "block_order": [
+          "card_LKX9Ni",
           "cb56ab61-61d5-4346-8007-e2f7ec5d6144",
           "6b80472d-22cc-4e2c-9c96-f5307453bf74",
           "9bbf36d8-b7c0-41bf-8ff2-92e8e3bbe413",
