@@ -58,7 +58,7 @@
         "announcement_gMGJT8": {
           "type": "announcement",
           "settings": {
-            "text": "Duty & Taxes Included",
+            "text": "Duty & Taxes at Checkout",
             "US_text": "Easy Returns and Exchanges",
             "textafter": "",
             "link": "",
@@ -85,7 +85,6 @@
         "announcement_gMGJT8",
         "announcement_h4Q9iL"
       ],
-      "disabled": true,
       "settings": {
         "bgcolor": "#1d503a",
         "txtcolor": "#f2f5f3",
