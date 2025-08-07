@@ -92,7 +92,6 @@
     },
     "paliroots_welcome_popup_dH8jxT": {
       "type": "paliroots-welcome-popup",
-      "disabled": true,
       "settings": {
         "title": "Welcome to PaliRoots",
         "list_item_1": "<p>{{ localization.market.metafields.custom.shopping_from.value }}</p>",
