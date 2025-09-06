@@ -108,8 +108,8 @@
       ],
       "disabled": true,
       "settings": {
-        "image": "shopify://shop_images/7_8d67db5b-21dc-4737-8662-4a2638d41563.png",
-        "mobile_image": "shopify://shop_images/5_9f19a745-ac8b-41c7-a91f-311ed63e78c8.png",
+        "image": "shopify://shop_images/Banner_Shopify_Desktop.jpg",
+        "mobile_image": "shopify://shop_images/Banner_Shopify_Mobile.jpg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "shrink_height": false,
