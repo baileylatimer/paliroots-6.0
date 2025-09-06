@@ -49,6 +49,7 @@
         "text_TcDL86",
         "buttons_hKhwjB"
       ],
+      "disabled": true,
       "settings": {
         "video": "shopify://files/videos/MONTAGE.mp4",
         "mobile_video_url": "https://cdn.shopify.com/videos/c/o/v/251b0dcf50954c388a2795fe7a24d2c0.mp4",
@@ -72,7 +73,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "The Sea Knows Our Name",
+            "heading": "THE SEA KNOWS OUR NAME",
             "heading_size": "h2",
             "heading-color": "#ffffff"
           }
@@ -80,7 +81,7 @@
         "e1e9e874-82af-4b74-ba6a-c24905afa59b": {
           "type": "text",
           "settings": {
-            "text": "Introducing our Limited Edition jersey, a tribute to a legacy reborn, crafted from soft and durable knitted fabric. Now available for the first time in kids' sizes.",
+            "text": "A 23-piece collection carrying the story of the Palestinian fisherman, designed as a tribute to our roots and the culture that defines us.",
             "text_style": "subtitle",
             "content-color": "#ffffff"
           }
@@ -106,7 +107,6 @@
         "e1e9e874-82af-4b74-ba6a-c24905afa59b",
         "button"
       ],
-      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Banner_Shopify_Desktop.jpg",
         "mobile_image": "shopify://shop_images/Banner_Shopify_Mobile.jpg",
