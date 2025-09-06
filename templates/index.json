@@ -72,7 +72,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Pali Flag Tee Drop",
+            "heading": "The Sea Knows Our Name",
             "heading_size": "h2",
             "heading-color": "#ffffff"
           }
@@ -89,7 +89,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop Now",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify://collections/the-sea-knows-our-name",
             "button_style_secondary_1": false,
             "button_label_color_1": "#121212",
             "button_background_color_1": "#ffffff",
