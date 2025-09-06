@@ -49,7 +49,6 @@
         "text_TcDL86",
         "buttons_hKhwjB"
       ],
-      "disabled": true,
       "settings": {
         "video": "shopify://files/videos/MONTAGE.mp4",
         "mobile_video_url": "https://cdn.shopify.com/videos/c/o/v/251b0dcf50954c388a2795fe7a24d2c0.mp4",
@@ -107,6 +106,7 @@
         "e1e9e874-82af-4b74-ba6a-c24905afa59b",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image": "shopify://shop_images/Banner_Shopify_Desktop.jpg",
         "mobile_image": "shopify://shop_images/Banner_Shopify_Mobile.jpg",
