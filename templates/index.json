@@ -224,7 +224,7 @@
           "type": "image",
           "settings": {
             "list-title": "New Arrivals",
-            "list-image": "shopify://shop_images/1_7ec0e153-80b1-4eac-9341-8ab6d196aa91.jpg",
+            "list-image": "shopify://shop_images/Front_Banner_Shopify_Mobile.jpg",
             "list-link": "shopify://collections/new-arrival"
           }
         },
@@ -232,7 +232,7 @@
           "type": "image",
           "settings": {
             "list-title": "Archive Sale",
-            "list-image": "shopify://shop_images/4_e3615eea-9dd4-4d30-8087-84b62325fa18.jpg",
+            "list-image": "shopify://shop_images/front-banner-archive-sale_28ad188b-990a-42e9-b942-5cf41fb36cfb.jpg",
             "list-link": "shopify://collections/the-archive-sale"
           }
         },
